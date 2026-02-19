@@ -46,5 +46,4 @@ jobs:
     - name: Build with Maven
 
     - name: Build with Maven
-      # Adicionamos -DskipTests para garantir que o build complete sem precisar de um banco real no CI
-      run: ./mvnw -B package -DskipTests
+      run: ./mvnw -B package -DskipTests -Dquarkus.package.type=jar
