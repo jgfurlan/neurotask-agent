@@ -11,6 +11,6 @@ public class GreetingResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return "This is the Neuro Task Agent 🤖";
+        return "Hello from Quarkus REST";
     }
 }
