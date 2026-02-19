@@ -25,4 +25,14 @@ public class TaskRepository {
     public List<Task> listAllTasks() {
         return Task.listAll();
     }
+    @Tool("Delete a task by its ID. Requires explicit human confirmation.")
+    @Transactional
+    @RunOnVirtualThread
+    public String deleteTask(Long id, boolean humanConfirmed) {
+        if (!humanConfirmed) {
+            return "ERROR: Deletion denied. You must ask the user for explicit confirmation before deleting a task.";
+        }
+        boolean deleted = Task.deleteById(id);
+        return deleted ? "Task " + id + " deleted successfully." : "Task " + id + " not found.";
+    }
 }
