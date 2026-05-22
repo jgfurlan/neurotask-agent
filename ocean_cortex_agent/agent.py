@@ -1,6 +1,9 @@
 import os
 from collections.abc import Sequence
 from typing import Annotated, Any, TypedDict
+from uuid import UUID
+
+from fastapi import HTTPException, status
 
 from pydantic import PrivateAttr
 
@@ -12,6 +15,9 @@ from langchain_core.tools import tool
 from langgraph.graph import END, StateGraph
 from langgraph.graph.message import add_messages
 
+from ocean_cortex_agent.db import MOCK_GUEST_DATABASE
+from ocean_cortex_agent.dto import GuestPreferences, GuestProfileResponse
+
 
 class AgentState(TypedDict):
     """Represents the active routing and conversation state of the LangGraph flow."""
@@ -19,6 +25,48 @@ class AgentState(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
     next_node: str
     context: dict[str, Any]
+
+
+# ---------------------------------------------------------------------------
+# Pre-emptive context loading
+# ---------------------------------------------------------------------------
+
+def load_context_node(state: AgentState) -> dict[str, Any]:
+    """Pre-emptively loads the guest profile genomics context from the database."""
+    guest_id_str = state.get("guest_id")
+    if not guest_id_str:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Guest ID is missing in agent state",
+        )
+    try:
+        guest_id = UUID(guest_id_str)
+    except ValueError:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid UUID format for Guest ID",
+        )
+
+    if guest_id not in MOCK_GUEST_DATABASE:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Guest profile with ID {guest_id} not found",
+        )
+
+    data = MOCK_GUEST_DATABASE[guest_id]
+    profile = GuestProfileResponse(
+        guest_id=guest_id,
+        full_name=data["full_name"],
+        medallion_status=data["medallion_status"],
+        preferences=GuestPreferences(**data["preferences"]),
+    )
+
+    return {
+        "context": {
+            **state.get("context", {}),
+            "guest_profile": profile,
+        }
+    }
 
 
 # ---------------------------------------------------------------------------

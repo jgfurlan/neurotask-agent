@@ -118,3 +118,43 @@ def test_mock_chat_bedrock_converse_routing() -> None:
     res_greeting = model.invoke([HumanMessage(content="Hello there")])
     assert not res_greeting.tool_calls
     assert "hello" in res_greeting.content.lower() or "help" in res_greeting.content.lower()
+
+
+def test_load_context_node_success() -> None:
+    from langchain_core.messages import HumanMessage
+    from ocean_cortex_agent.agent import AgentState, load_context_node
+
+    guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
+    state: AgentState = {
+        "guest_id": guest_id,
+        "messages": [HumanMessage(content="Test message")],
+        "next_node": "",
+        "context": {}
+    }
+
+    result = load_context_node(state)
+    assert "guest_profile" in result["context"]
+    profile = result["context"]["guest_profile"]
+    assert profile.full_name == "Alexander Mercer"
+    assert profile.medallion_status == "Ruby"
+    assert "Snorkeling" in profile.preferences.activity_interests
+
+
+def test_load_context_node_not_found() -> None:
+    import pytest
+    from fastapi import HTTPException
+    from langchain_core.messages import HumanMessage
+    from ocean_cortex_agent.agent import AgentState, load_context_node
+
+    guest_id = "00000000-0000-0000-0000-000000000000"
+    state: AgentState = {
+        "guest_id": guest_id,
+        "messages": [HumanMessage(content="Test message")],
+        "next_node": "",
+        "context": {}
+    }
+
+    with pytest.raises(HTTPException) as exc_info:
+        load_context_node(state)
+    assert exc_info.value.status_code == 404
+    assert "not found" in exc_info.value.detail
