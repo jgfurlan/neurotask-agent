@@ -52,3 +52,11 @@ docker-compose.yml
 # Worktrees
 .worktrees/
 worktrees/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
