@@ -48,3 +48,7 @@ nb-configuration.xml
 docker-compose.yml
 
 .env
+
+# Worktrees
+.worktrees/
+worktrees/
