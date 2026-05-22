@@ -92,3 +92,29 @@ def test_mock_guest_database_import() -> None:
     assert MOCK_GUEST_DATABASE is not None
     assert "4a7114b0-681b-4b20-9430-863a15234de1" in [str(k) for k in MOCK_GUEST_DATABASE.keys()]
 
+
+def test_mock_chat_bedrock_converse_routing() -> None:
+    from langchain_core.messages import HumanMessage
+    from ocean_cortex_agent.agent import MockChatBedrockConverse, get_chat_model
+
+    model = get_chat_model()
+    assert isinstance(model, MockChatBedrockConverse)
+
+    # Test drink routing simulation
+    res_drink = model.invoke([HumanMessage(content="Order a Mojito please")])
+    assert res_drink.tool_calls is not None
+    assert len(res_drink.tool_calls) == 1
+    assert res_drink.tool_calls[0]["name"] == "route_to_guest_service"
+    assert res_drink.tool_calls[0]["args"]["item_name"] == "Mojito"
+
+    # Test excursion routing simulation
+    res_excursion = model.invoke([HumanMessage(content="I want to go snorkeling")])
+    assert res_excursion.tool_calls is not None
+    assert len(res_excursion.tool_calls) == 1
+    assert res_excursion.tool_calls[0]["name"] == "route_to_anticipatory_advisor"
+    assert res_excursion.tool_calls[0]["args"]["excursion_name"] == "Snorkeling"
+
+    # Test fallback chit-chat simulation
+    res_greeting = model.invoke([HumanMessage(content="Hello there")])
+    assert not res_greeting.tool_calls
+    assert "hello" in res_greeting.content.lower() or "help" in res_greeting.content.lower()
