@@ -1,70 +1,42 @@
 {
-  "/home/jgfurlan/dev/projects/neurotask-agent/ocean_agent/agent.py": {
-    "mtime": 1779440331.5874314,
-    "hash": "033adb06da253d6cca552fa1acf2fabb"
-  },
-  "/home/jgfurlan/dev/projects/neurotask-agent/ocean_agent/main.py": {
-    "mtime": 1779440340.8594213,
-    "hash": "42e2d3fd3906f2cc1eb890a3ba69fe0e"
-  },
-  "/home/jgfurlan/dev/projects/neurotask-agent/ocean_agent/dto.py": {
-    "mtime": 1779440292.5274472,
-    "hash": "ff6194787f24d861f5abd7b1805e14b5"
-  },
-  "/home/jgfurlan/dev/projects/neurotask-agent/ocean_agent/__init__.py": {
-    "mtime": 1779440311.3194423,
-    "hash": "d93df29640cf855cd8a2b5af220aedf5"
-  },
-  "/home/jgfurlan/dev/projects/neurotask-agent/tests/test_main.py": {
-    "mtime": 1779440275.6274514,
-    "hash": "7c014bcc0171934662850ced01463255"
-  },
   "/home/jgfurlan/dev/projects/neurotask-agent/docker-compose.yml": {
     "mtime": 1779440034.0715415,
     "hash": "48a1d9cfd8af5e991e82a92d0fb730fb"
   },
   "/home/jgfurlan/dev/projects/neurotask-agent/README.md": {
-    "mtime": 1774996872.0,
-    "hash": "e47e9d71370735a2d418a606e7ebdd3d"
+    "mtime": 1779445195.5774114,
+    "hash": "fc52d807754d00cd087c601b33851933"
   },
   "/home/jgfurlan/dev/projects/neurotask-agent/docs/progress-tracker.md": {
-    "mtime": 1779440678.6832922,
-    "hash": "78c46b2853a51b9d144291297ff96869"
+    "mtime": 1779445203.973408,
+    "hash": "0215689c6630539cd2bb7b11ffde6808"
   },
   "/home/jgfurlan/dev/projects/neurotask-agent/docs/code-standards.md": {
     "mtime": 1779440660.5392988,
     "hash": "aa2f76bd3c515b049c1862bf346e9c90"
   },
   "/home/jgfurlan/dev/projects/neurotask-agent/docs/project-overview.md": {
-    "mtime": 1779440656.5313005,
-    "hash": "589c3eae72e8847f4fc5b29d312486d9"
+    "mtime": 1779445199.5334098,
+    "hash": "49302062cf9cf35e8274b111d39388a5"
   },
   "/home/jgfurlan/dev/projects/neurotask-agent/docs/ui-context.md": {
-    "mtime": 1779440669.951295,
-    "hash": "32553a0fa7d86c9eb7b0599b98beced6"
+    "mtime": 1779445206.229407,
+    "hash": "a11d612657843acdf832cfcb24df1631"
   },
   "/home/jgfurlan/dev/projects/neurotask-agent/docs/ai-workflow-rules.md": {
     "mtime": 1779440674.591293,
     "hash": "d470a9256251f159a9562a9a818958fc"
   },
   "/home/jgfurlan/dev/projects/neurotask-agent/docs/architecture.md": {
-    "mtime": 1779440665.111297,
-    "hash": "3fe7a926c618e740391fb3e2f7846e66"
+    "mtime": 1779445201.709409,
+    "hash": "95d605bc37ea1a40946eff45ef980955"
   },
   "/home/jgfurlan/dev/projects/neurotask-agent/docs/assets/jd-alignment.md": {
-    "mtime": 1779441132.6831174,
-    "hash": "ebc46427b6e08e78a14023754ba5e3af"
+    "mtime": 1779445214.149404,
+    "hash": "ff415a79190f142305d574a987f9731a"
   },
-  "/home/jgfurlan/dev/projects/neurotask-agent/docs/superpowers/plans/2026-05-22-add-job-description-asset.md": {
-    "mtime": 1779437237.5446234,
-    "hash": "0a82351f03061fa80dc28a30ef2ca0a8"
-  },
-  "/home/jgfurlan/dev/projects/neurotask-agent/docs/superpowers/specs/2026-05-22-add-job-description-asset-design.md": {
-    "mtime": 1779437212.3726323,
-    "hash": "62b0f2bbf2508592c100e1b3a8140130"
-  },
-  "/home/jgfurlan/dev/projects/neurotask-agent/docs/assets/job-description.pdf": {
-    "mtime": 1779437302.9645972,
-    "hash": "38d2da14f8c1679e584a97d9216a4f91"
+  "/home/jgfurlan/dev/projects/neurotask-agent/docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md": {
+    "mtime": 1779445224.2814002,
+    "hash": "6fa88414e501af007a04308d06eb56b6"
   }
 }

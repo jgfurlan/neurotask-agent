@@ -50,355 +50,1219 @@
   },
   "nodes": [
     {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 4,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "OceanCortex Agent: Autonomous AI-Native Orchestrator",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "neurotask_agent_readme_oceancortex_agent_autonomous_ai_native_orchestrator",
+      "community": 4,
+      "norm_label": "oceancortex agent: autonomous ai-native orchestrator"
+    },
+    {
+      "label": "Technical Architecture & Core Innovation",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L17",
+      "id": "neurotask_agent_readme_technical_architecture_core_innovation",
+      "community": 4,
+      "norm_label": "technical architecture & core innovation"
+    },
+    {
+      "label": "API Documentation",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L27",
+      "id": "neurotask_agent_readme_api_documentation",
+      "community": 4,
+      "norm_label": "api documentation"
+    },
+    {
+      "label": "Interactive Documentation",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L29",
+      "id": "neurotask_agent_readme_interactive_documentation",
+      "community": 4,
+      "norm_label": "interactive documentation"
+    },
+    {
+      "label": "REST Endpoints",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L39",
+      "id": "neurotask_agent_readme_rest_endpoints",
+      "community": 4,
+      "norm_label": "rest endpoints"
+    },
+    {
+      "label": "Example API Usage",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L48",
+      "id": "neurotask_agent_readme_example_api_usage",
+      "community": 5,
+      "norm_label": "example api usage"
+    },
+    {
+      "label": "Health Check",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L50",
+      "id": "neurotask_agent_readme_health_check",
+      "community": 5,
+      "norm_label": "health check"
+    },
+    {
+      "label": "code:bash (curl http://localhost:8000/hello)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L52",
+      "id": "neurotask_agent_readme_codeblock_1",
+      "community": 5,
+      "norm_label": "code:bash (curl http://localhost:8000/hello)"
+    },
+    {
+      "label": "code:json ({\"message\": \"Hello from OceanCortex Python Agent\"})",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L56",
+      "id": "neurotask_agent_readme_codeblock_2",
+      "community": 5,
+      "norm_label": "code:json ({\"message\": \"hello from oceancortex python agent\"})"
+    },
+    {
+      "label": "Get Guest Profile",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L60",
+      "id": "neurotask_agent_readme_get_guest_profile",
+      "community": 5,
+      "norm_label": "get guest profile"
+    },
+    {
+      "label": "code:bash (curl \"http://localhost:8000/ocean/guest/profile?guest_id=4a7)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L62",
+      "id": "neurotask_agent_readme_codeblock_3",
+      "community": 5,
+      "norm_label": "code:bash (curl \"http://localhost:8000/ocean/guest/profile?guest_id=4a7)"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L67",
+      "id": "neurotask_agent_readme_codeblock_4",
+      "community": 5,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "Chat with Agent",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L80",
+      "id": "neurotask_agent_readme_chat_with_agent",
+      "community": 5,
+      "norm_label": "chat with agent"
+    },
+    {
+      "label": "code:bash (curl -X POST http://localhost:8000/ocean/chat \\)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L82",
+      "id": "neurotask_agent_readme_codeblock_5",
+      "community": 5,
+      "norm_label": "code:bash (curl -x post http://localhost:8000/ocean/chat \\)"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L92",
+      "id": "neurotask_agent_readme_codeblock_6",
+      "community": 5,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "Local Development",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L110",
+      "id": "neurotask_agent_readme_local_development",
+      "community": 4,
+      "norm_label": "local development"
+    },
+    {
+      "label": "Prerequisites",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L112",
+      "id": "neurotask_agent_readme_prerequisites",
+      "community": 4,
+      "norm_label": "prerequisites"
+    },
+    {
+      "label": "Setup & Execution",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L118",
+      "id": "neurotask_agent_readme_setup_execution",
+      "community": 4,
+      "norm_label": "setup & execution"
+    },
+    {
+      "label": "code:bash (git clone <repository-url>)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L121",
+      "id": "neurotask_agent_readme_codeblock_7",
+      "community": 4,
+      "norm_label": "code:bash (git clone <repository-url>)"
+    },
+    {
+      "label": "code:bash (docker-compose up --build -d)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L127",
+      "id": "neurotask_agent_readme_codeblock_8",
+      "community": 4,
+      "norm_label": "code:bash (docker-compose up --build -d)"
+    },
+    {
+      "label": "code:bash (curl http://localhost:8000/hello)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L133",
+      "id": "neurotask_agent_readme_codeblock_9",
+      "community": 4,
+      "norm_label": "code:bash (curl http://localhost:8000/hello)"
+    },
+    {
+      "label": "progress-tracker.md",
+      "file_type": "document",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L1",
+      "id": "docs_progress_tracker_md",
+      "community": 9,
+      "norm_label": "progress-tracker.md"
+    },
+    {
+      "label": "Progress Tracker: OceanCortex Agent State",
+      "file_type": "document",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L1",
+      "id": "docs_progress_tracker_progress_tracker_oceancortex_agent_state",
+      "community": 9,
+      "norm_label": "progress tracker: oceancortex agent state"
+    },
+    {
+      "label": "Current Project Phase",
+      "file_type": "document",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L3",
+      "id": "docs_progress_tracker_current_project_phase",
+      "community": 9,
+      "norm_label": "current project phase"
+    },
+    {
+      "label": "Active Implementation",
+      "file_type": "document",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L7",
+      "id": "docs_progress_tracker_active_implementation",
+      "community": 9,
+      "norm_label": "active implementation"
+    },
+    {
+      "label": "Completed Features",
+      "file_type": "document",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L11",
+      "id": "docs_progress_tracker_completed_features",
+      "community": 9,
+      "norm_label": "completed features"
+    },
+    {
+      "label": "Historical Decisions",
+      "file_type": "document",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L16",
+      "id": "docs_progress_tracker_historical_decisions",
+      "community": 9,
+      "norm_label": "historical decisions"
+    },
+    {
+      "label": "Milestones",
+      "file_type": "document",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L20",
+      "id": "docs_progress_tracker_milestones",
+      "community": 9,
+      "norm_label": "milestones"
+    },
+    {
+      "label": "Feature Queue (Linear Issues)",
+      "file_type": "document",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L26",
+      "id": "docs_progress_tracker_feature_queue_linear_issues",
+      "community": 9,
+      "norm_label": "feature queue (linear issues)"
+    },
+    {
+      "label": "code-standards.md",
+      "file_type": "document",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L1",
+      "id": "docs_code_standards_md",
+      "community": 13,
+      "norm_label": "code-standards.md"
+    },
+    {
+      "label": "Code Standards: Agent-Legibility & Python Compliance",
+      "file_type": "document",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L1",
+      "id": "docs_code_standards_code_standards_agent_legibility_python_compliance",
+      "community": 13,
+      "norm_label": "code standards: agent-legibility & python compliance"
+    },
+    {
+      "label": "Agent-Legibility (Mandatory)",
+      "file_type": "document",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L3",
+      "id": "docs_code_standards_agent_legibility_mandatory",
+      "community": 13,
+      "norm_label": "agent-legibility (mandatory)"
+    },
+    {
+      "label": "Type Compliance & Pydantic",
+      "file_type": "document",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L14",
+      "id": "docs_code_standards_type_compliance_pydantic",
+      "community": 13,
+      "norm_label": "type compliance & pydantic"
+    },
+    {
+      "label": "Linting & Formatting",
+      "file_type": "document",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L18",
+      "id": "docs_code_standards_linting_formatting",
+      "community": 13,
+      "norm_label": "linting & formatting"
+    },
+    {
+      "label": "Testing Standards (TDD)",
+      "file_type": "document",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L24",
+      "id": "docs_code_standards_testing_standards_tdd",
+      "community": 13,
+      "norm_label": "testing standards (tdd)"
+    },
+    {
+      "label": "project-overview.md",
+      "file_type": "document",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L1",
+      "id": "docs_project_overview_md",
+      "community": 11,
+      "norm_label": "project-overview.md"
+    },
+    {
+      "label": "Project Overview: Carnival OceanCortex Agent",
+      "file_type": "document",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L1",
+      "id": "docs_project_overview_project_overview_carnival_oceancortex_agent",
+      "community": 11,
+      "norm_label": "project overview: carnival oceancortex agent"
+    },
+    {
+      "label": "Mission",
+      "file_type": "document",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L3",
+      "id": "docs_project_overview_mission",
+      "community": 11,
+      "norm_label": "mission"
+    },
+    {
+      "label": "High-Level User Flows",
+      "file_type": "document",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L6",
+      "id": "docs_project_overview_high_level_user_flows",
+      "community": 11,
+      "norm_label": "high-level user flows"
+    },
+    {
+      "label": "Success Criteria Benchmarks",
+      "file_type": "document",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L20",
+      "id": "docs_project_overview_success_criteria_benchmarks",
+      "community": 11,
+      "norm_label": "success criteria benchmarks"
+    },
+    {
+      "label": "Out-of-Scope (Phase 1)",
+      "file_type": "document",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L27",
+      "id": "docs_project_overview_out_of_scope_phase_1",
+      "community": 11,
+      "norm_label": "out-of-scope (phase 1)"
+    },
+    {
+      "label": "Tech Stack",
+      "file_type": "document",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L32",
+      "id": "docs_project_overview_tech_stack",
+      "community": 11,
+      "norm_label": "tech stack"
+    },
+    {
+      "label": "ui-context.md",
+      "file_type": "document",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L1",
+      "id": "docs_ui_context_md",
+      "community": 7,
+      "norm_label": "ui-context.md"
+    },
+    {
+      "label": "UI Context: OceanCompass & API Interfaces",
+      "file_type": "document",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L1",
+      "id": "docs_ui_context_ui_context_oceancompass_api_interfaces",
+      "community": 7,
+      "norm_label": "ui context: oceancompass & api interfaces"
+    },
+    {
+      "label": "Design Tokens (Oceanic Theme)",
+      "file_type": "document",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L5",
+      "id": "docs_ui_context_design_tokens_oceanic_theme",
+      "community": 7,
+      "norm_label": "design tokens (oceanic theme)"
+    },
+    {
+      "label": "API Boundaries & Interfaces",
+      "file_type": "document",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L18",
+      "id": "docs_ui_context_api_boundaries_interfaces",
+      "community": 7,
+      "norm_label": "api boundaries & interfaces"
+    },
+    {
+      "label": "REST Endpoints",
+      "file_type": "document",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L22",
+      "id": "docs_ui_context_rest_endpoints",
+      "community": 7,
+      "norm_label": "rest endpoints"
+    },
+    {
+      "label": "Chat Payload Example",
+      "file_type": "document",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L32",
+      "id": "docs_ui_context_chat_payload_example",
+      "community": 7,
+      "norm_label": "chat payload example"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L35",
+      "id": "docs_ui_context_codeblock_1",
+      "community": 7,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L43",
+      "id": "docs_ui_context_codeblock_2",
+      "community": 7,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "UX Paradigms",
+      "file_type": "document",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L51",
+      "id": "docs_ui_context_ux_paradigms",
+      "community": 7,
+      "norm_label": "ux paradigms"
+    },
+    {
+      "label": "ai-workflow-rules.md",
+      "file_type": "document",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L1",
+      "id": "docs_ai_workflow_rules_md",
+      "community": 14,
+      "norm_label": "ai-workflow-rules.md"
+    },
+    {
+      "label": "AI Workflow Rules: Execution Governance",
+      "file_type": "document",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L1",
+      "id": "docs_ai_workflow_rules_ai_workflow_rules_execution_governance",
+      "community": 14,
+      "norm_label": "ai workflow rules: execution governance"
+    },
+    {
+      "label": "Spec-Driven Development",
+      "file_type": "document",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L5",
+      "id": "docs_ai_workflow_rules_spec_driven_development",
+      "community": 14,
+      "norm_label": "spec-driven development"
+    },
+    {
+      "label": "Session Governance",
+      "file_type": "document",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L15",
+      "id": "docs_ai_workflow_rules_session_governance",
+      "community": 14,
+      "norm_label": "session governance"
+    },
+    {
+      "label": "Linear-GitHub Synchronization",
+      "file_type": "document",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L19",
+      "id": "docs_ai_workflow_rules_linear_github_synchronization",
+      "community": 14,
+      "norm_label": "linear-github synchronization"
+    },
+    {
+      "label": "Prohibited Actions",
+      "file_type": "document",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L31",
+      "id": "docs_ai_workflow_rules_prohibited_actions",
+      "community": 14,
+      "norm_label": "prohibited actions"
+    },
+    {
+      "label": "architecture.md",
+      "file_type": "document",
+      "source_file": "docs/architecture.md",
+      "source_location": "L1",
+      "id": "docs_architecture_md",
+      "community": 8,
+      "norm_label": "architecture.md"
+    },
+    {
+      "label": "Architecture: OceanCortex Multi-Agent System",
+      "file_type": "document",
+      "source_file": "docs/architecture.md",
+      "source_location": "L1",
+      "id": "docs_architecture_architecture_oceancortex_multi_agent_system",
+      "community": 8,
+      "norm_label": "architecture: oceancortex multi-agent system"
+    },
+    {
+      "label": "System Topology",
+      "file_type": "document",
+      "source_file": "docs/architecture.md",
+      "source_location": "L5",
+      "id": "docs_architecture_system_topology",
+      "community": 8,
+      "norm_label": "system topology"
+    },
+    {
+      "label": "code:mermaid (graph TD)",
+      "file_type": "document",
+      "source_file": "docs/architecture.md",
+      "source_location": "L7",
+      "id": "docs_architecture_codeblock_1",
+      "community": 8,
+      "norm_label": "code:mermaid (graph td)"
+    },
+    {
+      "label": "Tech Stack & System Components",
+      "file_type": "document",
+      "source_file": "docs/architecture.md",
+      "source_location": "L34",
+      "id": "docs_architecture_tech_stack_system_components",
+      "community": 8,
+      "norm_label": "tech stack & system components"
+    },
+    {
+      "label": "1. Stateful Multi-Agent Workflow (LangGraph)",
+      "file_type": "document",
+      "source_file": "docs/architecture.md",
+      "source_location": "L36",
+      "id": "docs_architecture_1_stateful_multi_agent_workflow_langgraph",
+      "community": 8,
+      "norm_label": "1. stateful multi-agent workflow (langgraph)"
+    },
+    {
+      "label": "2. LLM & Cloud Layer (AWS Bedrock)",
+      "file_type": "document",
+      "source_file": "docs/architecture.md",
+      "source_location": "L41",
+      "id": "docs_architecture_2_llm_cloud_layer_aws_bedrock",
+      "community": 8,
+      "norm_label": "2. llm & cloud layer (aws bedrock)"
+    },
+    {
+      "label": "3. Data Warehouse & AI Analytics (Snowflake Cortex AI)",
+      "file_type": "document",
+      "source_file": "docs/architecture.md",
+      "source_location": "L45",
+      "id": "docs_architecture_3_data_warehouse_ai_analytics_snowflake_cortex_ai",
+      "community": 8,
+      "norm_label": "3. data warehouse & ai analytics (snowflake cortex ai)"
+    },
+    {
+      "label": "4. Reinforcement Learning from Verifiable Rewards (RLVR)",
+      "file_type": "document",
+      "source_file": "docs/architecture.md",
+      "source_location": "L49",
+      "id": "docs_architecture_4_reinforcement_learning_from_verifiable_rewards_rlvr",
+      "community": 8,
+      "norm_label": "4. reinforcement learning from verifiable rewards (rlvr)"
+    },
+    {
+      "label": "jd-alignment.md",
+      "file_type": "document",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L1",
+      "id": "docs_assets_jd_alignment_md",
+      "community": 10,
+      "norm_label": "jd-alignment.md"
+    },
+    {
+      "label": "Carnival Corporation AI/ML Stack Alignment Analysis",
+      "file_type": "document",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L1",
+      "id": "assets_jd_alignment_carnival_corporation_ai_ml_stack_alignment_analysis",
+      "community": 10,
+      "norm_label": "carnival corporation ai/ml stack alignment analysis"
+    },
+    {
+      "label": "1. Core Technology Stack from Job Description",
+      "file_type": "document",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L7",
+      "id": "assets_jd_alignment_1_core_technology_stack_from_job_description",
+      "community": 10,
+      "norm_label": "1. core technology stack from job description"
+    },
+    {
+      "label": "2. Carnival Corporation's Brand & Technical Identity",
+      "file_type": "document",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L22",
+      "id": "assets_jd_alignment_2_carnival_corporation_s_brand_technical_identity",
+      "community": 10,
+      "norm_label": "2. carnival corporation's brand & technical identity"
+    },
+    {
+      "label": "3. Technology Alignment Matrix",
+      "file_type": "document",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L33",
+      "id": "assets_jd_alignment_3_technology_alignment_matrix",
+      "community": 10,
+      "norm_label": "3. technology alignment matrix"
+    },
+    {
+      "label": "code:mermaid (graph TD)",
+      "file_type": "document",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L37",
+      "id": "assets_jd_alignment_codeblock_1",
+      "community": 10,
+      "norm_label": "code:mermaid (graph td)"
+    },
+    {
+      "label": "4. Pure Python Agentic Architecture",
+      "file_type": "document",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L70",
+      "id": "assets_jd_alignment_4_pure_python_agentic_architecture",
+      "community": 10,
+      "norm_label": "4. pure python agentic architecture"
+    },
+    {
+      "label": "5. Next Steps & Implementation Status",
+      "file_type": "document",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L80",
+      "id": "assets_jd_alignment_5_next_steps_implementation_status",
+      "community": 10,
+      "norm_label": "5. next steps & implementation status"
+    },
+    {
+      "label": "2026-05-22-llm-supervisor-routing.md",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L1",
+      "id": "docs_superpowers_plans_2026_05_22_llm_supervisor_routing_md",
+      "community": 0,
+      "norm_label": "2026-05-22-llm-supervisor-routing.md"
+    },
+    {
+      "label": "LLM-Based Supervisor Routing Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L1",
+      "id": "plans_2026_05_22_llm_supervisor_routing_llm_based_supervisor_routing_implementation_plan",
+      "community": 0,
+      "norm_label": "llm-based supervisor routing implementation plan"
+    },
+    {
+      "label": "Task 1: Relocate Guest Database to Prevent Circular Imports",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L13",
+      "id": "plans_2026_05_22_llm_supervisor_routing_task_1_relocate_guest_database_to_prevent_circular_imports",
+      "community": 0,
+      "norm_label": "task 1: relocate guest database to prevent circular imports"
+    },
+    {
+      "label": "code:python (def test_mock_guest_database_import() -> None:)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L24",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_1",
+      "community": 0,
+      "norm_label": "code:python (def test_mock_guest_database_import() -> none:)"
+    },
+    {
+      "label": "code:python (from typing import Any)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L40",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_2",
+      "community": 0,
+      "norm_label": "code:python (from typing import any)"
+    },
+    {
+      "label": "code:python (from ocean_cortex_agent.db import MOCK_GUEST_DATABASE)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L61",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_3",
+      "community": 0,
+      "norm_label": "code:python (from ocean_cortex_agent.db import mock_guest_database)"
+    },
+    {
+      "label": "code:bash (git add ocean_cortex_agent/db.py ocean_cortex_agent/main.py )",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L72",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_4",
+      "community": 0,
+      "norm_label": "code:bash (git add ocean_cortex_agent/db.py ocean_cortex_agent/main.py )"
+    },
+    {
+      "label": "Task 2: Define Routing Tools and Mock LLM",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L79",
+      "id": "plans_2026_05_22_llm_supervisor_routing_task_2_define_routing_tools_and_mock_llm",
+      "community": 0,
+      "norm_label": "task 2: define routing tools and mock llm"
+    },
+    {
+      "label": "code:python (def test_mock_chat_bedrock_converse_routing() -> None:)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L89",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_5",
+      "community": 0,
+      "norm_label": "code:python (def test_mock_chat_bedrock_converse_routing() -> none:)"
+    },
+    {
+      "label": "code:python (import os)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L128",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_6",
+      "community": 0,
+      "norm_label": "code:python (import os)"
+    },
+    {
+      "label": "code:bash (git add ocean_cortex_agent/agent.py tests/test_main.py)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L233",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_7",
+      "community": 0,
+      "norm_label": "code:bash (git add ocean_cortex_agent/agent.py tests/test_main.py)"
+    },
+    {
+      "label": "Task 3: Implement Context Loading Node",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L240",
+      "id": "plans_2026_05_22_llm_supervisor_routing_task_3_implement_context_loading_node",
+      "community": 0,
+      "norm_label": "task 3: implement context loading node"
+    },
+    {
+      "label": "code:python (def test_load_context_node_success() -> None:)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L250",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_8",
+      "community": 0,
+      "norm_label": "code:python (def test_load_context_node_success() -> none:)"
+    },
+    {
+      "label": "code:python (from uuid import UUID)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L299",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_9",
+      "community": 0,
+      "norm_label": "code:python (from uuid import uuid)"
+    },
+    {
+      "label": "code:bash (git add ocean_cortex_agent/agent.py tests/test_main.py)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L350",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_10",
+      "community": 0,
+      "norm_label": "code:bash (git add ocean_cortex_agent/agent.py tests/test_main.py)"
+    },
+    {
+      "label": "Task 4: Integrate LLM Routing and Specialist Node Execution",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L357",
+      "id": "plans_2026_05_22_llm_supervisor_routing_task_4_integrate_llm_routing_and_specialist_node_execution",
+      "community": 0,
+      "norm_label": "task 4: integrate llm routing and specialist node execution"
+    },
+    {
+      "label": "code:python (def test_graph_routing_guest_service() -> None:)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L367",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_11",
+      "community": 0,
+      "norm_label": "code:python (def test_graph_routing_guest_service() -> none:)"
+    },
+    {
+      "label": "code:python (def supervisor_node(state: AgentState) -> dict[str, Any]:)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L433",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_12",
+      "community": 0,
+      "norm_label": "code:python (def supervisor_node(state: agentstate) -> dict[str, any]:)"
+    },
+    {
+      "label": "code:bash (git add ocean_cortex_agent/agent.py tests/test_main.py)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L540",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_13",
+      "community": 0,
+      "norm_label": "code:bash (git add ocean_cortex_agent/agent.py tests/test_main.py)"
+    },
+    {
+      "label": "Task 5: Static Analysis and Type Verification",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L547",
+      "id": "plans_2026_05_22_llm_supervisor_routing_task_5_static_analysis_and_type_verification",
+      "community": 0,
+      "norm_label": "task 5: static analysis and type verification"
+    },
+    {
+      "label": "code:bash (git status)",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L564",
+      "id": "plans_2026_05_22_llm_supervisor_routing_codeblock_14",
+      "community": 0,
+      "norm_label": "code:bash (git status)"
+    },
+    {
       "label": "agent.py",
       "file_type": "code",
       "source_file": "ocean_agent/agent.py",
       "source_location": "L1",
-      "id": "ocean_agent_agent_py",
-      "community": 1,
-      "norm_label": "agent.py"
+      "community": 6,
+      "norm_label": "agent.py",
+      "id": "ocean_agent_agent_py"
     },
     {
       "label": "AgentState",
       "file_type": "code",
       "source_file": "ocean_agent/agent.py",
       "source_location": "L9",
-      "id": "ocean_agent_agent_agentstate",
-      "community": 1,
-      "norm_label": "agentstate"
+      "community": 6,
+      "norm_label": "agentstate",
+      "id": "ocean_agent_agent_agentstate"
     },
     {
       "label": "TypedDict",
       "file_type": "code",
       "source_file": "",
       "source_location": "",
-      "id": "typeddict",
-      "community": 1,
-      "norm_label": "typeddict"
+      "community": 6,
+      "norm_label": "typeddict",
+      "id": "typeddict"
     },
     {
       "label": "supervisor_node()",
       "file_type": "code",
       "source_file": "ocean_agent/agent.py",
       "source_location": "L16",
-      "id": "ocean_agent_agent_supervisor_node",
-      "community": 1,
-      "norm_label": "supervisor_node()"
+      "community": 6,
+      "norm_label": "supervisor_node()",
+      "id": "ocean_agent_agent_supervisor_node"
     },
     {
       "label": "guest_service_node()",
       "file_type": "code",
       "source_file": "ocean_agent/agent.py",
       "source_location": "L34",
-      "id": "ocean_agent_agent_guest_service_node",
-      "community": 1,
-      "norm_label": "guest_service_node()"
+      "community": 6,
+      "norm_label": "guest_service_node()",
+      "id": "ocean_agent_agent_guest_service_node"
     },
     {
       "label": "anticipatory_advisor_node()",
       "file_type": "code",
       "source_file": "ocean_agent/agent.py",
       "source_location": "L41",
-      "id": "ocean_agent_agent_anticipatory_advisor_node",
-      "community": 1,
-      "norm_label": "anticipatory_advisor_node()"
+      "community": 6,
+      "norm_label": "anticipatory_advisor_node()",
+      "id": "ocean_agent_agent_anticipatory_advisor_node"
     },
     {
       "label": "Represents the active routing and conversation state of the LangGraph flow.",
       "file_type": "rationale",
       "source_file": "ocean_agent/agent.py",
       "source_location": "L10",
-      "id": "ocean_agent_agent_rationale_10",
-      "community": 1,
-      "norm_label": "represents the active routing and conversation state of the langgraph flow."
+      "community": 6,
+      "norm_label": "represents the active routing and conversation state of the langgraph flow.",
+      "id": "ocean_agent_agent_rationale_10"
     },
     {
       "label": "Inspects the last message content and decides which specialist node to call.",
       "file_type": "rationale",
       "source_file": "ocean_agent/agent.py",
       "source_location": "L17",
-      "id": "ocean_agent_agent_rationale_17",
-      "community": 1,
-      "norm_label": "inspects the last message content and decides which specialist node to call."
+      "community": 6,
+      "norm_label": "inspects the last message content and decides which specialist node to call.",
+      "id": "ocean_agent_agent_rationale_17"
     },
     {
       "label": "Stub handler representing the guest service execution.",
       "file_type": "rationale",
       "source_file": "ocean_agent/agent.py",
       "source_location": "L35",
-      "id": "ocean_agent_agent_rationale_35",
-      "community": 1,
-      "norm_label": "stub handler representing the guest service execution."
+      "community": 6,
+      "norm_label": "stub handler representing the guest service execution.",
+      "id": "ocean_agent_agent_rationale_35"
     },
     {
       "label": "Stub handler representing excursion recommendations and Guest Genome analysis.",
       "file_type": "rationale",
       "source_file": "ocean_agent/agent.py",
       "source_location": "L42",
-      "id": "ocean_agent_agent_rationale_42",
-      "community": 1,
-      "norm_label": "stub handler representing excursion recommendations and guest genome analysis."
+      "community": 6,
+      "norm_label": "stub handler representing excursion recommendations and guest genome analysis.",
+      "id": "ocean_agent_agent_rationale_42"
     },
     {
       "label": "main.py",
       "file_type": "code",
       "source_file": "ocean_agent/main.py",
       "source_location": "L1",
-      "id": "ocean_agent_main_py",
-      "community": 0,
-      "norm_label": "main.py"
+      "community": 1,
+      "norm_label": "main.py",
+      "id": "ocean_agent_main_py"
     },
     {
       "label": "read_hello()",
       "file_type": "code",
       "source_file": "ocean_agent/main.py",
       "source_location": "L41",
-      "id": "ocean_agent_main_read_hello",
-      "community": 0,
-      "norm_label": "read_hello()"
+      "community": 1,
+      "norm_label": "read_hello()",
+      "id": "ocean_agent_main_read_hello"
     },
     {
       "label": "get_guest_profile()",
       "file_type": "code",
       "source_file": "ocean_agent/main.py",
       "source_location": "L46",
-      "id": "ocean_agent_main_get_guest_profile",
-      "community": 0,
-      "norm_label": "get_guest_profile()"
+      "community": 1,
+      "norm_label": "get_guest_profile()",
+      "id": "ocean_agent_main_get_guest_profile"
     },
     {
       "label": "chat()",
       "file_type": "code",
       "source_file": "ocean_agent/main.py",
       "source_location": "L63",
-      "id": "ocean_agent_main_chat",
-      "community": 0,
-      "norm_label": "chat()"
+      "community": 1,
+      "norm_label": "chat()",
+      "id": "ocean_agent_main_chat"
     },
     {
       "label": "create_order()",
       "file_type": "code",
       "source_file": "ocean_agent/main.py",
       "source_location": "L98",
-      "id": "ocean_agent_main_create_order",
-      "community": 0,
-      "norm_label": "create_order()"
+      "community": 1,
+      "norm_label": "create_order()",
+      "id": "ocean_agent_main_create_order"
     },
     {
       "label": "Basic health check endpoint.",
       "file_type": "rationale",
       "source_file": "ocean_agent/main.py",
       "source_location": "L42",
-      "id": "ocean_agent_main_rationale_42",
-      "community": 0,
-      "norm_label": "basic health check endpoint."
+      "community": 1,
+      "norm_label": "basic health check endpoint.",
+      "id": "ocean_agent_main_rationale_42"
     },
     {
       "label": "Retrieves guest profile genome context matching a specific OceanMedallion ID.",
       "file_type": "rationale",
       "source_file": "ocean_agent/main.py",
       "source_location": "L47",
-      "id": "ocean_agent_main_rationale_47",
-      "community": 0,
-      "norm_label": "retrieves guest profile genome context matching a specific oceanmedallion id."
+      "community": 1,
+      "norm_label": "retrieves guest profile genome context matching a specific oceanmedallion id.",
+      "id": "ocean_agent_main_rationale_47"
     },
     {
       "label": "Chats with the multi-agent orchestrator to guide reservations, schedules, or que",
       "file_type": "rationale",
       "source_file": "ocean_agent/main.py",
       "source_location": "L64",
-      "id": "ocean_agent_main_rationale_64",
-      "community": 0,
-      "norm_label": "chats with the multi-agent orchestrator to guide reservations, schedules, or que"
+      "community": 1,
+      "norm_label": "chats with the multi-agent orchestrator to guide reservations, schedules, or que",
+      "id": "ocean_agent_main_rationale_64"
     },
     {
       "label": "Dispatches on-demand deliveries or bookings via the OceanNow network.",
       "file_type": "rationale",
       "source_file": "ocean_agent/main.py",
       "source_location": "L99",
-      "id": "ocean_agent_main_rationale_99",
-      "community": 0,
-      "norm_label": "dispatches on-demand deliveries or bookings via the oceannow network."
+      "community": 1,
+      "norm_label": "dispatches on-demand deliveries or bookings via the oceannow network.",
+      "id": "ocean_agent_main_rationale_99"
     },
     {
       "label": "dto.py",
       "file_type": "code",
       "source_file": "ocean_agent/dto.py",
       "source_location": "L1",
-      "id": "ocean_agent_dto_py",
-      "community": 0,
-      "norm_label": "dto.py"
+      "community": 1,
+      "norm_label": "dto.py",
+      "id": "ocean_agent_dto_py"
     },
     {
       "label": "LocationContext",
       "file_type": "code",
       "source_file": "ocean_agent/dto.py",
       "source_location": "L7",
-      "id": "ocean_agent_dto_locationcontext",
-      "community": 0,
-      "norm_label": "locationcontext"
+      "community": 1,
+      "norm_label": "locationcontext",
+      "id": "ocean_agent_dto_locationcontext"
     },
     {
       "label": "BaseModel",
       "file_type": "code",
       "source_file": "",
       "source_location": "",
-      "id": "basemodel",
-      "community": 0,
-      "norm_label": "basemodel"
+      "community": 1,
+      "norm_label": "basemodel",
+      "id": "basemodel"
     },
     {
       "label": "ChatRequest",
       "file_type": "code",
       "source_file": "ocean_agent/dto.py",
       "source_location": "L13",
-      "id": "ocean_agent_dto_chatrequest",
-      "community": 0,
-      "norm_label": "chatrequest"
+      "community": 1,
+      "norm_label": "chatrequest",
+      "id": "ocean_agent_dto_chatrequest"
     },
     {
       "label": "SuggestedAction",
       "file_type": "code",
       "source_file": "ocean_agent/dto.py",
       "source_location": "L25",
-      "id": "ocean_agent_dto_suggestedaction",
-      "community": 0,
-      "norm_label": "suggestedaction"
+      "community": 1,
+      "norm_label": "suggestedaction",
+      "id": "ocean_agent_dto_suggestedaction"
     },
     {
       "label": "ChatResponse",
       "file_type": "code",
       "source_file": "ocean_agent/dto.py",
       "source_location": "L36",
-      "id": "ocean_agent_dto_chatresponse",
-      "community": 0,
-      "norm_label": "chatresponse"
+      "community": 1,
+      "norm_label": "chatresponse",
+      "id": "ocean_agent_dto_chatresponse"
     },
     {
       "label": "GuestPreferences",
       "file_type": "code",
       "source_file": "ocean_agent/dto.py",
       "source_location": "L43",
-      "id": "ocean_agent_dto_guestpreferences",
-      "community": 0,
-      "norm_label": "guestpreferences"
+      "community": 1,
+      "norm_label": "guestpreferences",
+      "id": "ocean_agent_dto_guestpreferences"
     },
     {
       "label": "GuestProfileResponse",
       "file_type": "code",
       "source_file": "ocean_agent/dto.py",
       "source_location": "L55",
-      "id": "ocean_agent_dto_guestprofileresponse",
-      "community": 0,
-      "norm_label": "guestprofileresponse"
+      "community": 1,
+      "norm_label": "guestprofileresponse",
+      "id": "ocean_agent_dto_guestprofileresponse"
     },
     {
       "label": "DeliverToCoordinates",
       "file_type": "code",
       "source_file": "ocean_agent/dto.py",
       "source_location": "L66",
-      "id": "ocean_agent_dto_delivertocoordinates",
-      "community": 0,
-      "norm_label": "delivertocoordinates"
+      "community": 1,
+      "norm_label": "delivertocoordinates",
+      "id": "ocean_agent_dto_delivertocoordinates"
     },
     {
       "label": "ServiceOrderRequest",
       "file_type": "code",
       "source_file": "ocean_agent/dto.py",
       "source_location": "L73",
-      "id": "ocean_agent_dto_serviceorderrequest",
-      "community": 0,
-      "norm_label": "serviceorderrequest"
+      "community": 1,
+      "norm_label": "serviceorderrequest",
+      "id": "ocean_agent_dto_serviceorderrequest"
     },
     {
       "label": "ServiceOrderResponse",
       "file_type": "code",
       "source_file": "ocean_agent/dto.py",
       "source_location": "L83",
-      "id": "ocean_agent_dto_serviceorderresponse",
-      "community": 0,
-      "norm_label": "serviceorderresponse"
+      "community": 1,
+      "norm_label": "serviceorderresponse",
+      "id": "ocean_agent_dto_serviceorderresponse"
     },
     {
       "label": "__init__.py",
       "file_type": "code",
       "source_file": "ocean_agent/__init__.py",
       "source_location": "L1",
-      "id": "ocean_agent_init_py",
-      "community": 8,
-      "norm_label": "__init__.py"
+      "community": 16,
+      "norm_label": "__init__.py",
+      "id": "ocean_agent_init_py"
     },
     {
       "label": "OceanTask Agent package.",
       "file_type": "rationale",
       "source_file": "ocean_agent/__init__.py",
       "source_location": "L1",
-      "id": "ocean_agent_init_rationale_1",
-      "community": 8,
-      "norm_label": "oceantask agent package."
+      "community": 16,
+      "norm_label": "oceantask agent package.",
+      "id": "ocean_agent_init_rationale_1"
     },
     {
       "label": "test_main.py",
       "file_type": "code",
       "source_file": "tests/test_main.py",
       "source_location": "L1",
-      "id": "tests_test_main_py",
-      "community": 5,
-      "norm_label": "test_main.py"
+      "community": 12,
+      "norm_label": "test_main.py",
+      "id": "tests_test_main_py"
     },
     {
       "label": "test_hello_endpoint()",
       "file_type": "code",
       "source_file": "tests/test_main.py",
       "source_location": "L7",
-      "id": "tests_test_main_test_hello_endpoint",
-      "community": 5,
-      "norm_label": "test_hello_endpoint()"
+      "community": 12,
+      "norm_label": "test_hello_endpoint()",
+      "id": "tests_test_main_test_hello_endpoint"
     },
     {
       "label": "test_get_guest_profile_success()",
       "file_type": "code",
       "source_file": "tests/test_main.py",
       "source_location": "L12",
-      "id": "tests_test_main_test_get_guest_profile_success",
-      "community": 5,
-      "norm_label": "test_get_guest_profile_success()"
+      "community": 12,
+      "norm_label": "test_get_guest_profile_success()",
+      "id": "tests_test_main_test_get_guest_profile_success"
     },
     {
       "label": "test_get_guest_profile_not_found()",
       "file_type": "code",
       "source_file": "tests/test_main.py",
       "source_location": "L23",
-      "id": "tests_test_main_test_get_guest_profile_not_found",
-      "community": 5,
-      "norm_label": "test_get_guest_profile_not_found()"
+      "community": 12,
+      "norm_label": "test_get_guest_profile_not_found()",
+      "id": "tests_test_main_test_get_guest_profile_not_found"
     },
     {
       "label": "test_chat_endpoint_excursion()",
       "file_type": "code",
       "source_file": "tests/test_main.py",
       "source_location": "L29",
-      "id": "tests_test_main_test_chat_endpoint_excursion",
-      "community": 5,
-      "norm_label": "test_chat_endpoint_excursion()"
+      "community": 12,
+      "norm_label": "test_chat_endpoint_excursion()",
+      "id": "tests_test_main_test_chat_endpoint_excursion"
     },
     {
       "label": "test_chat_endpoint_order()",
       "file_type": "code",
       "source_file": "tests/test_main.py",
       "source_location": "L48",
-      "id": "tests_test_main_test_chat_endpoint_order",
-      "community": 5,
-      "norm_label": "test_chat_endpoint_order()"
+      "community": 12,
+      "norm_label": "test_chat_endpoint_order()",
+      "id": "tests_test_main_test_chat_endpoint_order"
     },
     {
       "label": "test_create_service_order()",
       "file_type": "code",
       "source_file": "tests/test_main.py",
       "source_location": "L67",
-      "id": "tests_test_main_test_create_service_order",
-      "community": 5,
-      "norm_label": "test_create_service_order()"
+      "community": 12,
+      "norm_label": "test_create_service_order()",
+      "id": "tests_test_main_test_create_service_order"
     },
     {
       "label": "AgentState TypedDict",
@@ -409,9 +1273,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "agent_agentstate",
       "community": 3,
-      "norm_label": "agentstate typeddict"
+      "norm_label": "agentstate typeddict",
+      "id": "agent_agentstate"
     },
     {
       "label": "supervisor_node function",
@@ -422,9 +1286,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "agent_supervisor_node",
       "community": 3,
-      "norm_label": "supervisor_node function"
+      "norm_label": "supervisor_node function",
+      "id": "agent_supervisor_node"
     },
     {
       "label": "guest_service_node function",
@@ -435,9 +1299,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "agent_guest_service_node",
       "community": 3,
-      "norm_label": "guest_service_node function"
+      "norm_label": "guest_service_node function",
+      "id": "agent_guest_service_node"
     },
     {
       "label": "anticipatory_advisor_node function",
@@ -448,9 +1312,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "agent_anticipatory_advisor_node",
       "community": 3,
-      "norm_label": "anticipatory_advisor_node function"
+      "norm_label": "anticipatory_advisor_node function",
+      "id": "agent_anticipatory_advisor_node"
     },
     {
       "label": "ocean_agent_graph compiled workflow",
@@ -461,9 +1325,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "agent_ocean_agent_graph",
       "community": 3,
-      "norm_label": "ocean_agent_graph compiled workflow"
+      "norm_label": "ocean_agent_graph compiled workflow",
+      "id": "agent_ocean_agent_graph"
     },
     {
       "label": "app FastAPI instance",
@@ -474,9 +1338,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "main_app",
       "community": 2,
-      "norm_label": "app fastapi instance"
+      "norm_label": "app fastapi instance",
+      "id": "main_app"
     },
     {
       "label": "MOCK_GUEST_DATABASE guest genome database",
@@ -487,9 +1351,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "main_mock_guest_database",
-      "community": 4,
-      "norm_label": "mock_guest_database guest genome database"
+      "community": 2,
+      "norm_label": "mock_guest_database guest genome database",
+      "id": "main_mock_guest_database"
     },
     {
       "label": "read_hello endpoint",
@@ -500,9 +1364,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "main_read_hello",
       "community": 2,
-      "norm_label": "read_hello endpoint"
+      "norm_label": "read_hello endpoint",
+      "id": "main_read_hello"
     },
     {
       "label": "get_guest_profile endpoint",
@@ -513,9 +1377,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "main_get_guest_profile",
-      "community": 4,
-      "norm_label": "get_guest_profile endpoint"
+      "community": 2,
+      "norm_label": "get_guest_profile endpoint",
+      "id": "main_get_guest_profile"
     },
     {
       "label": "chat orchestration endpoint",
@@ -526,9 +1390,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "main_chat",
-      "community": 2,
-      "norm_label": "chat orchestration endpoint"
+      "community": 3,
+      "norm_label": "chat orchestration endpoint",
+      "id": "main_chat"
     },
     {
       "label": "create_order service order endpoint",
@@ -539,9 +1403,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "main_create_order",
-      "community": 7,
-      "norm_label": "create_order service order endpoint"
+      "community": 2,
+      "norm_label": "create_order service order endpoint",
+      "id": "main_create_order"
     },
     {
       "label": "LocationContext Model",
@@ -552,9 +1416,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dto_locationcontext",
-      "community": 2,
-      "norm_label": "locationcontext model"
+      "community": 3,
+      "norm_label": "locationcontext model",
+      "id": "dto_locationcontext"
     },
     {
       "label": "ChatRequest Model",
@@ -565,9 +1429,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dto_chatrequest",
-      "community": 2,
-      "norm_label": "chatrequest model"
+      "community": 3,
+      "norm_label": "chatrequest model",
+      "id": "dto_chatrequest"
     },
     {
       "label": "SuggestedAction Model",
@@ -578,9 +1442,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dto_suggestedaction",
-      "community": 2,
-      "norm_label": "suggestedaction model"
+      "community": 3,
+      "norm_label": "suggestedaction model",
+      "id": "dto_suggestedaction"
     },
     {
       "label": "ChatResponse Model",
@@ -591,9 +1455,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dto_chatresponse",
-      "community": 2,
-      "norm_label": "chatresponse model"
+      "community": 3,
+      "norm_label": "chatresponse model",
+      "id": "dto_chatresponse"
     },
     {
       "label": "GuestPreferences Model",
@@ -604,9 +1468,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dto_guestpreferences",
-      "community": 4,
-      "norm_label": "guestpreferences model"
+      "community": 2,
+      "norm_label": "guestpreferences model",
+      "id": "dto_guestpreferences"
     },
     {
       "label": "GuestProfileResponse Model",
@@ -617,9 +1481,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dto_guestprofileresponse",
-      "community": 4,
-      "norm_label": "guestprofileresponse model"
+      "community": 2,
+      "norm_label": "guestprofileresponse model",
+      "id": "dto_guestprofileresponse"
     },
     {
       "label": "DeliverToCoordinates Model",
@@ -630,9 +1494,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dto_delivertocoordinates",
-      "community": 7,
-      "norm_label": "delivertocoordinates model"
+      "community": 2,
+      "norm_label": "delivertocoordinates model",
+      "id": "dto_delivertocoordinates"
     },
     {
       "label": "ServiceOrderRequest Model",
@@ -643,9 +1507,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dto_serviceorderrequest",
-      "community": 7,
-      "norm_label": "serviceorderrequest model"
+      "community": 2,
+      "norm_label": "serviceorderrequest model",
+      "id": "dto_serviceorderrequest"
     },
     {
       "label": "ServiceOrderResponse Model",
@@ -656,9 +1520,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "dto_serviceorderresponse",
-      "community": 7,
-      "norm_label": "serviceorderresponse model"
+      "community": 2,
+      "norm_label": "serviceorderresponse model",
+      "id": "dto_serviceorderresponse"
     },
     {
       "label": "test_hello_endpoint",
@@ -669,9 +1533,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "test_main_test_hello_endpoint",
       "community": 2,
-      "norm_label": "test_hello_endpoint"
+      "norm_label": "test_hello_endpoint",
+      "id": "test_main_test_hello_endpoint"
     },
     {
       "label": "test_get_guest_profile_success",
@@ -682,9 +1546,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "test_main_test_get_guest_profile_success",
-      "community": 4,
-      "norm_label": "test_get_guest_profile_success"
+      "community": 2,
+      "norm_label": "test_get_guest_profile_success",
+      "id": "test_main_test_get_guest_profile_success"
     },
     {
       "label": "test_get_guest_profile_not_found",
@@ -695,9 +1559,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "test_main_test_get_guest_profile_not_found",
-      "community": 4,
-      "norm_label": "test_get_guest_profile_not_found"
+      "community": 2,
+      "norm_label": "test_get_guest_profile_not_found",
+      "id": "test_main_test_get_guest_profile_not_found"
     },
     {
       "label": "test_chat_endpoint_excursion",
@@ -708,9 +1572,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "test_main_test_chat_endpoint_excursion",
       "community": 2,
-      "norm_label": "test_chat_endpoint_excursion"
+      "norm_label": "test_chat_endpoint_excursion",
+      "id": "test_main_test_chat_endpoint_excursion"
     },
     {
       "label": "test_chat_endpoint_order",
@@ -721,9 +1585,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "test_main_test_chat_endpoint_order",
       "community": 2,
-      "norm_label": "test_chat_endpoint_order"
+      "norm_label": "test_chat_endpoint_order",
+      "id": "test_main_test_chat_endpoint_order"
     },
     {
       "label": "test_create_service_order",
@@ -734,9 +1598,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "test_main_test_create_service_order",
-      "community": 7,
-      "norm_label": "test_create_service_order"
+      "community": 2,
+      "norm_label": "test_create_service_order",
+      "id": "test_main_test_create_service_order"
     },
     {
       "label": "PostgreSQL Database Service",
@@ -747,9 +1611,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "docker_compose_db",
-      "community": 9,
-      "norm_label": "postgresql database service"
+      "community": 17,
+      "norm_label": "postgresql database service",
+      "id": "docker_compose_db"
     },
     {
       "label": "Agent Service Setup",
@@ -760,9 +1624,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "docker_compose_agent",
-      "community": 9,
-      "norm_label": "agent service setup"
+      "community": 17,
+      "norm_label": "agent service setup",
+      "id": "docker_compose_agent"
     },
     {
       "label": "NeuroTask Agent System",
@@ -773,9 +1637,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_neurotask_agent",
-      "community": 12,
-      "norm_label": "neurotask agent system"
+      "community": 20,
+      "norm_label": "neurotask agent system",
+      "id": "readme_neurotask_agent"
     },
     {
       "label": "JVM vs Native Mode Performance Metrics",
@@ -786,9 +1650,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_jvm_vs_native",
-      "community": 13,
-      "norm_label": "jvm vs native mode performance metrics"
+      "community": 21,
+      "norm_label": "jvm vs native mode performance metrics",
+      "id": "readme_jvm_vs_native"
     },
     {
       "label": "AI Agent Tools list",
@@ -799,9 +1663,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_agent_tools",
-      "community": 14,
-      "norm_label": "ai agent tools list"
+      "community": 22,
+      "norm_label": "ai agent tools list",
+      "id": "readme_agent_tools"
     },
     {
       "label": "Medallion Agent Tracer Bullet Phase",
@@ -812,9 +1676,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "progress_tracker_medallion_agent_tracer_bullet",
-      "community": 15,
-      "norm_label": "medallion agent tracer bullet phase"
+      "community": 23,
+      "norm_label": "medallion agent tracer bullet phase",
+      "id": "progress_tracker_medallion_agent_tracer_bullet"
     },
     {
       "label": "Tech Stack Pivot Decision",
@@ -826,9 +1690,9 @@
       "author": null,
       "contributor": null,
       "rationale": "Decided to pivot project from Java 25 / Quarkus to Python 3.12, LangGraph, AWS Bedrock, and Snowflake Cortex AI to match the JD requirements.",
-      "id": "progress_tracker_tech_stack_pivot",
-      "community": 6,
-      "norm_label": "tech stack pivot decision"
+      "community": 15,
+      "norm_label": "tech stack pivot decision",
+      "id": "progress_tracker_tech_stack_pivot"
     },
     {
       "label": "Agent-Legibility Code Standards",
@@ -840,9 +1704,9 @@
       "author": null,
       "contributor": null,
       "rationale": "The LLM is the primary consumer and code generator for this repository. Code must be structured for deterministic discovery, searchability, and minimal ambiguity.",
-      "id": "code_standards_agent_legibility",
-      "community": 10,
-      "norm_label": "agent-legibility code standards"
+      "community": 18,
+      "norm_label": "agent-legibility code standards",
+      "id": "code_standards_agent_legibility"
     },
     {
       "label": "Type Compliance & Pydantic Standard",
@@ -853,9 +1717,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "code_standards_type_compliance",
-      "community": 16,
-      "norm_label": "type compliance & pydantic standard"
+      "community": 24,
+      "norm_label": "type compliance & pydantic standard",
+      "id": "code_standards_type_compliance"
     },
     {
       "label": "TDD Testing Workflow Standard",
@@ -866,9 +1730,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "code_standards_testing_tdd",
-      "community": 17,
-      "norm_label": "tdd testing workflow standard"
+      "community": 25,
+      "norm_label": "tdd testing workflow standard",
+      "id": "code_standards_testing_tdd"
     },
     {
       "label": "Carnival OceanTask Agent Mission",
@@ -879,9 +1743,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project_overview_mission",
       "community": 3,
-      "norm_label": "carnival oceantask agent mission"
+      "norm_label": "carnival oceantask agent mission",
+      "id": "project_overview_mission"
     },
     {
       "label": "Guest Genomics Concept",
@@ -892,9 +1756,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project_overview_guest_genomics",
-      "community": 4,
-      "norm_label": "guest genomics concept"
+      "community": 2,
+      "norm_label": "guest genomics concept",
+      "id": "project_overview_guest_genomics"
     },
     {
       "label": "OceanNow Onboard Service Orchestration Flow",
@@ -905,9 +1769,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project_overview_ocean_now",
       "community": 3,
-      "norm_label": "oceannow onboard service orchestration flow"
+      "norm_label": "oceannow onboard service orchestration flow",
+      "id": "project_overview_ocean_now"
     },
     {
       "label": "Anticipatory Recommendation System Concept",
@@ -918,9 +1782,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project_overview_anticipatory_design",
       "community": 3,
-      "norm_label": "anticipatory recommendation system concept"
+      "norm_label": "anticipatory recommendation system concept",
+      "id": "project_overview_anticipatory_design"
     },
     {
       "label": "Reinforcement Learning from Verifiable Rewards (RLVR)",
@@ -931,9 +1795,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project_overview_rlvr",
-      "community": 11,
-      "norm_label": "reinforcement learning from verifiable rewards (rlvr)"
+      "community": 19,
+      "norm_label": "reinforcement learning from verifiable rewards (rlvr)",
+      "id": "project_overview_rlvr"
     },
     {
       "label": "Oceanic Theme Design Tokens",
@@ -944,9 +1808,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ui_context_design_tokens",
-      "community": 18,
-      "norm_label": "oceanic theme design tokens"
+      "community": 26,
+      "norm_label": "oceanic theme design tokens",
+      "id": "ui_context_design_tokens"
     },
     {
       "label": "UX Paradigms Guidelines",
@@ -957,9 +1821,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ui_context_ux_paradigms",
-      "community": 19,
-      "norm_label": "ux paradigms guidelines"
+      "community": 27,
+      "norm_label": "ux paradigms guidelines",
+      "id": "ui_context_ux_paradigms"
     },
     {
       "label": "Accessibility Standards (WCAG 2.2 AA)",
@@ -970,9 +1834,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ui_context_wcag",
-      "community": 20,
-      "norm_label": "accessibility standards (wcag 2.2 aa)"
+      "community": 28,
+      "norm_label": "accessibility standards (wcag 2.2 aa)",
+      "id": "ui_context_wcag"
     },
     {
       "label": "Spec-Driven Development Guidelines",
@@ -983,9 +1847,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ai_workflow_rules_spec_driven_development",
-      "community": 21,
-      "norm_label": "spec-driven development guidelines"
+      "community": 29,
+      "norm_label": "spec-driven development guidelines",
+      "id": "ai_workflow_rules_spec_driven_development"
     },
     {
       "label": "Session Governance and Rules",
@@ -996,9 +1860,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ai_workflow_rules_governance",
-      "community": 10,
-      "norm_label": "session governance and rules"
+      "community": 18,
+      "norm_label": "session governance and rules",
+      "id": "ai_workflow_rules_governance"
     },
     {
       "label": "Linear-GitHub Synchronization Rules",
@@ -1009,9 +1873,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "ai_workflow_rules_sync",
-      "community": 22,
-      "norm_label": "linear-github synchronization rules"
+      "community": 30,
+      "norm_label": "linear-github synchronization rules",
+      "id": "ai_workflow_rules_sync"
     },
     {
       "label": "Multi-Agent Network Architecture diagram and concepts",
@@ -1022,9 +1886,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "architecture_multi_agent_network",
       "community": 3,
-      "norm_label": "multi-agent network architecture diagram and concepts"
+      "norm_label": "multi-agent network architecture diagram and concepts",
+      "id": "architecture_multi_agent_network"
     },
     {
       "label": "AWS Bedrock LLM Integration Architecture",
@@ -1035,9 +1899,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "architecture_aws_bedrock",
-      "community": 23,
-      "norm_label": "aws bedrock llm integration architecture"
+      "community": 31,
+      "norm_label": "aws bedrock llm integration architecture",
+      "id": "architecture_aws_bedrock"
     },
     {
       "label": "Snowflake Cortex AI Data Architecture",
@@ -1048,9 +1912,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "architecture_snowflake_cortex",
-      "community": 4,
-      "norm_label": "snowflake cortex ai data architecture"
+      "community": 2,
+      "norm_label": "snowflake cortex ai data architecture",
+      "id": "architecture_snowflake_cortex"
     },
     {
       "label": "Verifier Agent RLVR Architecture",
@@ -1061,9 +1925,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "architecture_rlvr",
-      "community": 11,
-      "norm_label": "verifier agent rlvr architecture"
+      "community": 19,
+      "norm_label": "verifier agent rlvr architecture",
+      "id": "architecture_rlvr"
     },
     {
       "label": "JD Technology Alignment Matrix",
@@ -1074,9 +1938,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "jd_alignment_matrix",
-      "community": 6,
-      "norm_label": "jd technology alignment matrix"
+      "community": 15,
+      "norm_label": "jd technology alignment matrix",
+      "id": "jd_alignment_matrix"
     },
     {
       "label": "Hybrid Polyglot Design Model",
@@ -1088,9 +1952,9 @@
       "author": null,
       "contributor": null,
       "rationale": "Quarkus (Java) at the Edge compiles natively via GraalVM for a small memory footprint on shipboard edge servers, while Python handles LangGraph/CrewAI orchestration and Snowflake Cortex ML pipelines.",
-      "id": "jd_alignment_hybrid_model",
-      "community": 6,
-      "norm_label": "hybrid polyglot design model"
+      "community": 15,
+      "norm_label": "hybrid polyglot design model",
+      "id": "jd_alignment_hybrid_model"
     },
     {
       "label": "Add Job Description Asset Implementation Plan",
@@ -1101,9 +1965,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "2026_05_22_add_job_description_asset_plan",
-      "community": 6,
-      "norm_label": "add job description asset implementation plan"
+      "community": 15,
+      "norm_label": "add job description asset implementation plan",
+      "id": "2026_05_22_add_job_description_asset_plan"
     },
     {
       "label": "Add Job Description Asset Design Spec",
@@ -1114,9 +1978,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "2026_05_22_add_job_description_asset_design_spec",
-      "community": 6,
-      "norm_label": "add job description asset design spec"
+      "community": 15,
+      "norm_label": "add job description asset design spec",
+      "id": "2026_05_22_add_job_description_asset_design_spec"
     },
     {
       "label": "AI/ML Engineer Job Description PDF",
@@ -1127,9 +1991,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "job_description_pdf",
-      "community": 6,
-      "norm_label": "ai/ml engineer job description pdf"
+      "community": 15,
+      "norm_label": "ai/ml engineer job description pdf",
+      "id": "job_description_pdf"
     },
     {
       "label": "OceanTask Agent",
@@ -1140,21 +2004,891 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "__init___oceantask_agent",
-      "community": 24,
-      "norm_label": "oceantask agent"
+      "community": 32,
+      "norm_label": "oceantask agent",
+      "id": "__init___oceantask_agent"
     }
   ],
   "links": [
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "neurotask_agent_readme_oceancortex_agent_autonomous_ai_native_orchestrator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_oceancortex_agent_autonomous_ai_native_orchestrator",
+      "target": "neurotask_agent_readme_technical_architecture_core_innovation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_oceancortex_agent_autonomous_ai_native_orchestrator",
+      "target": "neurotask_agent_readme_api_documentation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_oceancortex_agent_autonomous_ai_native_orchestrator",
+      "target": "neurotask_agent_readme_local_development",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_api_documentation",
+      "target": "neurotask_agent_readme_interactive_documentation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_api_documentation",
+      "target": "neurotask_agent_readme_rest_endpoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_api_documentation",
+      "target": "neurotask_agent_readme_example_api_usage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_example_api_usage",
+      "target": "neurotask_agent_readme_health_check",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_example_api_usage",
+      "target": "neurotask_agent_readme_get_guest_profile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_example_api_usage",
+      "target": "neurotask_agent_readme_chat_with_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_health_check",
+      "target": "neurotask_agent_readme_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_health_check",
+      "target": "neurotask_agent_readme_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_get_guest_profile",
+      "target": "neurotask_agent_readme_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_get_guest_profile",
+      "target": "neurotask_agent_readme_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_chat_with_agent",
+      "target": "neurotask_agent_readme_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_chat_with_agent",
+      "target": "neurotask_agent_readme_codeblock_6",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_local_development",
+      "target": "neurotask_agent_readme_prerequisites",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_local_development",
+      "target": "neurotask_agent_readme_setup_execution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L121",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_setup_execution",
+      "target": "neurotask_agent_readme_codeblock_7",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L127",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_setup_execution",
+      "target": "neurotask_agent_readme_codeblock_8",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "neurotask_agent_readme_setup_execution",
+      "target": "neurotask_agent_readme_codeblock_9",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_progress_tracker_md",
+      "target": "docs_progress_tracker_progress_tracker_oceancortex_agent_state",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "docs_progress_tracker_progress_tracker_oceancortex_agent_state",
+      "target": "docs_progress_tracker_current_project_phase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "docs_progress_tracker_progress_tracker_oceancortex_agent_state",
+      "target": "docs_progress_tracker_active_implementation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "docs_progress_tracker_progress_tracker_oceancortex_agent_state",
+      "target": "docs_progress_tracker_completed_features",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "docs_progress_tracker_progress_tracker_oceancortex_agent_state",
+      "target": "docs_progress_tracker_historical_decisions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "docs_progress_tracker_progress_tracker_oceancortex_agent_state",
+      "target": "docs_progress_tracker_milestones",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/progress-tracker.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "docs_progress_tracker_progress_tracker_oceancortex_agent_state",
+      "target": "docs_progress_tracker_feature_queue_linear_issues",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_code_standards_md",
+      "target": "docs_code_standards_code_standards_agent_legibility_python_compliance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "docs_code_standards_code_standards_agent_legibility_python_compliance",
+      "target": "docs_code_standards_agent_legibility_mandatory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "docs_code_standards_code_standards_agent_legibility_python_compliance",
+      "target": "docs_code_standards_type_compliance_pydantic",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "docs_code_standards_code_standards_agent_legibility_python_compliance",
+      "target": "docs_code_standards_linting_formatting",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/code-standards.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "docs_code_standards_code_standards_agent_legibility_python_compliance",
+      "target": "docs_code_standards_testing_standards_tdd",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_project_overview_md",
+      "target": "docs_project_overview_project_overview_carnival_oceancortex_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "docs_project_overview_project_overview_carnival_oceancortex_agent",
+      "target": "docs_project_overview_mission",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "docs_project_overview_project_overview_carnival_oceancortex_agent",
+      "target": "docs_project_overview_high_level_user_flows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "docs_project_overview_project_overview_carnival_oceancortex_agent",
+      "target": "docs_project_overview_success_criteria_benchmarks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "docs_project_overview_project_overview_carnival_oceancortex_agent",
+      "target": "docs_project_overview_out_of_scope_phase_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/project-overview.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "docs_project_overview_project_overview_carnival_oceancortex_agent",
+      "target": "docs_project_overview_tech_stack",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_ui_context_md",
+      "target": "docs_ui_context_ui_context_oceancompass_api_interfaces",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "docs_ui_context_ui_context_oceancompass_api_interfaces",
+      "target": "docs_ui_context_design_tokens_oceanic_theme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "docs_ui_context_ui_context_oceancompass_api_interfaces",
+      "target": "docs_ui_context_api_boundaries_interfaces",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "docs_ui_context_ui_context_oceancompass_api_interfaces",
+      "target": "docs_ui_context_ux_paradigms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "docs_ui_context_api_boundaries_interfaces",
+      "target": "docs_ui_context_rest_endpoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "docs_ui_context_api_boundaries_interfaces",
+      "target": "docs_ui_context_chat_payload_example",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "docs_ui_context_chat_payload_example",
+      "target": "docs_ui_context_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ui-context.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "docs_ui_context_chat_payload_example",
+      "target": "docs_ui_context_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_ai_workflow_rules_md",
+      "target": "docs_ai_workflow_rules_ai_workflow_rules_execution_governance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "docs_ai_workflow_rules_ai_workflow_rules_execution_governance",
+      "target": "docs_ai_workflow_rules_spec_driven_development",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "docs_ai_workflow_rules_ai_workflow_rules_execution_governance",
+      "target": "docs_ai_workflow_rules_session_governance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "docs_ai_workflow_rules_ai_workflow_rules_execution_governance",
+      "target": "docs_ai_workflow_rules_linear_github_synchronization",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/ai-workflow-rules.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "docs_ai_workflow_rules_ai_workflow_rules_execution_governance",
+      "target": "docs_ai_workflow_rules_prohibited_actions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_architecture_md",
+      "target": "docs_architecture_architecture_oceancortex_multi_agent_system",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "docs_architecture_architecture_oceancortex_multi_agent_system",
+      "target": "docs_architecture_system_topology",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "docs_architecture_architecture_oceancortex_multi_agent_system",
+      "target": "docs_architecture_tech_stack_system_components",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "docs_architecture_system_topology",
+      "target": "docs_architecture_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "docs_architecture_tech_stack_system_components",
+      "target": "docs_architecture_1_stateful_multi_agent_workflow_langgraph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "docs_architecture_tech_stack_system_components",
+      "target": "docs_architecture_2_llm_cloud_layer_aws_bedrock",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "docs_architecture_tech_stack_system_components",
+      "target": "docs_architecture_3_data_warehouse_ai_analytics_snowflake_cortex_ai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/architecture.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "docs_architecture_tech_stack_system_components",
+      "target": "docs_architecture_4_reinforcement_learning_from_verifiable_rewards_rlvr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_assets_jd_alignment_md",
+      "target": "assets_jd_alignment_carnival_corporation_ai_ml_stack_alignment_analysis",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "assets_jd_alignment_carnival_corporation_ai_ml_stack_alignment_analysis",
+      "target": "assets_jd_alignment_1_core_technology_stack_from_job_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "assets_jd_alignment_carnival_corporation_ai_ml_stack_alignment_analysis",
+      "target": "assets_jd_alignment_2_carnival_corporation_s_brand_technical_identity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "assets_jd_alignment_carnival_corporation_ai_ml_stack_alignment_analysis",
+      "target": "assets_jd_alignment_3_technology_alignment_matrix",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "assets_jd_alignment_carnival_corporation_ai_ml_stack_alignment_analysis",
+      "target": "assets_jd_alignment_4_pure_python_agentic_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "assets_jd_alignment_carnival_corporation_ai_ml_stack_alignment_analysis",
+      "target": "assets_jd_alignment_5_next_steps_implementation_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/assets/jd-alignment.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "assets_jd_alignment_3_technology_alignment_matrix",
+      "target": "assets_jd_alignment_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_superpowers_plans_2026_05_22_llm_supervisor_routing_md",
+      "target": "plans_2026_05_22_llm_supervisor_routing_llm_based_supervisor_routing_implementation_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_llm_based_supervisor_routing_implementation_plan",
+      "target": "plans_2026_05_22_llm_supervisor_routing_task_1_relocate_guest_database_to_prevent_circular_imports",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_llm_based_supervisor_routing_implementation_plan",
+      "target": "plans_2026_05_22_llm_supervisor_routing_task_2_define_routing_tools_and_mock_llm",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L240",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_llm_based_supervisor_routing_implementation_plan",
+      "target": "plans_2026_05_22_llm_supervisor_routing_task_3_implement_context_loading_node",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L357",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_llm_based_supervisor_routing_implementation_plan",
+      "target": "plans_2026_05_22_llm_supervisor_routing_task_4_integrate_llm_routing_and_specialist_node_execution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L547",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_llm_based_supervisor_routing_implementation_plan",
+      "target": "plans_2026_05_22_llm_supervisor_routing_task_5_static_analysis_and_type_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_1_relocate_guest_database_to_prevent_circular_imports",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_1_relocate_guest_database_to_prevent_circular_imports",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_1_relocate_guest_database_to_prevent_circular_imports",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_1_relocate_guest_database_to_prevent_circular_imports",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_2_define_routing_tools_and_mock_llm",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_2_define_routing_tools_and_mock_llm",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_6",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L233",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_2_define_routing_tools_and_mock_llm",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_7",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L250",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_3_implement_context_loading_node",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_8",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L299",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_3_implement_context_loading_node",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_9",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L350",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_3_implement_context_loading_node",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_10",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L367",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_4_integrate_llm_routing_and_specialist_node_execution",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_11",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L433",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_4_integrate_llm_routing_and_specialist_node_execution",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_12",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L540",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_4_integrate_llm_routing_and_specialist_node_execution",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_13",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md",
+      "source_location": "L564",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_llm_supervisor_routing_task_5_static_analysis_and_type_verification",
+      "target": "plans_2026_05_22_llm_supervisor_routing_codeblock_14",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "ocean_agent/agent.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_agent_py",
-      "target": "ocean_agent_agent_agentstate",
-      "confidence_score": 1.0
+      "target": "ocean_agent_agent_agentstate"
     },
     {
       "relation": "contains",
@@ -1162,9 +2896,9 @@
       "source_file": "ocean_agent/agent.py",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_agent_py",
-      "target": "ocean_agent_agent_supervisor_node",
-      "confidence_score": 1.0
+      "target": "ocean_agent_agent_supervisor_node"
     },
     {
       "relation": "contains",
@@ -1172,9 +2906,9 @@
       "source_file": "ocean_agent/agent.py",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_agent_py",
-      "target": "ocean_agent_agent_guest_service_node",
-      "confidence_score": 1.0
+      "target": "ocean_agent_agent_guest_service_node"
     },
     {
       "relation": "contains",
@@ -1182,9 +2916,9 @@
       "source_file": "ocean_agent/agent.py",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_agent_py",
-      "target": "ocean_agent_agent_anticipatory_advisor_node",
-      "confidence_score": 1.0
+      "target": "ocean_agent_agent_anticipatory_advisor_node"
     },
     {
       "relation": "inherits",
@@ -1192,9 +2926,9 @@
       "source_file": "ocean_agent/agent.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_agent_agentstate",
-      "target": "typeddict",
-      "confidence_score": 1.0
+      "target": "typeddict"
     },
     {
       "relation": "rationale_for",
@@ -1202,9 +2936,9 @@
       "source_file": "ocean_agent/agent.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_agent_rationale_10",
-      "target": "ocean_agent_agent_agentstate",
-      "confidence_score": 1.0
+      "target": "ocean_agent_agent_agentstate"
     },
     {
       "relation": "rationale_for",
@@ -1212,9 +2946,9 @@
       "source_file": "ocean_agent/agent.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_agent_rationale_17",
-      "target": "ocean_agent_agent_supervisor_node",
-      "confidence_score": 1.0
+      "target": "ocean_agent_agent_supervisor_node"
     },
     {
       "relation": "rationale_for",
@@ -1222,9 +2956,9 @@
       "source_file": "ocean_agent/agent.py",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_agent_rationale_35",
-      "target": "ocean_agent_agent_guest_service_node",
-      "confidence_score": 1.0
+      "target": "ocean_agent_agent_guest_service_node"
     },
     {
       "relation": "rationale_for",
@@ -1232,9 +2966,9 @@
       "source_file": "ocean_agent/agent.py",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_agent_rationale_42",
-      "target": "ocean_agent_agent_anticipatory_advisor_node",
-      "confidence_score": 1.0
+      "target": "ocean_agent_agent_anticipatory_advisor_node"
     },
     {
       "relation": "contains",
@@ -1242,9 +2976,9 @@
       "source_file": "ocean_agent/main.py",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_main_py",
-      "target": "ocean_agent_main_read_hello",
-      "confidence_score": 1.0
+      "target": "ocean_agent_main_read_hello"
     },
     {
       "relation": "contains",
@@ -1252,9 +2986,9 @@
       "source_file": "ocean_agent/main.py",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_main_py",
-      "target": "ocean_agent_main_get_guest_profile",
-      "confidence_score": 1.0
+      "target": "ocean_agent_main_get_guest_profile"
     },
     {
       "relation": "contains",
@@ -1262,9 +2996,9 @@
       "source_file": "ocean_agent/main.py",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_main_py",
-      "target": "ocean_agent_main_chat",
-      "confidence_score": 1.0
+      "target": "ocean_agent_main_chat"
     },
     {
       "relation": "contains",
@@ -1272,9 +3006,9 @@
       "source_file": "ocean_agent/main.py",
       "source_location": "L98",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_main_py",
-      "target": "ocean_agent_main_create_order",
-      "confidence_score": 1.0
+      "target": "ocean_agent_main_create_order"
     },
     {
       "relation": "rationale_for",
@@ -1282,9 +3016,9 @@
       "source_file": "ocean_agent/main.py",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_main_rationale_42",
-      "target": "ocean_agent_main_read_hello",
-      "confidence_score": 1.0
+      "target": "ocean_agent_main_read_hello"
     },
     {
       "relation": "rationale_for",
@@ -1292,9 +3026,9 @@
       "source_file": "ocean_agent/main.py",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_main_rationale_47",
-      "target": "ocean_agent_main_get_guest_profile",
-      "confidence_score": 1.0
+      "target": "ocean_agent_main_get_guest_profile"
     },
     {
       "relation": "calls",
@@ -1324,9 +3058,9 @@
       "source_file": "ocean_agent/main.py",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_main_rationale_64",
-      "target": "ocean_agent_main_chat",
-      "confidence_score": 1.0
+      "target": "ocean_agent_main_chat"
     },
     {
       "relation": "calls",
@@ -1356,9 +3090,9 @@
       "source_file": "ocean_agent/main.py",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_main_rationale_99",
-      "target": "ocean_agent_main_create_order",
-      "confidence_score": 1.0
+      "target": "ocean_agent_main_create_order"
     },
     {
       "relation": "calls",
@@ -1377,9 +3111,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_py",
-      "target": "ocean_agent_dto_locationcontext",
-      "confidence_score": 1.0
+      "target": "ocean_agent_dto_locationcontext"
     },
     {
       "relation": "contains",
@@ -1387,9 +3121,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_py",
-      "target": "ocean_agent_dto_chatrequest",
-      "confidence_score": 1.0
+      "target": "ocean_agent_dto_chatrequest"
     },
     {
       "relation": "contains",
@@ -1397,9 +3131,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_py",
-      "target": "ocean_agent_dto_suggestedaction",
-      "confidence_score": 1.0
+      "target": "ocean_agent_dto_suggestedaction"
     },
     {
       "relation": "contains",
@@ -1407,9 +3141,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_py",
-      "target": "ocean_agent_dto_chatresponse",
-      "confidence_score": 1.0
+      "target": "ocean_agent_dto_chatresponse"
     },
     {
       "relation": "contains",
@@ -1417,9 +3151,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_py",
-      "target": "ocean_agent_dto_guestpreferences",
-      "confidence_score": 1.0
+      "target": "ocean_agent_dto_guestpreferences"
     },
     {
       "relation": "contains",
@@ -1427,9 +3161,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_py",
-      "target": "ocean_agent_dto_guestprofileresponse",
-      "confidence_score": 1.0
+      "target": "ocean_agent_dto_guestprofileresponse"
     },
     {
       "relation": "contains",
@@ -1437,9 +3171,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_py",
-      "target": "ocean_agent_dto_delivertocoordinates",
-      "confidence_score": 1.0
+      "target": "ocean_agent_dto_delivertocoordinates"
     },
     {
       "relation": "contains",
@@ -1447,9 +3181,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_py",
-      "target": "ocean_agent_dto_serviceorderrequest",
-      "confidence_score": 1.0
+      "target": "ocean_agent_dto_serviceorderrequest"
     },
     {
       "relation": "contains",
@@ -1457,9 +3191,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L83",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_py",
-      "target": "ocean_agent_dto_serviceorderresponse",
-      "confidence_score": 1.0
+      "target": "ocean_agent_dto_serviceorderresponse"
     },
     {
       "relation": "inherits",
@@ -1467,9 +3201,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_locationcontext",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -1477,9 +3211,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_chatrequest",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -1487,9 +3221,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_suggestedaction",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -1497,9 +3231,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_chatresponse",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -1507,9 +3241,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_guestpreferences",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -1517,9 +3251,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_guestprofileresponse",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -1527,9 +3261,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_delivertocoordinates",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -1537,9 +3271,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_serviceorderrequest",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -1547,9 +3281,9 @@
       "source_file": "ocean_agent/dto.py",
       "source_location": "L83",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_dto_serviceorderresponse",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "rationale_for",
@@ -1557,9 +3291,9 @@
       "source_file": "ocean_agent/__init__.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ocean_agent_init_rationale_1",
-      "target": "ocean_agent_init_py",
-      "confidence_score": 1.0
+      "target": "ocean_agent_init_py"
     },
     {
       "relation": "contains",
@@ -1567,9 +3301,9 @@
       "source_file": "tests/test_main.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_main_py",
-      "target": "tests_test_main_test_hello_endpoint",
-      "confidence_score": 1.0
+      "target": "tests_test_main_test_hello_endpoint"
     },
     {
       "relation": "contains",
@@ -1577,9 +3311,9 @@
       "source_file": "tests/test_main.py",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_main_py",
-      "target": "tests_test_main_test_get_guest_profile_success",
-      "confidence_score": 1.0
+      "target": "tests_test_main_test_get_guest_profile_success"
     },
     {
       "relation": "contains",
@@ -1587,9 +3321,9 @@
       "source_file": "tests/test_main.py",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_main_py",
-      "target": "tests_test_main_test_get_guest_profile_not_found",
-      "confidence_score": 1.0
+      "target": "tests_test_main_test_get_guest_profile_not_found"
     },
     {
       "relation": "contains",
@@ -1597,9 +3331,9 @@
       "source_file": "tests/test_main.py",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_main_py",
-      "target": "tests_test_main_test_chat_endpoint_excursion",
-      "confidence_score": 1.0
+      "target": "tests_test_main_test_chat_endpoint_excursion"
     },
     {
       "relation": "contains",
@@ -1607,9 +3341,9 @@
       "source_file": "tests/test_main.py",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_main_py",
-      "target": "tests_test_main_test_chat_endpoint_order",
-      "confidence_score": 1.0
+      "target": "tests_test_main_test_chat_endpoint_order"
     },
     {
       "relation": "contains",
@@ -1617,9 +3351,9 @@
       "source_file": "tests/test_main.py",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_main_py",
-      "target": "tests_test_main_test_create_service_order",
-      "confidence_score": 1.0
+      "target": "tests_test_main_test_create_service_order"
     },
     {
       "relation": "references",
@@ -2147,5 +3881,5 @@
       "source_file": "docs/architecture.md"
     }
   ],
-  "built_at_commit": "9f03624d3690d64e048b85b329b42bb1c89a4e29"
+  "built_at_commit": "372dd565e369401daf919a16c5ed8e944c65ce4e"
 }
