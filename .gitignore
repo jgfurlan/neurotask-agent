@@ -45,7 +45,7 @@ nb-configuration.xml
 .certs/
 
 # docker-compose.yml
-docker-compose.yml
+# docker-compose.yml
 
 .env
 
