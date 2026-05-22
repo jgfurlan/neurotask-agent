@@ -171,55 +171,123 @@ def get_chat_model() -> BaseChatModel:
 # ---------------------------------------------------------------------------
 
 def supervisor_node(state: AgentState) -> dict[str, Any]:
-    """Inspects the last message content and decides which specialist node to call."""
-    content = state["messages"][-1].content
-    last_message = content.lower() if isinstance(content, str) else str(content).lower()
+    """Inspects guest profile context, binds tools to LLM, and invokes routing."""
+    from langchain_core.messages import SystemMessage
 
-    # Simple routing logic (will be replaced by LLM in Task 4)
-    if "snorkeling" in last_message or "excursion" in last_message:
-        next_node = "anticipatory_advisor"
-    elif "mojito" in last_message or "order" in last_message:
-        next_node = "guest_service"
-    else:
-        next_node = END
+    profile = state["context"].get("guest_profile")
+    profile_str = ""
+    if profile:
+        profile_str = (
+            f"Guest Name: {profile.full_name}\n"
+            f"Medallion Status: {profile.medallion_status}\n"
+            f"Interests: {', '.join(profile.preferences.activity_interests)}\n"
+            f"Beverages: {', '.join(profile.preferences.beverage_preferences)}\n"
+            f"Dietary: {', '.join(profile.preferences.dietary_restrictions)}"
+        )
+
+    system_prompt = (
+        "You are the central supervisor node for the OceanMedallion guest experience.\n"
+        "Your task is to route the user's message to the correct worker node.\n"
+        "Use the following guest profile context if relevant:\n"
+        f"{profile_str}\n\n"
+        "Select the appropriate tool based on the user's query.\n"
+        "If the request is simple chit-chat, greet the guest directly without "
+        "choosing any tools."
+    )
+
+    model = get_chat_model()
+    tools = [route_to_guest_service, route_to_anticipatory_advisor]
+    model_with_tools = model.bind_tools(tools)
+
+    messages = [SystemMessage(content=system_prompt)] + list(state["messages"])
+    response = model_with_tools.invoke(messages)
+
+    next_node = END
+    if response.tool_calls:
+        tool_name = response.tool_calls[0]["name"]
+        if tool_name == "route_to_guest_service":
+            next_node = "guest_service"
+        elif tool_name == "route_to_anticipatory_advisor":
+            next_node = "anticipatory_advisor"
 
     return {
         "next_node": next_node,
-        "messages": [AIMessage(content=f"[Supervisor] Routing to {next_node}")]
+        "messages": [response],
     }
+
 
 def guest_service_node(state: AgentState) -> dict[str, Any]:
-    """Stub handler representing the guest service execution."""
+    """Worker node that handles ordering beverages, food, or amenities."""
+    last_message = state["messages"][-1]
+    item_name = "unknown item"
+    quantity = 1
+
+    if hasattr(last_message, "tool_calls") and last_message.tool_calls:
+        args = last_message.tool_calls[0].get("args", {})
+        item_name = args.get("item_name", "unknown item")
+        quantity = args.get("quantity", 1)
+
     return {
         "next_node": END,
-        "messages": [AIMessage(content="I have processed your service order request.")]
+        "messages": [
+            AIMessage(
+                content=(
+                    f"I have processed your service order request "
+                    f"for {item_name} (Qty: {quantity})."
+                )
+            )
+        ],
     }
+
 
 def anticipatory_advisor_node(state: AgentState) -> dict[str, Any]:
-    """Stub handler representing excursion recommendations and Guest Genome analysis."""
+    """Worker node that handles excursion/activity recommendations."""
+    last_message = state["messages"][-1]
+    excursion_name = "general activities"
+
+    if hasattr(last_message, "tool_calls") and last_message.tool_calls:
+        args = last_message.tool_calls[0].get("args", {})
+        excursion_name = (
+            args.get("excursion_name")
+            or args.get("activity_query")
+            or "general activities"
+        )
+
     return {
         "next_node": END,
-        "messages": [AIMessage(content="I have generated your excursion recommendation details.")]
+        "messages": [
+            AIMessage(
+                content=(
+                    f"I have generated your excursion recommendation "
+                    f"details for {excursion_name}."
+                )
+            )
+        ],
     }
 
+
+# ---------------------------------------------------------------------------
 # Build and compile the LangGraph workflow
+# ---------------------------------------------------------------------------
+
 workflow = StateGraph(AgentState)
 
+workflow.add_node("load_context", load_context_node)
 workflow.add_node("supervisor", supervisor_node)
 workflow.add_node("guest_service", guest_service_node)
 workflow.add_node("anticipatory_advisor", anticipatory_advisor_node)
 
-workflow.set_entry_point("supervisor")
+workflow.set_entry_point("load_context")
+workflow.add_edge("load_context", "supervisor")
 
-# Configure conditional edges
 workflow.add_conditional_edges(
     "supervisor",
     lambda state: state["next_node"],
     {
         "guest_service": "guest_service",
         "anticipatory_advisor": "anticipatory_advisor",
-        END: END
-    }
+        END: END,
+    },
 )
 
 workflow.add_edge("guest_service", END)

@@ -158,3 +158,60 @@ def test_load_context_node_not_found() -> None:
         load_context_node(state)
     assert exc_info.value.status_code == 404
     assert "not found" in exc_info.value.detail
+
+
+def test_graph_routing_guest_service() -> None:
+    from langchain_core.messages import HumanMessage
+    from ocean_cortex_agent.agent import AgentState, ocean_cortex_graph
+
+    guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
+    inputs: AgentState = {
+        "guest_id": guest_id,
+        "messages": [HumanMessage(content="Order a Mojito drink for me")],
+        "next_node": "",
+        "context": {}
+    }
+
+    result = ocean_cortex_graph.invoke(inputs)
+    assert len(result["messages"]) >= 3
+    final_msg = result["messages"][-1].content
+    assert "Mojito" in final_msg
+    assert "processed" in final_msg.lower()
+
+
+def test_graph_routing_anticipatory_advisor() -> None:
+    from langchain_core.messages import HumanMessage
+    from ocean_cortex_agent.agent import AgentState, ocean_cortex_graph
+
+    guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
+    inputs: AgentState = {
+        "guest_id": guest_id,
+        "messages": [HumanMessage(content="Are there snorkeling excursions?")],
+        "next_node": "",
+        "context": {}
+    }
+
+    result = ocean_cortex_graph.invoke(inputs)
+    assert len(result["messages"]) >= 3
+    final_msg = result["messages"][-1].content
+    assert "Snorkeling" in final_msg
+    assert "recommendation" in final_msg.lower()
+
+
+def test_graph_routing_chit_chat() -> None:
+    from langchain_core.messages import HumanMessage
+    from ocean_cortex_agent.agent import AgentState, ocean_cortex_graph
+
+    guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
+    inputs: AgentState = {
+        "guest_id": guest_id,
+        "messages": [HumanMessage(content="Hi, how is the weather today?")],
+        "next_node": "",
+        "context": {}
+    }
+
+    result = ocean_cortex_graph.invoke(inputs)
+    # load_context adds no message, supervisor adds the chit-chat AIMessage → 2 total
+    assert len(result["messages"]) == 2
+    final_msg = result["messages"][-1].content
+    assert "digital assistant" in final_msg.lower() or "help" in final_msg.lower()
