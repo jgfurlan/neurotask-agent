@@ -95,6 +95,7 @@ def test_mock_guest_database_import() -> None:
 
 def test_mock_chat_bedrock_converse_routing() -> None:
     from langchain_core.messages import HumanMessage
+
     from ocean_cortex_agent.agent import MockChatBedrockConverse, get_chat_model
 
     model = get_chat_model()
@@ -122,6 +123,7 @@ def test_mock_chat_bedrock_converse_routing() -> None:
 
 def test_load_context_node_success() -> None:
     from langchain_core.messages import HumanMessage
+
     from ocean_cortex_agent.agent import AgentState, load_context_node
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
@@ -144,6 +146,7 @@ def test_load_context_node_not_found() -> None:
     import pytest
     from fastapi import HTTPException
     from langchain_core.messages import HumanMessage
+
     from ocean_cortex_agent.agent import AgentState, load_context_node
 
     guest_id = "00000000-0000-0000-0000-000000000000"
@@ -162,6 +165,7 @@ def test_load_context_node_not_found() -> None:
 
 def test_graph_routing_guest_service() -> None:
     from langchain_core.messages import HumanMessage
+
     from ocean_cortex_agent.agent import AgentState, ocean_cortex_graph
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
@@ -181,6 +185,7 @@ def test_graph_routing_guest_service() -> None:
 
 def test_graph_routing_anticipatory_advisor() -> None:
     from langchain_core.messages import HumanMessage
+
     from ocean_cortex_agent.agent import AgentState, ocean_cortex_graph
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
@@ -200,6 +205,7 @@ def test_graph_routing_anticipatory_advisor() -> None:
 
 def test_graph_routing_chit_chat() -> None:
     from langchain_core.messages import HumanMessage
+
     from ocean_cortex_agent.agent import AgentState, ocean_cortex_graph
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"

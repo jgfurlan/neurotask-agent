@@ -1,10 +1,10 @@
-from typing import Any
 from uuid import UUID
 
 from fastapi import FastAPI, HTTPException, status
 from langchain_core.messages import HumanMessage
 
 from ocean_cortex_agent.agent import AgentState, ocean_cortex_graph
+from ocean_cortex_agent.db import MOCK_GUEST_DATABASE
 from ocean_cortex_agent.dto import (
     ChatRequest,
     ChatResponse,
@@ -24,7 +24,6 @@ app = FastAPI(
     version="0.1.0"
 )
 
-from ocean_cortex_agent.db import MOCK_GUEST_DATABASE
 
 
 @app.get("/hello")

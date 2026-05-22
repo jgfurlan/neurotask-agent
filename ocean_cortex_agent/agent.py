@@ -4,9 +4,6 @@ from typing import Annotated, Any, TypedDict
 from uuid import UUID
 
 from fastapi import HTTPException, status
-
-from pydantic import PrivateAttr
-
 from langchain_core.callbacks import CallbackManagerForLLMRun
 from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import AIMessage, BaseMessage
@@ -14,6 +11,7 @@ from langchain_core.outputs import ChatGeneration, ChatResult
 from langchain_core.tools import tool
 from langgraph.graph import END, StateGraph
 from langgraph.graph.message import add_messages
+from pydantic import PrivateAttr
 
 from ocean_cortex_agent.db import MOCK_GUEST_DATABASE
 from ocean_cortex_agent.dto import GuestPreferences, GuestProfileResponse
@@ -45,7 +43,7 @@ def load_context_node(state: AgentState) -> dict[str, Any]:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Invalid UUID format for Guest ID",
-        )
+        ) from None
 
     if guest_id not in MOCK_GUEST_DATABASE:
         raise HTTPException(
@@ -95,7 +93,7 @@ def route_to_anticipatory_advisor(
 class MockChatBedrockConverse(BaseChatModel):
     """Deterministic mock that pattern-matches user messages to routing tool calls."""
     model_id: str = "mock-model"
-    _bound_tools: list = PrivateAttr(default_factory=list)
+    _bound_tools: list[Any] = PrivateAttr(default_factory=list)
 
     def bind_tools(
         self,
@@ -158,7 +156,7 @@ def get_chat_model() -> BaseChatModel:
         try:
             from langchain_aws import ChatBedrockConverse
             return ChatBedrockConverse(
-                model_id="anthropic.claude-3-5-haiku-20241022-v1:0"
+                model="anthropic.claude-3-5-haiku-20241022-v1:0"
             )
         except Exception:
             return MockChatBedrockConverse()
