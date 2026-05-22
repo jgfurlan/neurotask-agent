@@ -1,52 +1,135 @@
-# NeuroTask Agent: Autonomous AI-Native Orchestrator
-> **2026 Tech Stack:** Java 25 (LTS) | Quarkus | LangChain4j | GraalVM Native Image
+# OceanCortex Agent: Autonomous AI-Native Orchestrator
+> **2026 Tech Stack:** Python 3.12+ | FastAPI | LangGraph | AWS Bedrock | Snowflake Cortex AI | Docker
 
-![Java](https://img.shields.io/badge/Java-25-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Quarkus](https://img.shields.io/badge/Quarkus-3.31-FF0044?style=for-the-badge&logo=quarkus&logoColor=white)
-![GraalVM](https://img.shields.io/badge/GraalVM-Native-orange?style=for-the-badge&logo=graalvm&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?style=for-the-badge&logo=postgresql&logoColor=white)
-![Fedora](https://img.shields.io/badge/Fedora-Linux-51A2DA?style=for-the-badge&logo=fedora&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.12%2B-blue?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-0.0.30-orange?style=for-the-badge&logo=langchain&logoColor=white)
+![AWS Bedrock](https://img.shields.io/badge/AWS%20Bedrock-Claude%203.5-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Snowflake Cortex](https://img.shields.io/badge/Snowflake-Cortex%20AI-29B6F6?style=for-the-badge&logo=snowflake&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
-> **Autonomous AI-Native Task Orchestration**
+> **Autonomous AI-Native Task Orchestration for Carnival Corporation's MedallionClass Ecosystem**
 
-
-**NeuroTask Agent** is a production-grade autonomous system designed to explore the frontier of **Agentic AI** and **Cloud-Native Java**. Moving beyond traditional chatbots, this project implements a complex reasoning loop where an AI agent autonomously manages business state and data orchestration.
-
-
+**OceanCortex Agent** is a production-grade autonomous multi-agent system designed to explore the frontier of **Agentic AI** and **xIoT (Experience Internet of Things)** in the cruise industry. The platform acts as the intelligence layer for Carnival Corporation's smart-ships, processing guest spatial context and history ("Guest Genomics") from Snowflake Cortex AI and coordinating proactive stateroom and guest service responses using AWS Bedrock.
 
 ---
 
 ## Technical Architecture & Core Innovation
 
-* **Java 25 & Virtual Threads (Project Loom):** Engineered to handle high-concurrency LLM streaming and I/O operations with near-zero overhead by executing AI services on Virtual Threads.
-* **Agentic Tool Calling:** Implemented secure, type-safe Java "Tools" that the AI invokes to interact with the database, adhering to the principle of least privilege.
-* **Native-Micro Deployment:** Compiled via **GraalVM (Mandrel)** into a statically-linked Linux binary, achieving sub-50ms startup times and a minimal memory footprint.
-* **Cloud-Native Orchestration:** Fully containerized environment using **Docker Compose** for seamless infrastructure reproducibility.
+* **Stateful Multi-Agent Orchestration (LangGraph):** Implements a robust supervisor-worker architecture to handle guest interactions, service orders, and activity suggestions dynamically.
+* **Proactive "Guest Genome" Personalization:** Retrieves and processes passenger preference vectors from Snowflake Cortex AI, facilitating anticipatory suggestions.
+* **API Documentation:** Auto-generated OpenAPI/Swagger UI for interactive API exploration.
+* **Container Infrastructure:** Built on a slim Docker container optimized for lightning-fast deployments on shipboard edge nodes and AWS ECS.
+* **Reinforcement Learning from Verifiable Rewards (RLVR):** Prepared with structured response validations to record deterministic agent action metrics.
 
 ---
 
-## System Design Decisions (ADR)
+## API Documentation
 
-1. **AI Guardrails:** Prevented raw SQL access by exposing only specific `@Tool` methods to the AI Agent.
-2. **Resource Optimization:** Leveraged the `ubi9-micro` base image to reduce the attack surface and image size.
-3. **Data Integrity:** Used **Hibernate Panache** for a clean, active-record persistence layer with PostgreSQL.
+### Interactive Documentation
 
----
+Once running, access the auto-generated API documentation:
 
-## Performance Benchmarks (Native vs. JVM)
+| Endpoint | Description |
+|----------|-------------|
+| [Swagger UI](http://localhost:8000/docs) | Interactive API explorer |
+| [Redoc](http://localhost:8000/redoc) | Alternate clean API documentation |
+| [OpenAPI JSON](http://localhost:8000/openapi.json) | OpenAPI 3.0 specification |
 
-| Metric | JVM Mode | Native-Micro Mode |
-| :--- | :--- | :--- |
-| **Startup Time** | ~4.7s | **< 0.05s** (Target) |
-| **RAM Usage** | ~250MB | **~35MB** (Target) |
-| **Image Size** | ~200MB | **~50MB** (Target) |
+### REST Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/hello` | Health check endpoint |
+| GET | `/ocean/guest/profile` | Fetch Guest Genomics by Medallion ID |
+| POST | `/ocean/chat` | Interact with the Multi-Agent Orchestrator |
+| POST | `/ocean/services/order` | Place an on-demand order via OceanNow |
+
+### Example API Usage
+
+#### Health Check
+
+```bash
+curl http://localhost:8000/hello
+```
+**Response:**
+```json
+{"message": "Hello from OceanCortex Python Agent"}
+```
+
+#### Get Guest Profile
+
+```bash
+curl "http://localhost:8000/ocean/guest/profile?guest_id=4a7114b0-681b-4b20-9430-863a15234de1"
+```
+
+**Response:**
+```json
+{
+  "guest_id": "4a7114b0-681b-4b20-9430-863a15234de1",
+  "full_name": "Alexander Mercer",
+  "medallion_status": "Ruby",
+  "preferences": {
+    "dietary_restrictions": ["gluten-free"],
+    "beverage_preferences": ["Mojito", "Sparkling Water"],
+    "activity_interests": ["Snorkeling", "Live Music", "Wine Tasting"]
+  }
+}
+```
+
+#### Chat with Agent
+
+```bash
+curl -X POST http://localhost:8000/ocean/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "guest_id": "4a7114b0-681b-4b20-9430-863a15234de1",
+    "message": "I want to go snorkeling tomorrow"
+  }'
+```
+
+**Response:**
+```json
+{
+  "response": "Answer: [Supervisor] Routing to anticipatory_advisor (Context: Processed message 'I want to go snorkeling tomorrow')",
+  "suggested_actions": [
+    {
+      "label": "Book Excursion Now",
+      "action_type": "reserve_excursion",
+      "params": {
+        "excursion_id": "EXC-902",
+        "time": "09:00"
+      }
+    }
+  ]
+}
+```
 
 ---
 
 ## Local Development
 
-1. **Clone & Infrastructure:**
+### Prerequisites
+
+- Python 3.12+
+- Docker & Docker Compose
+- AWS Credentials / Snowflake Access (simulated locally)
+
+### Setup & Execution
+
+1. **Clone the repository:**
    ```bash
-   git clone
-   docker-compose up -d
+   git clone <repository-url>
+   cd neurotask-agent
+   ```
+
+2. **Run using Docker Compose:**
+   ```bash
+   docker-compose up --build -d
+   ```
+   This spins up the FastAPI backend on port `8000` alongside a companion PostgreSQL container.
+
+3. **Verify API is running:**
+   ```bash
+   curl http://localhost:8000/hello
+   ```
