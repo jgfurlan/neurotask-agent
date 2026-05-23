@@ -1,7 +1,7 @@
-# CI/CD Pipeline Design for OceanCortex Agent
+# CI/CD Pipeline Design for OceanVortex Agent
 
 ## Overview
-This design outlines a production-grade CI/CD pipeline and secrets management strategy for the OceanCortex Agent. The goal is to provide a realistic, enterprise-ready workflow that mirrors Carnival Corporation's actual stack, deploying to AWS ECS via GitHub Actions, using secure OIDC authentication.
+This design outlines a production-grade CI/CD pipeline and secrets management strategy for the OceanVortex Agent. The goal is to provide a realistic, enterprise-ready workflow that mirrors Carnival Corporation's actual stack, deploying to AWS ECS via GitHub Actions, using secure OIDC authentication.
 
 ## 1. Pipeline Structure
 A single unified workflow file `.github/workflows/ci-cd.yml` will be used, replacing the current broken Java CI.
@@ -26,8 +26,8 @@ The pipeline will use GitHub OIDC to authenticate with AWS, eliminating the need
 - **GitHub Workflow:** Uses `aws-actions/configure-aws-credentials@v4` with a role ARN.
 - **AWS Setup:**
   - OIDC Identity Provider (`token.actions.githubusercontent.com`).
-  - IAM Role (`github-actions-ocean-cortex`).
-  - Trust Policy: Strictly scoped to `repo:jgfurlan/neurotask-agent:ref:refs/heads/main`.
+  - IAM Role (`github-actions-ocean-vortex`).
+  - Trust Policy: Strictly scoped to `repo:jgfurlan/ocean-vortex:ref:refs/heads/main`.
   - Permissions: Scoped to ECR pushing and ECS service updates.
 
 ## 3. Secrets & Configuration Strategy
@@ -45,7 +45,7 @@ A layered approach to configuration and secrets management will be implemented t
 
 ## 4. Required AWS Infrastructure
 To support the pipeline and the deployment target, the following AWS resources must exist (or be provisioned):
-- **IAM:** OIDC Provider and the `github-actions-ocean-cortex` Role.
-- **ECR:** Repository `ocean-cortex-agent` (already created).
-- **ECS:** Fargate cluster (`ocean-cortex-cluster`), Task Definition (`ocean-cortex-task`), and Service (`ocean-cortex-service`).
+- **IAM:** OIDC Provider and the `github-actions-ocean-vortex` Role.
+- **ECR:** Repository `ocean-vortex-agent` (already created).
+- **ECS:** Fargate cluster (`ocean-vortex-cluster`), Task Definition (`ocean-vortex-task`), and Service (`ocean-vortex-service`).
 - **Secrets Manager:** Secrets referenced by the ECS task.

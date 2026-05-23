@@ -13,8 +13,8 @@ from langgraph.graph import END, StateGraph
 from langgraph.graph.message import add_messages
 from pydantic import PrivateAttr
 
-from ocean_cortex_agent.db import MOCK_GUEST_DATABASE
-from ocean_cortex_agent.dto import GuestPreferences, GuestProfileResponse
+from ocean_vortex.db import MOCK_GUEST_DATABASE
+from ocean_vortex.dto import GuestPreferences, GuestProfileResponse
 
 
 class AgentState(TypedDict):
@@ -291,4 +291,4 @@ workflow.add_conditional_edges(
 workflow.add_edge("guest_service", END)
 workflow.add_edge("anticipatory_advisor", END)
 
-ocean_cortex_graph = workflow.compile()
+ocean_vortex_graph = workflow.compile()

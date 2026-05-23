@@ -1,103 +1,132 @@
-# AWS ECR — OceanCortex Agent
+# AWS ECR & ECS Deployment — OceanVortex Agent
 
-## Repository Details
+This document details the configuration and deployment commands for AWS ECR and ECS Fargate in our active AWS account.
+
+## Registry & Repository Details
 
 | Field | Value |
 |-------|-------|
-| **Registry** | `280429950087.dkr.ecr.us-east-1.amazonaws.com` |
-| **Repository** | `ocean-cortex-agent` |
-| **Full URI** | `280429950087.dkr.ecr.us-east-1.amazonaws.com/ocean-cortex-agent` |
+| **Account ID** | `952078552240` |
+| **Registry** | `952078552240.dkr.ecr.us-east-1.amazonaws.com` |
+| **Repository** | `ocean-vortex-agent` |
+| **Full URI** | `952078552240.dkr.ecr.us-east-1.amazonaws.com/ocean-vortex-agent` |
 | **Region** | `us-east-1` |
 | **Scan on push** | ✅ enabled |
 
 ---
 
-## First-time setup (already done)
+## 1. Local ECR Setup & Image Push
 
-```bash
-# 1. Create the ECR repository
-aws ecr create-repository \
-  --repository-name ocean-cortex-agent \
-  --region us-east-1 \
-  --image-scanning-configuration scanOnPush=true \
-  --image-tag-mutability MUTABLE
-```
-
----
-
-## Local Docker Workflow
+Run the following commands in your local terminal to build the Docker container and push it to the new registry.
 
 ### Authenticate Docker to ECR
 
-Run this before every `docker push` or `docker pull` (token expires in 12 h):
-
 ```bash
 aws ecr get-login-password --region us-east-1 \
-  | docker login --username AWS --password-stdin \
-    280429950087.dkr.ecr.us-east-1.amazonaws.com
+  | sudo docker login --username AWS --password-stdin \
+    952078552240.dkr.ecr.us-east-1.amazonaws.com
 ```
 
-### Build, tag & push
+### Build, Tag, and Push
 
 ```bash
-ECR=280429950087.dkr.ecr.us-east-1.amazonaws.com/ocean-cortex-agent
+ECR=952078552240.dkr.ecr.us-east-1.amazonaws.com/ocean-vortex-agent
 
-docker build -t ocean-cortex-agent:latest .
-docker tag ocean-cortex-agent:latest $ECR:latest
-docker push $ECR:latest
-```
-
-### Pull the latest image
-
-```bash
-docker pull 280429950087.dkr.ecr.us-east-1.amazonaws.com/ocean-cortex-agent:latest
+sudo docker build -t ocean-vortex-agent:latest .
+sudo docker tag ocean-vortex-agent:latest $ECR:latest
+sudo docker push $ECR:latest
 ```
 
 ---
 
-## GitHub Actions (automated CD)
+## 2. ECS Fargate Setup
 
-The `ci.yml` workflow automatically builds and pushes on every merge to `master`.
+### IAM Roles (Already Created)
+- **Task Execution Role**: `ocean-vortex-execution-role` (allows pulling from ECR, logging to CloudWatch).
+- **Task Role**: `ocean-vortex-task-role` (allows container code to invoke AWS Bedrock models).
 
-### Required GitHub Secrets
+### Create ECS Cluster
+```bash
+aws ecs create-cluster --cluster-name ocean-vortex-cluster --region us-east-1
+```
 
-Go to **Settings → Secrets and variables → Actions** and add:
+### Store App Secrets (AWS Secrets Manager)
+Run this to create the secrets store for DB and Snowflake credentials:
+```bash
+aws secretsmanager create-secret \
+  --name ocean-vortex-secrets \
+  --description "OceanVortex Application Secrets" \
+  --secret-string '{"POSTGRES_USER":"jgfurlan","POSTGRES_PASSWORD":"secure_password_here","POSTGRES_DB":"ocean_vortex","DATABASE_URL":"","SNOWFLAKE_ACCOUNT":"","SNOWFLAKE_USER":"","SNOWFLAKE_PASSWORD":"","SNOWFLAKE_DATABASE":"","SNOWFLAKE_WAREHOUSE":""}' \
+  --region us-east-1
+```
 
-| Secret name | Description |
-|-------------|-------------|
-| `AWS_ACCESS_KEY_ID` | IAM user `jgfurlan_` access key ID |
-| `AWS_SECRET_ACCESS_KEY` | IAM user `jgfurlan_` secret access key |
-
-> **Tip:** For production, replace static keys with **OIDC** (GitHub's `aws-actions/configure-aws-credentials` supports it — set `role-to-assume` instead of key ID/secret).
-
----
-
-## ECS Task Definition
-
-Use this image URI in your ECS task definition's container definition:
-
+### Define Task Definition
+Create a `task-definition.json` file:
 ```json
 {
-  "image": "280429950087.dkr.ecr.us-east-1.amazonaws.com/ocean-cortex-agent:latest"
+  "family": "ocean-vortex-agent",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::952078552240:role/ocean-vortex-execution-role",
+  "taskRoleArn": "arn:aws:iam::952078552240:role/ocean-vortex-task-role",
+  "containerDefinitions": [
+    {
+      "name": "ocean-vortex-agent",
+      "image": "952078552240.dkr.ecr.us-east-1.amazonaws.com/ocean-vortex-agent:latest",
+      "cpu": 512,
+      "memory": 1024,
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "hostPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/ocean-vortex-agent",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs",
+          "awslogs-create-group": "true"
+        }
+      }
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "512",
+  "memory": "1024"
 }
 ```
 
-The ECS task role must have the `AmazonEC2ContainerRegistryReadOnly` policy attached so ECS can pull the image at deploy time.
+Register the task:
+```bash
+aws ecs register-task-definition --cli-input-json file://task-definition.json --region us-east-1
+```
+
+### Create Fargate Service
+Deploy the service in your VPC's public subnets:
+```bash
+aws ecs create-service \
+  --cluster ocean-vortex-cluster \
+  --service-name ocean-vortex-service \
+  --task-definition ocean-vortex-agent \
+  --desired-count 1 \
+  --launch-type FARGATE \
+  --network-configuration "awsvpcConfiguration={subnets=[SUBNET_ID_1,SUBNET_ID_2],securityGroups=[SG_ID],assignPublicIp=ENABLED}" \
+  --region us-east-1
+```
 
 ---
 
-## Useful inspection commands
+## 3. GitHub Actions Integration
 
-```bash
-# List all images in the repo
-aws ecr list-images --repository-name ocean-cortex-agent --region us-east-1
+Update GitHub secrets for your actions runner:
 
-# Describe the repository
-aws ecr describe-repositories --repository-names ocean-cortex-agent --region us-east-1
-
-# View scan findings for the latest image
-aws ecr describe-image-scan-findings \
-  --repository-name ocean-cortex-agent \
-  --image-id imageTag=latest \
-  --region us-east-1
-```
+| Secret Name | Value |
+|-------------|-------|
+| `AWS_ACCESS_KEY_ID` | Access key of your IAM user |
+| `AWS_SECRET_ACCESS_KEY` | Secret access key of your IAM user |
+| `AWS_ACCOUNT_ID` | `952078552240` |

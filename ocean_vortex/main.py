@@ -3,9 +3,9 @@ from uuid import UUID
 from fastapi import FastAPI, HTTPException, status
 from langchain_core.messages import HumanMessage
 
-from ocean_cortex_agent.agent import AgentState, ocean_cortex_graph
-from ocean_cortex_agent.db import MOCK_GUEST_DATABASE
-from ocean_cortex_agent.dto import (
+from ocean_vortex.agent import AgentState, ocean_vortex_graph
+from ocean_vortex.db import MOCK_GUEST_DATABASE
+from ocean_vortex.dto import (
     ChatRequest,
     ChatResponse,
     GuestPreferences,
@@ -16,7 +16,7 @@ from ocean_cortex_agent.dto import (
 )
 
 app = FastAPI(
-    title="OceanCortex Agent Service",
+    title="OceanVortex Agent Service",
     description=(
         "Intelligence and multi-agent coordination layer for "
         "Carnival OceanMedallion ecosystem"
@@ -29,7 +29,7 @@ app = FastAPI(
 @app.get("/hello")
 async def read_hello() -> dict[str, str]:
     """Basic health check endpoint."""
-    return {"message": "Hello from OceanCortex Python Agent"}
+    return {"message": "Hello from OceanVortex Python Agent"}
 
 @app.get("/ocean/guest/profile", response_model=GuestProfileResponse)
 async def get_guest_profile(guest_id: UUID) -> GuestProfileResponse:
@@ -59,7 +59,7 @@ async def chat(request: ChatRequest) -> ChatResponse:
         "context": {}
     }
     
-    result = ocean_cortex_graph.invoke(inputs)
+    result = ocean_vortex_graph.invoke(inputs)
     final_content = result["messages"][-1].content
     final_output = final_content if isinstance(final_content, str) else str(final_content)
     

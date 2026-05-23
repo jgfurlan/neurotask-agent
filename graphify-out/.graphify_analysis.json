@@ -1,0 +1,326 @@
+{
+  "communities": {
+    "0": [
+      "basemodel",
+      "ocean_cortex_agent_agent_agentstate",
+      "ocean_cortex_agent_agent_rationale_21",
+      "ocean_cortex_agent_dto_chatrequest",
+      "ocean_cortex_agent_dto_chatresponse",
+      "ocean_cortex_agent_dto_delivertocoordinates",
+      "ocean_cortex_agent_dto_guestpreferences",
+      "ocean_cortex_agent_dto_guestprofileresponse",
+      "ocean_cortex_agent_dto_locationcontext",
+      "ocean_cortex_agent_dto_py",
+      "ocean_cortex_agent_dto_serviceorderrequest",
+      "ocean_cortex_agent_dto_serviceorderresponse",
+      "ocean_cortex_agent_dto_suggestedaction",
+      "ocean_cortex_agent_main_chat",
+      "ocean_cortex_agent_main_create_order",
+      "ocean_cortex_agent_main_get_guest_profile",
+      "ocean_cortex_agent_main_py",
+      "ocean_cortex_agent_main_rationale_31",
+      "ocean_cortex_agent_main_rationale_36",
+      "ocean_cortex_agent_main_rationale_53",
+      "ocean_cortex_agent_main_rationale_88",
+      "ocean_cortex_agent_main_read_hello",
+      "typeddict"
+    ],
+    "1": [
+      "basechatmodel",
+      "ocean_cortex_agent_agent_anticipatory_advisor_node",
+      "ocean_cortex_agent_agent_get_chat_model",
+      "ocean_cortex_agent_agent_guest_service_node",
+      "ocean_cortex_agent_agent_llm_type",
+      "ocean_cortex_agent_agent_mockchatbedrockconverse",
+      "ocean_cortex_agent_agent_mockchatbedrockconverse_bind_tools",
+      "ocean_cortex_agent_agent_mockchatbedrockconverse_generate",
+      "ocean_cortex_agent_agent_py",
+      "ocean_cortex_agent_agent_rationale_149",
+      "ocean_cortex_agent_agent_rationale_172",
+      "ocean_cortex_agent_agent_rationale_218",
+      "ocean_cortex_agent_agent_rationale_242",
+      "ocean_cortex_agent_agent_rationale_76",
+      "ocean_cortex_agent_agent_rationale_85",
+      "ocean_cortex_agent_agent_rationale_94",
+      "ocean_cortex_agent_agent_route_to_anticipatory_advisor",
+      "ocean_cortex_agent_agent_route_to_guest_service",
+      "ocean_cortex_agent_agent_supervisor_node",
+      "tests_test_main_test_mock_chat_bedrock_converse_routing"
+    ],
+    "2": [
+      "ocean_cortex_agent_agent_load_context_node",
+      "ocean_cortex_agent_agent_rationale_33",
+      "tests_test_main_py",
+      "tests_test_main_test_chat_endpoint_excursion",
+      "tests_test_main_test_chat_endpoint_order",
+      "tests_test_main_test_create_service_order",
+      "tests_test_main_test_get_guest_profile_not_found",
+      "tests_test_main_test_get_guest_profile_success",
+      "tests_test_main_test_graph_routing_anticipatory_advisor",
+      "tests_test_main_test_graph_routing_chit_chat",
+      "tests_test_main_test_graph_routing_guest_service",
+      "tests_test_main_test_hello_endpoint",
+      "tests_test_main_test_load_context_node_not_found",
+      "tests_test_main_test_load_context_node_success",
+      "tests_test_main_test_mock_guest_database_import"
+    ],
+    "3": [
+      "agent_get_chat_model",
+      "agent_mockchatbedrockconverse",
+      "agent_route_to_anticipatory_advisor",
+      "agent_route_to_guest_service",
+      "agent_supervisor_node",
+      "architecture_aws_bedrock",
+      "architecture_supervisor_agent"
+    ],
+    "4": [
+      "agent_load_context_node",
+      "db_mock_guest_database",
+      "dto_guestprofileresponse",
+      "main_get_guest_profile"
+    ],
+    "5": [
+      "agent_ocean_cortex_graph",
+      "main_chat",
+      "ui_context_oceancompass"
+    ],
+    "6": [
+      "implementation_plan_aws_ecr_setup",
+      "task_ecr_setup_tracker",
+      "walkthrough_ecr_setup"
+    ],
+    "7": [
+      "implementation_plan_cicd_pipeline",
+      "task_cicd_pipeline_tracker",
+      "walkthrough_cicd_pipeline"
+    ],
+    "8": [
+      "2026_05_22_add_job_description_asset_design_spec",
+      "2026_05_22_add_job_description_asset_plan",
+      "job_description_pdf"
+    ],
+    "9": [
+      "ocean_cortex_agent_init_py",
+      "ocean_cortex_agent_init_rationale_1"
+    ],
+    "10": [
+      "agent_anticipatory_advisor_node",
+      "architecture_anticipatory_advisor"
+    ],
+    "11": [
+      "dto_serviceorderrequest",
+      "main_create_order"
+    ],
+    "12": [
+      "ai_workflow_rules_governance",
+      "code_standards_agent_legibility"
+    ],
+    "13": [
+      "agent_guest_service_node",
+      "architecture_guest_service_worker"
+    ],
+    "14": [
+      "2026_05_22_llm_supervisor_routing_design_supervisor_routing_design",
+      "2026_05_22_llm_supervisor_routing_implementation_steps"
+    ],
+    "15": [
+      "ocean_cortex_agent_db_py"
+    ],
+    "16": [
+      "agent_agentstate"
+    ],
+    "17": [
+      "main_app"
+    ],
+    "18": [
+      "code_standards_type_compliance"
+    ],
+    "19": [
+      "code_standards_testing_tdd"
+    ],
+    "20": [
+      "project_overview_ocean_cortex_agent"
+    ],
+    "21": [
+      "ai_workflow_rules_spec_driven_development"
+    ],
+    "22": [
+      "ai_workflow_rules_sync"
+    ],
+    "23": [
+      "jd_alignment_ocean_cortex_architecture"
+    ]
+  },
+  "cohesion": {
+    "0": 0.14,
+    "1": 0.12,
+    "2": 0.14,
+    "3": 0.33,
+    "4": 0.5,
+    "5": 0.67,
+    "6": 0.67,
+    "7": 0.67,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0
+  },
+  "gods": [
+    {
+      "id": "ocean_cortex_agent_agent_mockchatbedrockconverse",
+      "label": "MockChatBedrockConverse",
+      "degree": 8
+    },
+    {
+      "id": "ocean_cortex_agent_agent_load_context_node",
+      "label": "load_context_node()",
+      "degree": 6
+    },
+    {
+      "id": "ocean_cortex_agent_dto_guestpreferences",
+      "label": "GuestPreferences",
+      "degree": 6
+    },
+    {
+      "id": "ocean_cortex_agent_dto_guestprofileresponse",
+      "label": "GuestProfileResponse",
+      "degree": 6
+    },
+    {
+      "id": "ocean_cortex_agent_agent_agentstate",
+      "label": "AgentState",
+      "degree": 5
+    },
+    {
+      "id": "ocean_cortex_agent_agent_get_chat_model",
+      "label": "get_chat_model()",
+      "degree": 5
+    },
+    {
+      "id": "ocean_cortex_agent_agent_supervisor_node",
+      "label": "supervisor_node()",
+      "degree": 4
+    },
+    {
+      "id": "ocean_cortex_agent_main_get_guest_profile",
+      "label": "get_guest_profile()",
+      "degree": 4
+    },
+    {
+      "id": "ocean_cortex_agent_main_chat",
+      "label": "chat()",
+      "degree": 4
+    },
+    {
+      "id": "agent_supervisor_node",
+      "label": "supervisor_node",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "MockChatBedrockConverse",
+      "target": "AWS Bedrock Integration",
+      "source_files": [
+        "ocean_cortex_agent/agent.py",
+        "docs/architecture.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "implements",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories"
+    },
+    {
+      "source": "supervisor_node",
+      "target": "Supervisor Agent Concept",
+      "source_files": [
+        "ocean_cortex_agent/agent.py",
+        "docs/architecture.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "implements",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories"
+    },
+    {
+      "source": "guest_service_node",
+      "target": "Guest Service Worker Concept",
+      "source_files": [
+        "ocean_cortex_agent/agent.py",
+        "docs/architecture.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "implements",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories"
+    },
+    {
+      "source": "anticipatory_advisor_node",
+      "target": "Anticipatory Advisor Concept",
+      "source_files": [
+        "ocean_cortex_agent/agent.py",
+        "docs/architecture.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "implements",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories"
+    },
+    {
+      "source": "OceanCompass UI Integration",
+      "target": "chat",
+      "source_files": [
+        "docs/ui-context.md",
+        "ocean_cortex_agent/main.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `load_context_node()` connect `Community 2` to `Community 0`, `Community 1`?",
+      "why": "High betweenness centrality (0.106) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `GuestPreferences` connect `Community 0` to `Community 1`, `Community 2`?",
+      "why": "High betweenness centrality (0.075) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `GuestProfileResponse` connect `Community 0` to `Community 1`, `Community 2`?",
+      "why": "High betweenness centrality (0.075) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `MockChatBedrockConverse` (e.g. with `GuestPreferences` and `GuestProfileResponse`) actually correct?",
+      "why": "`MockChatBedrockConverse` has 2 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 4 inferred relationships involving `load_context_node()` (e.g. with `GuestProfileResponse` and `GuestPreferences`) actually correct?",
+      "why": "`load_context_node()` has 4 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 4 inferred relationships involving `GuestPreferences` (e.g. with `AgentState` and `MockChatBedrockConverse`) actually correct?",
+      "why": "`GuestPreferences` has 4 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 4 inferred relationships involving `GuestProfileResponse` (e.g. with `AgentState` and `MockChatBedrockConverse`) actually correct?",
+      "why": "`GuestProfileResponse` has 4 INFERRED edges - model-reasoned connections that need verification."
+    }
+  ]
+}

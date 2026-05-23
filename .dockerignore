@@ -27,7 +27,7 @@ coverage.xml
 .ruff_cache/
 
 # Package metadata
-ocean_cortex_agent.egg-info/
+ocean_vortex.egg-info/
 dist/
 build/
 *.egg

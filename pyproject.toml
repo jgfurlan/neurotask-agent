@@ -1,5 +1,5 @@
 [project]
-name = "ocean-cortex-agent"
+name = "ocean-vortex-agent"
 version = "0.1.0"
 description = "Autonomous multi-agent task orchestrator for Carnival OceanMedallion ecosystem powered by Snowflake Cortex AI and AWS Bedrock"
 readme = "README.md"
@@ -24,6 +24,7 @@ dev = [
 [tool.ruff]
 line-length = 100
 target-version = "py312"
+exclude = ["graphify-out"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "B", "UP"]
@@ -33,3 +34,4 @@ ignore = []
 python_version = "3.12"
 strict = true
 ignore_missing_imports = true
+exclude = ["graphify-out"]

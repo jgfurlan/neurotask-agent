@@ -13,17 +13,17 @@
 ### Task 1: Relocate Guest Database to Prevent Circular Imports
 
 **Files:**
-- Create: `ocean_cortex_agent/db.py`
-- Modify: `ocean_cortex_agent/main.py:27-38`
+- Create: `ocean_vortex/db.py`
+- Modify: `ocean_vortex/main.py:27-38`
 - Test: `tests/test_main.py`
 
 - [ ] **Step 1: Write the failing test**
 
-Open [tests/test_main.py](file:///home/jgfurlan/dev/projects/neurotask-agent/tests/test_main.py) and add the following test at the end of the file:
+Open [tests/test_main.py](file:///home/jgfurlan/dev/projects/ocean-vortex/tests/test_main.py) and add the following test at the end of the file:
 
 ```python
 def test_mock_guest_database_import() -> None:
-    from ocean_cortex_agent.db import MOCK_GUEST_DATABASE
+    from ocean_vortex.db import MOCK_GUEST_DATABASE
     assert MOCK_GUEST_DATABASE is not None
     assert "4a7114b0-681b-4b20-9430-863a15234de1" in [str(k) for k in MOCK_GUEST_DATABASE.keys()]
 ```
@@ -31,11 +31,11 @@ def test_mock_guest_database_import() -> None:
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `pyenv exec pytest -k test_mock_guest_database_import`
-Expected: FAIL with `ModuleNotFoundError: No module named 'ocean_cortex_agent.db'`
+Expected: FAIL with `ModuleNotFoundError: No module named 'ocean_vortex.db'`
 
 - [ ] **Step 3: Write minimal implementation**
 
-Create [ocean_cortex_agent/db.py](file:///home/jgfurlan/dev/projects/neurotask-agent/ocean_cortex_agent/db.py):
+Create [ocean_vortex/db.py](file:///home/jgfurlan/dev/projects/ocean-vortex/ocean_vortex/db.py):
 
 ```python
 from typing import Any
@@ -55,11 +55,11 @@ MOCK_GUEST_DATABASE: dict[UUID, dict[str, Any]] = {
 }
 ```
 
-Modify [ocean_cortex_agent/main.py](file:///home/jgfurlan/dev/projects/neurotask-agent/ocean_cortex_agent/main.py) to remove the inline definition and import it:
+Modify [ocean_vortex/main.py](file:///home/jgfurlan/dev/projects/ocean-vortex/ocean_vortex/main.py) to remove the inline definition and import it:
 
 Replace lines 27-38 with:
 ```python
-from ocean_cortex_agent.db import MOCK_GUEST_DATABASE
+from ocean_vortex.db import MOCK_GUEST_DATABASE
 ```
 
 - [ ] **Step 4: Run test to verify it passes**
@@ -70,7 +70,7 @@ Expected: PASS (all 7 tests pass)
 - [ ] **Step 5: Commit**
 
 ```bash
-git add ocean_cortex_agent/db.py ocean_cortex_agent/main.py tests/test_main.py
+git add ocean_vortex/db.py ocean_vortex/main.py tests/test_main.py
 git commit -m "refactor: relocate mock guest database to db.py to avoid circular imports"
 ```
 
@@ -79,17 +79,17 @@ git commit -m "refactor: relocate mock guest database to db.py to avoid circular
 ### Task 2: Define Routing Tools and Mock LLM
 
 **Files:**
-- Modify: `ocean_cortex_agent/agent.py:1-8`
+- Modify: `ocean_vortex/agent.py:1-8`
 - Test: `tests/test_main.py`
 
 - [ ] **Step 1: Write the failing test**
 
-Add these tests to the end of [tests/test_main.py](file:///home/jgfurlan/dev/projects/neurotask-agent/tests/test_main.py):
+Add these tests to the end of [tests/test_main.py](file:///home/jgfurlan/dev/projects/ocean-vortex/tests/test_main.py):
 
 ```python
 def test_mock_chat_bedrock_converse_routing() -> None:
     from langchain_core.messages import HumanMessage
-    from ocean_cortex_agent.agent import MockChatBedrockConverse, get_chat_model
+    from ocean_vortex.agent import MockChatBedrockConverse, get_chat_model
     
     model = get_chat_model()
     assert isinstance(model, MockChatBedrockConverse)
@@ -117,13 +117,13 @@ def test_mock_chat_bedrock_converse_routing() -> None:
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `pyenv exec pytest -k test_mock_chat_bedrock_converse_routing`
-Expected: FAIL with `ImportError: cannot import name 'MockChatBedrockConverse' from 'ocean_cortex_agent.agent'`
+Expected: FAIL with `ImportError: cannot import name 'MockChatBedrockConverse' from 'ocean_vortex.agent'`
 
 - [ ] **Step 3: Write minimal implementation**
 
-Open [ocean_cortex_agent/agent.py](file:///home/jgfurlan/dev/projects/neurotask-agent/ocean_cortex_agent/agent.py) and modify the top imports and definitions.
+Open [ocean_vortex/agent.py](file:///home/jgfurlan/dev/projects/ocean-vortex/ocean_vortex/agent.py) and modify the top imports and definitions.
 
-Replace lines 1-8 of [ocean_cortex_agent/agent.py](file:///home/jgfurlan/dev/projects/neurotask-agent/ocean_cortex_agent/agent.py) with the following imports, mock class, and tools:
+Replace lines 1-8 of [ocean_vortex/agent.py](file:///home/jgfurlan/dev/projects/ocean-vortex/ocean_vortex/agent.py) with the following imports, mock class, and tools:
 
 ```python
 import os
@@ -231,7 +231,7 @@ Expected: PASS
 - [ ] **Step 5: Commit**
 
 ```bash
-git add ocean_cortex_agent/agent.py tests/test_main.py
+git add ocean_vortex/agent.py tests/test_main.py
 git commit -m "feat: implement MockChatBedrockConverse class and routing tools"
 ```
 
@@ -240,16 +240,16 @@ git commit -m "feat: implement MockChatBedrockConverse class and routing tools"
 ### Task 3: Implement Context Loading Node
 
 **Files:**
-- Modify: `ocean_cortex_agent/agent.py`
+- Modify: `ocean_vortex/agent.py`
 - Test: `tests/test_main.py`
 
 - [ ] **Step 1: Write the failing test**
 
-Add these tests to the end of [tests/test_main.py](file:///home/jgfurlan/dev/projects/neurotask-agent/tests/test_main.py):
+Add these tests to the end of [tests/test_main.py](file:///home/jgfurlan/dev/projects/ocean-vortex/tests/test_main.py):
 
 ```python
 def test_load_context_node_success() -> None:
-    from ocean_cortex_agent.agent import load_context_node, AgentState
+    from ocean_vortex.agent import load_context_node, AgentState
     from langchain_core.messages import HumanMessage
     
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
@@ -270,7 +270,7 @@ def test_load_context_node_success() -> None:
 def test_load_context_node_not_found() -> None:
     import pytest
     from fastapi import HTTPException
-    from ocean_cortex_agent.agent import load_context_node, AgentState
+    from ocean_vortex.agent import load_context_node, AgentState
     from langchain_core.messages import HumanMessage
     
     guest_id = "00000000-0000-0000-0000-000000000000"
@@ -290,17 +290,17 @@ def test_load_context_node_not_found() -> None:
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `pyenv exec pytest -k "test_load_context_node"`
-Expected: FAIL with `AttributeError: module 'ocean_cortex_agent.agent' has no attribute 'load_context_node'`
+Expected: FAIL with `AttributeError: module 'ocean_vortex.agent' has no attribute 'load_context_node'`
 
 - [ ] **Step 3: Write minimal implementation**
 
-Add the implementation of `load_context_node` to [ocean_cortex_agent/agent.py](file:///home/jgfurlan/dev/projects/neurotask-agent/ocean_cortex_agent/agent.py) right after `AgentState` definition (line 9-15 of the original file):
+Add the implementation of `load_context_node` to [ocean_vortex/agent.py](file:///home/jgfurlan/dev/projects/ocean-vortex/ocean_vortex/agent.py) right after `AgentState` definition (line 9-15 of the original file):
 
 ```python
 from uuid import UUID
 from fastapi import HTTPException, status
-from ocean_cortex_agent.db import MOCK_GUEST_DATABASE
-from ocean_cortex_agent.dto import GuestProfileResponse, GuestPreferences
+from ocean_vortex.db import MOCK_GUEST_DATABASE
+from ocean_vortex.dto import GuestProfileResponse, GuestPreferences
 
 def load_context_node(state: AgentState) -> dict[str, Any]:
     """Pre-emptively loads the guest profile genomics context from the database."""
@@ -348,7 +348,7 @@ Expected: PASS
 - [ ] **Step 5: Commit**
 
 ```bash
-git add ocean_cortex_agent/agent.py tests/test_main.py
+git add ocean_vortex/agent.py tests/test_main.py
 git commit -m "feat: implement load_context_node to load guest profiles pre-emptively"
 ```
 
@@ -357,16 +357,16 @@ git commit -m "feat: implement load_context_node to load guest profiles pre-empt
 ### Task 4: Integrate LLM Routing and Specialist Node Execution
 
 **Files:**
-- Modify: `ocean_cortex_agent/agent.py`
+- Modify: `ocean_vortex/agent.py`
 - Test: `tests/test_main.py`
 
 - [ ] **Step 1: Write the failing test**
 
-Add these tests to the end of [tests/test_main.py](file:///home/jgfurlan/dev/projects/neurotask-agent/tests/test_main.py):
+Add these tests to the end of [tests/test_main.py](file:///home/jgfurlan/dev/projects/ocean-vortex/tests/test_main.py):
 
 ```python
 def test_graph_routing_guest_service() -> None:
-    from ocean_cortex_agent.agent import ocean_agent_graph, AgentState
+    from ocean_vortex.agent import ocean_agent_graph, AgentState
     from langchain_core.messages import HumanMessage
     
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
@@ -384,9 +384,9 @@ def test_graph_routing_guest_service() -> None:
     assert "processed" in final_msg.lower()
 
 def test_graph_routing_anticipatory_advisor() -> None:
-    from ocean_agent.agent import ocean_agent_graph, AgentState  # wait, this should use ocean_cortex_agent
+    from ocean_agent.agent import ocean_agent_graph, AgentState  # wait, this should use ocean_vortex
     # Let's fix that below:
-    from ocean_cortex_agent.agent import ocean_agent_graph, AgentState
+    from ocean_vortex.agent import ocean_agent_graph, AgentState
     from langchain_core.messages import HumanMessage
     
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
@@ -404,7 +404,7 @@ def test_graph_routing_anticipatory_advisor() -> None:
     assert "recommendation" in final_msg.lower()
 
 def test_graph_routing_chit_chat() -> None:
-    from ocean_cortex_agent.agent import ocean_agent_graph, AgentState
+    from ocean_vortex.agent import ocean_agent_graph, AgentState
     from langchain_core.messages import HumanMessage
     
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
@@ -428,7 +428,7 @@ Expected: FAIL (either routes to incorrect nodes, fails to run because of graph 
 
 - [ ] **Step 3: Write minimal implementation**
 
-Modify `supervisor_node`, `guest_service_node`, `anticipatory_advisor_node` and graph setup in [ocean_cortex_agent/agent.py](file:///home/jgfurlan/dev/projects/neurotask-agent/ocean_cortex_agent/agent.py) to replace the keyword logic with dynamic tool calls and update compile settings:
+Modify `supervisor_node`, `guest_service_node`, `anticipatory_advisor_node` and graph setup in [ocean_vortex/agent.py](file:///home/jgfurlan/dev/projects/ocean-vortex/ocean_vortex/agent.py) to replace the keyword logic with dynamic tool calls and update compile settings:
 
 ```python
 def supervisor_node(state: AgentState) -> dict[str, Any]:
@@ -538,7 +538,7 @@ Expected: PASS (all tests, including the end-to-end routing and FastAPI tests, m
 - [ ] **Step 5: Commit**
 
 ```bash
-git add ocean_cortex_agent/agent.py tests/test_main.py
+git add ocean_vortex/agent.py tests/test_main.py
 git commit -m "feat: connect load_context_node, integrate LLM tool binding, and dynamic routing"
 ```
 
@@ -547,7 +547,7 @@ git commit -m "feat: connect load_context_node, integrate LLM tool binding, and 
 ### Task 5: Static Analysis and Type Verification
 
 **Files:**
-- Test: `ocean_cortex_agent/`
+- Test: `ocean_vortex/`
 
 - [ ] **Step 1: Run Ruff linter**
 
@@ -556,7 +556,7 @@ Expected: PASS with no linting errors.
 
 - [ ] **Step 2: Run MyPy static type check**
 
-Run: `pyenv exec mypy ocean_cortex_agent/`
+Run: `pyenv exec mypy ocean_vortex/`
 Expected: PASS with "Success: no issues found"
 
 - [ ] **Step 3: Commit final layout confirmation**

@@ -1,0 +1,8 @@
+build.build signature:
+(extractions: 'list[dict]', *, directed: 'bool' = False, dedup: 'bool' = True, dedup_llm_backend: 'str | None' = None) -> 'nx.Graph'
+build.build_from_json signature:
+(extraction: 'dict', *, directed: 'bool' = False) -> 'nx.Graph'
+cluster.cluster signature:
+(G: 'nx.Graph') -> 'dict[int, list[str]]'
+report.generate signature:
+(G: 'nx.Graph', communities: 'dict[int, list[str]]', cohesion_scores: 'dict[int, float]', community_labels: 'dict[int, str]', god_node_list: 'list[dict]', surprise_list: 'list[dict]', detection_result: 'dict', token_cost: 'dict', root: 'str', suggested_questions: 'list[dict] | None' = None, min_community_size: 'int' = 3, built_at_commit: 'str | None' = None) -> 'str'

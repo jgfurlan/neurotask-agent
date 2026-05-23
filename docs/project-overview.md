@@ -1,4 +1,4 @@
-# Project Overview: Carnival OceanCortex Agent
+# Project Overview: Carnival OceanVortex Agent
 
 ## Mission
 Develop a state-of-the-art, autonomous multi-agent orchestration platform that acts as the intelligent backend for Carnival Corporation's **OceanMedallion** and **xIoT (Experience Internet of Things)** ecosystem. The platform leverages modern generative AI, stateful workflows, and enterprise data warehouses to deliver a frictionless, personalized, and proactive guest experience ("Guest Genomics") across Carnival's global fleet.
@@ -11,7 +11,7 @@ Develop a state-of-the-art, autonomous multi-agent orchestration platform that a
 
 2. **Onboard Service Orchestration (OceanNow):**
    - The guest requests services (e.g. food, drinks, amenities delivery to their current shipboard location) via the OceanCompass app.
-   - The **OceanCortex** supervisor delegates execution to specialized worker agents (e.g., location tracking, galley routing, and crew task dispatching).
+   - The **OceanVortex** supervisor delegates execution to specialized worker agents (e.g., location tracking, galley routing, and crew task dispatching).
 
 3. **Proactive Recommendation System (Anticipatory Design):**
    - The system monitors real-time context (time of day, ship location, weather, and dining room capacity).
