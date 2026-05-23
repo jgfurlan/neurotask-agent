@@ -21,7 +21,7 @@ We have successfully migrated and deployed the rebranded containerized applicati
    - Deployed ECS Service `ocean-vortex-service` running 1 replica task.
    - Allowed inbound TCP port `8000` in the default security group.
 6. **Documentation & Rebranding Sync**:
-   - Updated [docs/ecr-setup.md](file:///home/jgfurlan/dev/projects/ocean-vortex/docs/ecr-setup.md) with registry coordinates and ECS deployment instructions.
+   - Updated [docs/ecr-setup.md](file:///home/jgfurlan/dev/projects/neurotask-agent/docs/ecr-setup.md) with registry coordinates and ECS deployment instructions.
    - Replaced all references of `ocean-cortex` with `ocean-vortex` across 10 markdown documentation files and `pyproject.toml`.
    - Re-generated knowledge graph files (`graph.json`, `graph.html`, `GRAPH_REPORT.md`).
 
@@ -30,6 +30,6 @@ We have successfully migrated and deployed the rebranded containerized applicati
 ## Verification & Active Endpoints
 
 - **ECS Task Status**: Running successfully.
-- **Task Public IP**: `44.197.115.185`
-- **FastAPI Public Endpoint**: [http://44.197.115.185:8000/hello](http://44.197.115.185:8000/hello)
-- **FastAPI OpenAPI Docs**: [http://44.197.115.185:8000/docs](http://44.197.115.185:8000/docs)
+- **Task Public IP**: `3.236.150.62`
+- **FastAPI Public Endpoint**: [http://3.236.150.62:8000/hello](http://3.236.150.62:8000/hello)
+- **FastAPI OpenAPI Docs**: [http://3.236.150.62:8000/docs](http://3.236.150.62:8000/docs)
