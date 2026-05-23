@@ -1,0 +1,4 @@
+- [x] Delete ci.yml
+- [x] Create ci-cd.yml
+- [x] Edit docker-compose.yml
+- [x] Create .env.example

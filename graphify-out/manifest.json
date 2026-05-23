@@ -1,0 +1,42 @@
+{
+  "/home/jgfurlan/dev/projects/neurotask-agent/docker-compose.yml": {
+    "mtime": 1779440034.0715415,
+    "hash": "48a1d9cfd8af5e991e82a92d0fb730fb"
+  },
+  "/home/jgfurlan/dev/projects/neurotask-agent/README.md": {
+    "mtime": 1779445195.5774114,
+    "hash": "fc52d807754d00cd087c601b33851933"
+  },
+  "/home/jgfurlan/dev/projects/neurotask-agent/docs/progress-tracker.md": {
+    "mtime": 1779445203.973408,
+    "hash": "0215689c6630539cd2bb7b11ffde6808"
+  },
+  "/home/jgfurlan/dev/projects/neurotask-agent/docs/code-standards.md": {
+    "mtime": 1779440660.5392988,
+    "hash": "aa2f76bd3c515b049c1862bf346e9c90"
+  },
+  "/home/jgfurlan/dev/projects/neurotask-agent/docs/project-overview.md": {
+    "mtime": 1779445199.5334098,
+    "hash": "49302062cf9cf35e8274b111d39388a5"
+  },
+  "/home/jgfurlan/dev/projects/neurotask-agent/docs/ui-context.md": {
+    "mtime": 1779445206.229407,
+    "hash": "a11d612657843acdf832cfcb24df1631"
+  },
+  "/home/jgfurlan/dev/projects/neurotask-agent/docs/ai-workflow-rules.md": {
+    "mtime": 1779440674.591293,
+    "hash": "d470a9256251f159a9562a9a818958fc"
+  },
+  "/home/jgfurlan/dev/projects/neurotask-agent/docs/architecture.md": {
+    "mtime": 1779445201.709409,
+    "hash": "95d605bc37ea1a40946eff45ef980955"
+  },
+  "/home/jgfurlan/dev/projects/neurotask-agent/docs/assets/jd-alignment.md": {
+    "mtime": 1779445214.149404,
+    "hash": "ff415a79190f142305d574a987f9731a"
+  },
+  "/home/jgfurlan/dev/projects/neurotask-agent/docs/superpowers/plans/2026-05-22-llm-supervisor-routing.md": {
+    "mtime": 1779445224.2814002,
+    "hash": "6fa88414e501af007a04308d06eb56b6"
+  }
+}

@@ -45,6 +45,18 @@ nb-configuration.xml
 .certs/
 
 # docker-compose.yml
-docker-compose.yml
+# docker-compose.yml
 
 .env
+
+# Worktrees
+.worktrees/
+worktrees/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
