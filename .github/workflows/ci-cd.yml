@@ -35,14 +35,14 @@ jobs:
   build-push:
     name: Build & Push to ECR
     needs: ci
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::952078552240:role/github-actions-ocean-vortex
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-ocean-vortex
           aws-region: us-east-1
       - name: Login to Amazon ECR
         id: login-ecr
@@ -69,7 +69,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::952078552240:role/github-actions-ocean-vortex
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions-ocean-vortex
           aws-region: us-east-1
       - name: Extract short SHA
         id: vars
@@ -83,7 +83,7 @@ jobs:
         with:
           task-definition: task-definition.json
           container-name: ocean-vortex-agent
-          image: 952078552240.dkr.ecr.us-east-1.amazonaws.com/ocean-vortex-agent:${{ steps.vars.outputs.sha_short }}
+          image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/ocean-vortex-agent:${{ steps.vars.outputs.sha_short }}
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
