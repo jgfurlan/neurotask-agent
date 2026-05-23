@@ -42,7 +42,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::280429950087:role/github-actions-ocean-cortex
+          role-to-assume: arn:aws:iam::952078552240:role/github-actions-ocean-vortex
           aws-region: us-east-1
       - name: Login to Amazon ECR
         id: login-ecr
@@ -53,7 +53,7 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ocean-cortex-agent
+          ECR_REPOSITORY: ocean-vortex-agent
           IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
@@ -69,25 +69,25 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::280429950087:role/github-actions-ocean-cortex
+          role-to-assume: arn:aws:iam::952078552240:role/github-actions-ocean-vortex
           aws-region: us-east-1
       - name: Extract short SHA
         id: vars
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Download task definition
         run: |
-          aws ecs describe-task-definition --task-definition ocean-cortex-task --query taskDefinition > task-definition.json
+          aws ecs describe-task-definition --task-definition ocean-vortex-task --query taskDefinition > task-definition.json
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: ocean-cortex-agent
-          image: 280429950087.dkr.ecr.us-east-1.amazonaws.com/ocean-cortex-agent:${{ steps.vars.outputs.sha_short }}
+          container-name: ocean-vortex-agent
+          image: 952078552240.dkr.ecr.us-east-1.amazonaws.com/ocean-vortex-agent:${{ steps.vars.outputs.sha_short }}
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: ocean-cortex-service
-          cluster: ocean-cortex-cluster
+          service: ocean-vortex-service
+          cluster: ocean-vortex-cluster
           wait-for-service-stability: true

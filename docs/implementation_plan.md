@@ -1,74 +1,60 @@
-# AWS ECR Setup — OceanCortex Agent
+# AWS Account Migration & ECS Fargate Deployment Implementation Plan
 
-## Context
+We are migrating our AWS infrastructure to a new AWS account. This plan covers re-setting up ECR on the new account, deploying the containerized application to ECS Fargate, configuring IAM roles and secrets, and updating the CI/CD pipeline.
 
-The project is a **Python 3.12 FastAPI + LangGraph** multi-agent system (`ocean-cortex-agent`) containerized with Docker, targeting **AWS ECS** deployments (per the architecture doc). It uses **AWS Bedrock** for inference and has a single Docker image built from `python:3.12-slim`.
-
-## What will be set up
-
-1. **ECR private repository** → `ocean-cortex-agent` (matches `pyproject.toml` name)
-2. **Initial `docker build` + `docker tag` + `docker push`** to ECR
-3. **GitHub Actions CD workflow** → on push to `master`, builds & pushes the Docker image to ECR automatically (replaces the broken Java CI stub)
-4. **Updated `docker-compose.yml`** with a note on the ECR image URI (for ECS task definition reference)
-5. **`docs/ecr-setup.md`** → documents ECR URI, login command, and pull commands for the team
+## User Action Required
 
 > [!IMPORTANT]
-> The existing `ci.yml` is a broken Java/Maven stub — it references `fedora-latest` (not a valid GitHub runner) and Maven, which don't apply here. It will be **replaced** by a correct Python + Docker + ECR pipeline.
-
-## Open Questions
-
-> [!IMPORTANT]
-> **AWS Region** — Which region should the ECR repo live in? Common choices for cruise/maritime edge: `us-east-1` or `us-west-2`. I'll default to **`us-east-1`** unless you say otherwise.
-
-> [!IMPORTANT]
-> **AWS Account ID** — Needed to construct the ECR URI (`<account-id>.dkr.ecr.<region>.amazonaws.com`). I'll retrieve it via `aws sts get-caller-identity` at execution time.
-
-> [!IMPORTANT]
-> **GitHub Secrets** — The CD workflow needs `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` (or OIDC role ARN) added to the repo secrets. I'll document what needs to be added but cannot set them myself.
+> You must configure your local AWS CLI with the new AWS credentials. Please run `aws configure` in your terminal and enter your new **AWS Access Key ID**, **AWS Secret Access Key**, and set the default region to **`us-east-1`**.
 
 ## Proposed Changes
 
-### AWS (CLI commands — executed interactively)
-
-- `aws ecr create-repository` — creates the `ocean-cortex-agent` private repo
-- `aws ecr get-login-password | docker login` — authenticates Docker to ECR
-- `docker build / tag / push` — initial image push tagged `latest`
-
----
-
-### CI/CD
-
-#### [MODIFY] [ci.yml](file:///home/jgfurlan/dev/projects/neurotask-agent/.github/workflows/ci.yml)
-
-Replace the broken Java stub with a proper **Python CI + Docker ECR CD** pipeline:
-- **CI job**: `ruff` lint + `mypy` type-check + `pytest`
-- **CD job** (only on `master`): `docker build` → `docker tag` → `aws ecr get-login-password` → `docker push`
+### Phase 1: ECR Migration
+1. **Retrieve New Account ID & Region**: Verify connectivity via `aws sts get-caller-identity`.
+2. **Create ECR Repository**: Create private repository `ocean-vortex-agent` in the new account.
+3. **Re-authenticate Docker**: Run `aws ecr get-login-password | docker login` for the new registry.
+4. **Push Docker Image**: Tag and push the current Docker image to the new ECR repository URI (`<new-account-id>.dkr.ecr.us-east-1.amazonaws.com/ocean-vortex-agent:latest`).
 
 ---
 
-### Docs
+### Phase 2: ECS Fargate Setup
+1. **IAM Role Creation**:
+   - Create **ECS Task Execution Role** (`ocean-vortex-execution-role`) with `AmazonECSTaskExecutionRolePolicy` and permissions to read Secrets Manager.
+   - Create **ECS Task Role** (`ocean-vortex-task-role`) allowing container runtime access to AWS Bedrock.
+2. **Secrets Manager Setup**:
+   - Store application secrets (DB credentials, Snowflake connectivity keys) in AWS Secrets Manager under name `ocean-vortex-secrets`.
+3. **ECS Cluster**:
+   - Create a Fargate ECS Cluster named `ocean-vortex-cluster`.
+4. **ECS Task Definition**:
+   - Define a task using Fargate, matching `0.5 vCPU` and `1 GB RAM`.
+   - Add container referencing the new ECR image URI.
+   - Map port `8000` (FastAPI web app).
+   - Inject environment variables from AWS Secrets Manager.
+5. **ECS Service**:
+   - Create service `ocean-vortex-service` running 1 task copy inside default VPC subnets.
 
-#### [NEW] docs/ecr-setup.md
+---
 
-Documents:
-- ECR repository URI
-- Local `docker login` command
-- Local `docker pull` command
-- How to update the ECS task definition
+### Phase 3: CI/CD & Verification
+1. **GitHub CD Secrets Update**:
+   - Document new AWS Account ID and ECS parameters for OIDC deployment.
+2. **Local Pull Verification**:
+   - Verify image pull works from the new registry.
+3. **FastAPI Web Service Verification**:
+   - Verify health check endpoint `/hello` on the ECS service.
 
 ## Verification Plan
 
 ### Automated
-- GitHub Actions workflow runs green on next push to `master`
+- Test suite runs green (`pytest`).
+- GitHub Actions workflow runs and successfully pushes to the new ECR registry.
 
 ### Manual
 ```bash
-# Confirm repo exists
-aws ecr describe-repositories --repository-names ocean-cortex-agent
+# Confirm repo and image in new account
+aws ecr describe-repositories --repository-names ocean-vortex-agent --region us-east-1
+aws ecr list-images --repository-name ocean-vortex-agent --region us-east-1
 
-# Confirm image was pushed
-aws ecr list-images --repository-name ocean-cortex-agent
-
-# Pull and run locally from ECR
-docker pull <account-id>.dkr.ecr.us-east-1.amazonaws.com/ocean-cortex-agent:latest
+# Verify ECS task runs
+aws ecs list-tasks --cluster ocean-vortex-cluster
 ```

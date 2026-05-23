@@ -4,7 +4,7 @@ This document defines the interface standards, design tokens, and endpoint struc
 
 ## Design Tokens (Oceanic Theme)
 
-Applications interacting with the OceanCortex Agent (such as the OceanCompass mobile app or stateroom portal) must adopt the following color palette to match the company identity:
+Applications interacting with the OceanVortex Agent (such as the OceanCompass mobile app or stateroom portal) must adopt the following color palette to match the company identity:
 
 | Token | Hex | Usage |
 |-------|-----|-------|

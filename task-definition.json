@@ -1,0 +1,84 @@
+{
+  "family": "ocean-vortex-task",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::952078552240:role/ocean-vortex-execution-role",
+  "taskRoleArn": "arn:aws:iam::952078552240:role/ocean-vortex-task-role",
+  "containerDefinitions": [
+    {
+      "name": "ocean-vortex-agent",
+      "image": "952078552240.dkr.ecr.us-east-1.amazonaws.com/ocean-vortex-agent:latest",
+      "cpu": 512,
+      "memory": 1024,
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "hostPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "secrets": [
+        {
+          "name": "POSTGRES_USER",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:952078552240:secret:ocean-vortex-secrets-D415v9:POSTGRES_USER::"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:952078552240:secret:ocean-vortex-secrets-D415v9:POSTGRES_PASSWORD::"
+        },
+        {
+          "name": "POSTGRES_DB",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:952078552240:secret:ocean-vortex-secrets-D415v9:POSTGRES_DB::"
+        },
+        {
+          "name": "DATABASE_URL",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:952078552240:secret:ocean-vortex-secrets-D415v9:DATABASE_URL::"
+        },
+        {
+          "name": "SNOWFLAKE_ACCOUNT",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:952078552240:secret:ocean-vortex-secrets-D415v9:SNOWFLAKE_ACCOUNT::"
+        },
+        {
+          "name": "SNOWFLAKE_USER",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:952078552240:secret:ocean-vortex-secrets-D415v9:SNOWFLAKE_USER::"
+        },
+        {
+          "name": "SNOWFLAKE_PASSWORD",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:952078552240:secret:ocean-vortex-secrets-D415v9:SNOWFLAKE_PASSWORD::"
+        },
+        {
+          "name": "SNOWFLAKE_DATABASE",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:952078552240:secret:ocean-vortex-secrets-D415v9:SNOWFLAKE_DATABASE::"
+        },
+        {
+          "name": "SNOWFLAKE_WAREHOUSE",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:952078552240:secret:ocean-vortex-secrets-D415v9:SNOWFLAKE_WAREHOUSE::"
+        }
+      ],
+      "environment": [
+        {
+          "name": "AWS_REGION",
+          "value": "us-east-1"
+        },
+        {
+          "name": "BEDROCK_MODEL_ID",
+          "value": "anthropic.claude-3-5-sonnet-20241022-v2:0"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/ocean-vortex-agent",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs",
+          "awslogs-create-group": "true"
+        }
+      }
+    }
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "512",
+  "memory": "1024"
+}

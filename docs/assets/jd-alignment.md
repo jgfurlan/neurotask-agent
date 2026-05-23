@@ -1,6 +1,6 @@
 # Carnival Corporation AI/ML Stack Alignment Analysis
 
-This document provides a strategic mapping between the tech stack specified in the **AI/ML Engineer Job Description** and the technical ecosystem and brand identity of **Carnival Corporation** (specifically their MedallionClass and smart-ship IoT framework). It also bridges this analysis with our Python-based **OceanCortex Agent** implementation.
+This document provides a strategic mapping between the tech stack specified in the **AI/ML Engineer Job Description** and the technical ecosystem and brand identity of **Carnival Corporation** (specifically their MedallionClass and smart-ship IoT framework). It also bridges this analysis with our Python-based **OceanVortex Agent** implementation.
 
 ---
 
@@ -69,7 +69,7 @@ graph TD
 
 ## 4. Pure Python Agentic Architecture
 
-Rather than a complex hybrid polyglot design (which would introduce latency, serialisation overhead, and deployment complexity to edge nodes on ships), the **OceanCortex Agent** is implemented as a 100% Python service utilizing FastAPI and LangGraph. This architecture delivers:
+Rather than a complex hybrid polyglot design (which would introduce latency, serialisation overhead, and deployment complexity to edge nodes on ships), the **OceanVortex Agent** is implemented as a 100% Python service utilizing FastAPI and LangGraph. This architecture delivers:
 
 - **Full JD Alignment:** Direct implementation of LangGraph and Python-native interfaces.
 - **Low-Latency Edge Execution:** The lightweight FastAPI backend runs within a single Docker container, ideal for shipboard computing nodes.
@@ -80,7 +80,7 @@ Rather than a complex hybrid polyglot design (which would introduce latency, ser
 ## 5. Next Steps & Implementation Status
 
 We have completed the core design pivot and renaming:
-1. **Renamed the Project:** Unified all naming and directories under `OceanCortex Agent` / `ocean_cortex_agent`.
+1. **Renamed the Project:** Unified all naming and directories under `OceanVortex Agent` / `ocean_vortex`.
 2. **FastAPI & LangGraph Engine:** Initialized the package structure with full tests passing.
 3. **Simulated Integrations:** Built the skeleton API endpoints representing `/ocean/chat`, `/ocean/guest/profile` (Guest Genome), and `/ocean/services/order`.
 

@@ -1,35 +1,36 @@
-# Walkthrough — ECR Setup
+# AWS Migration and Deployment Walkthrough
 
-Successfully configured AWS ECR repository, built and pushed initial Docker container image, and updated CI/CD pipeline.
+We have successfully migrated and set up the foundational cloud infrastructure on the new AWS account (`952078552240`).
 
-## Changes Made
+## What has been done
 
-### 1. AWS ECR Repository
-- Created private repo: `ocean-cortex-agent` (region: `us-east-1`, Account: `280429950087`).
-- Scan-on-push enabled.
-- Pushed initial `latest` image.
-- Image Digest: `sha256:710de75e550da1a6bbe061a35fabf617c25e0053b05b90c51e3dae45ee974b86`.
-
-### 2. CI/CD Workflow
-- Replaced Java Maven stub in [.github/workflows/ci.yml](file:///home/jgfurlan/dev/projects/neurotask-agent/.github/workflows/ci.yml).
-- New pipeline runs lint (Ruff), type checks (Mypy), and tests (Pytest).
-- Auto builds and pushes Docker image to ECR on push to `master`.
-
-### 3. Documentation
-- Created [docs/ecr-setup.md](file:///home/jgfurlan/dev/projects/neurotask-agent/docs/ecr-setup.md) detailing authentication, build/push commands, and ECS task parameters.
+1. **ECR Repository Creation**:
+   - Created private repository `ocean-vortex-agent` in the `us-east-1` region of the new AWS account.
+2. **ECS Fargate Cluster**:
+   - Created ECS Fargate cluster named `ocean-vortex-cluster`.
+3. **ECS IAM Roles**:
+   - Created **ECS Task Execution Role** (`ocean-vortex-execution-role`) and attached `AmazonECSTaskExecutionRolePolicy`.
+   - Created **ECS Task Role** (`ocean-vortex-task-role`) and attached `AmazonBedrockFullAccess` to permit AWS Bedrock model execution.
+4. **Documentation Sync**:
+   - Updated [docs/ecr-setup.md](file:///home/jgfurlan/dev/projects/ocean-vortex/docs/ecr-setup.md) with registry coordinates and command listings.
 
 ---
 
-## Validation Results
+## Next Steps for You
 
-- Verified repository contents using `aws ecr list-images`:
-```json
-{
-    "imageIds": [
-        {
-            "imageDigest": "sha256:710de75e550da1a6bbe061a35fabf617c25e0053b05b90c51e3dae45ee974b86",
-            "imageTag": "latest"
-        }
-    ]
-}
+Please run these commands in your local terminal to complete the ECR push:
+
+```bash
+# 1. Login to new ECR registry
+aws ecr get-login-password --region us-east-1 \
+  | sudo docker login --username AWS --password-stdin \
+    952078552240.dkr.ecr.us-east-1.amazonaws.com
+
+# 2. Build local Docker image
+sudo docker build -t ocean-vortex-agent:latest .
+
+# 3. Tag and push to new ECR
+ECR=952078552240.dkr.ecr.us-east-1.amazonaws.com/ocean-vortex-agent
+sudo docker tag ocean-vortex-agent:latest $ECR:latest
+sudo docker push $ECR:latest
 ```

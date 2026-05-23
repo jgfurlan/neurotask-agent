@@ -1,5 +1,5 @@
 [project]
-name = "ocean-cortex-agent"
+name = "ocean-vortex-agent"
 version = "0.1.0"
 description = "Autonomous multi-agent task orchestrator for Carnival OceanMedallion ecosystem powered by Snowflake Cortex AI and AWS Bedrock"
 readme = "README.md"

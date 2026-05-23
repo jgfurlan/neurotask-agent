@@ -1,4 +1,4 @@
-# Progress Tracker: OceanCortex Agent State
+# Progress Tracker: OceanVortex Agent State
 
 ## Current Project Phase
 **Phase 1: Medallion Agent Tracer Bullet** (May – Jun 2026)

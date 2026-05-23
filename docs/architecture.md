@@ -1,6 +1,6 @@
-# Architecture: OceanCortex Multi-Agent System
+# Architecture: OceanVortex Multi-Agent System
 
-This document outlines the architecture, coordination patterns, and data integration boundaries for the OceanCortex Agent.
+This document outlines the architecture, coordination patterns, and data integration boundaries for the OceanVortex Agent.
 
 ## System Topology
 

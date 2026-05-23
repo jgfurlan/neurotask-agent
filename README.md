@@ -1,4 +1,4 @@
-# OceanCortex Agent: Autonomous AI-Native Orchestrator
+# OceanVortex Agent: Autonomous AI-Native Orchestrator
 > **2026 Tech Stack:** Python 3.12+ | FastAPI | LangGraph | AWS Bedrock | Snowflake Cortex AI | Docker
 
 ![Python](https://img.shields.io/badge/Python-3.12%2B-blue?style=for-the-badge&logo=python&logoColor=white)
@@ -10,7 +10,7 @@
 
 > **Autonomous AI-Native Task Orchestration for Carnival Corporation's MedallionClass Ecosystem**
 
-**OceanCortex Agent** is a production-grade autonomous multi-agent system designed to explore the frontier of **Agentic AI** and **xIoT (Experience Internet of Things)** in the cruise industry. The platform acts as the intelligence layer for Carnival Corporation's smart-ships, processing guest spatial context and history ("Guest Genomics") from Snowflake Cortex AI and coordinating proactive stateroom and guest service responses using AWS Bedrock.
+**OceanVortex Agent** is a production-grade autonomous multi-agent system designed to explore the frontier of **Agentic AI** and **xIoT (Experience Internet of Things)** in the cruise industry. The platform acts as the intelligence layer for Carnival Corporation's smart-ships, processing guest spatial context and history ("Guest Genomics") from Snowflake Cortex AI and coordinating proactive stateroom and guest service responses using AWS Bedrock.
 
 ---
 
@@ -54,7 +54,7 @@ curl http://localhost:8000/hello
 ```
 **Response:**
 ```json
-{"message": "Hello from OceanCortex Python Agent"}
+{"message": "Hello from OceanVortex Python Agent"}
 ```
 
 #### Get Guest Profile
@@ -120,7 +120,7 @@ curl -X POST http://localhost:8000/ocean/chat \
 1. **Clone the repository:**
    ```bash
    git clone <repository-url>
-   cd neurotask-agent
+   cd ocean-vortex
    ```
 
 2. **Run using Docker Compose:**
