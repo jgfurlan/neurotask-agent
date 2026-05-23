@@ -56,7 +56,7 @@ Run this to create the secrets store for DB and Snowflake credentials:
 aws secretsmanager create-secret \
   --name ocean-vortex-secrets \
   --description "OceanVortex Application Secrets" \
-  --secret-string '{"POSTGRES_USER":"jgfurlan","POSTGRES_PASSWORD":"secure_password_here","POSTGRES_DB":"neurotask","DATABASE_URL":"","SNOWFLAKE_ACCOUNT":"","SNOWFLAKE_USER":"","SNOWFLAKE_PASSWORD":"","SNOWFLAKE_DATABASE":"","SNOWFLAKE_WAREHOUSE":""}' \
+  --secret-string '{"POSTGRES_USER":"jgfurlan","POSTGRES_PASSWORD":"secure_password_here","POSTGRES_DB":"ocean_vortex","DATABASE_URL":"","SNOWFLAKE_ACCOUNT":"","SNOWFLAKE_USER":"","SNOWFLAKE_PASSWORD":"","SNOWFLAKE_DATABASE":"","SNOWFLAKE_WAREHOUSE":""}' \
   --region us-east-1
 ```
 

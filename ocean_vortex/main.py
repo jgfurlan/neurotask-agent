@@ -3,7 +3,7 @@ from uuid import UUID
 from fastapi import FastAPI, HTTPException, status
 from langchain_core.messages import HumanMessage
 
-from ocean_vortex.agent import AgentState, ocean_cortex_graph
+from ocean_vortex.agent import AgentState, ocean_vortex_graph
 from ocean_vortex.db import MOCK_GUEST_DATABASE
 from ocean_vortex.dto import (
     ChatRequest,
@@ -59,7 +59,7 @@ async def chat(request: ChatRequest) -> ChatResponse:
         "context": {}
     }
     
-    result = ocean_cortex_graph.invoke(inputs)
+    result = ocean_vortex_graph.invoke(inputs)
     final_content = result["messages"][-1].content
     final_output = final_content if isinstance(final_content, str) else str(final_content)
     

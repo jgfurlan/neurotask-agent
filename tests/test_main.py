@@ -118,7 +118,8 @@ def test_mock_chat_bedrock_converse_routing() -> None:
     # Test fallback chit-chat simulation
     res_greeting = model.invoke([HumanMessage(content="Hello there")])
     assert not res_greeting.tool_calls
-    assert "hello" in res_greeting.content.lower() or "help" in res_greeting.content.lower()
+    content = str(res_greeting.content).lower()
+    assert "hello" in content or "help" in content
 
 
 def test_load_context_node_success() -> None:
@@ -166,7 +167,7 @@ def test_load_context_node_not_found() -> None:
 def test_graph_routing_guest_service() -> None:
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.agent import AgentState, ocean_cortex_graph
+    from ocean_vortex.agent import AgentState, ocean_vortex_graph
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
     inputs: AgentState = {
@@ -176,7 +177,7 @@ def test_graph_routing_guest_service() -> None:
         "context": {}
     }
 
-    result = ocean_cortex_graph.invoke(inputs)
+    result = ocean_vortex_graph.invoke(inputs)
     assert len(result["messages"]) >= 3
     final_msg = result["messages"][-1].content
     assert "Mojito" in final_msg
@@ -186,7 +187,7 @@ def test_graph_routing_guest_service() -> None:
 def test_graph_routing_anticipatory_advisor() -> None:
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.agent import AgentState, ocean_cortex_graph
+    from ocean_vortex.agent import AgentState, ocean_vortex_graph
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
     inputs: AgentState = {
@@ -196,7 +197,7 @@ def test_graph_routing_anticipatory_advisor() -> None:
         "context": {}
     }
 
-    result = ocean_cortex_graph.invoke(inputs)
+    result = ocean_vortex_graph.invoke(inputs)
     assert len(result["messages"]) >= 3
     final_msg = result["messages"][-1].content
     assert "Snorkeling" in final_msg
@@ -206,7 +207,7 @@ def test_graph_routing_anticipatory_advisor() -> None:
 def test_graph_routing_chit_chat() -> None:
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.agent import AgentState, ocean_cortex_graph
+    from ocean_vortex.agent import AgentState, ocean_vortex_graph
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
     inputs: AgentState = {
@@ -216,7 +217,7 @@ def test_graph_routing_chit_chat() -> None:
         "context": {}
     }
 
-    result = ocean_cortex_graph.invoke(inputs)
+    result = ocean_vortex_graph.invoke(inputs)
     # load_context adds no message, supervisor adds the chit-chat AIMessage → 2 total
     assert len(result["messages"]) == 2
     final_msg = result["messages"][-1].content

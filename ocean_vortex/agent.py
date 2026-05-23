@@ -291,4 +291,4 @@ workflow.add_conditional_edges(
 workflow.add_edge("guest_service", END)
 workflow.add_edge("anticipatory_advisor", END)
 
-ocean_cortex_graph = workflow.compile()
+ocean_vortex_graph = workflow.compile()
