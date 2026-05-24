@@ -4,8 +4,8 @@ from uuid import UUID
 
 from fastapi import HTTPException, status
 
-from ocean_vortex.providers.db import MOCK_GUEST_DATABASE
-from ocean_vortex.core.models import GuestPreferences, GuestProfileResponse
+from ..core.models import GuestPreferences, GuestProfileResponse
+from .db import MOCK_GUEST_DATABASE
 
 
 class SnowflakeClientProtocol(Protocol):
