@@ -24,6 +24,18 @@
 
 ---
 
+## Business Alignment: Carnival & JD Tech Stack Mapping
+
+The architecture implements the core technologies specified in the **Carnival AI/ML JD** and aligns perfectly with the Carnival **MedallionClass / xIoT ecosystem**:
+
+*   **LangGraph Orchestrator:** Implements autonomous, multi-agent collaboration (satisfying JD requirements for LangGraph/CrewAI/AutoGen). It coordinates passenger requests between specialized worker nodes.
+*   **Shipboard Edge (Offline-First):** Simulates the localized edge compute nodes required on Carnival vessels. Fast API and Couchbase handle latency-sensitive requests natively on ship edge containers.
+*   **Cloud Backend (Snowflake Cortex AI & AWS Bedrock):** Simulates the onshore data warehouse. Processes the **Guest Genome** and runs enterprise-grade LLM inference over secure VPCs, ensuring PII safety.
+*   **Human-in-the-Loop & RLVR:** The `verifier_node` satisfies the Ascendion & Carnival safety requirements, ensuring all AI-driven physical actions (like food delivery or excursion booking) pass deterministic safety rules before execution.
+*   **Operational Footprint (Neptune):** Goes beyond guest interactions by integrating Neptune environmental compliance and "Less Left Over" food predictive ML into the agent topology.
+
+---
+
 ## Architectural Diagrams
 
 ### System Topology

@@ -7,7 +7,7 @@ Request: {
 
 State: {
   label: "AgentState"
-  content: "guest_id: String\nmessages: List\ncontext: Map"
+  content: "guest_id: String\nmessages: List\ncontext: Map\nreward: Float"
 }
 
 Flow: {
@@ -17,7 +17,8 @@ Flow: {
   DB: "Snowflake.get_guest_profile"
   Profile: "GuestProfileResponse"
   Sup: "Supervisor Node"
-  LLM: "LLM Classification"
+  Worker: "Guest Service / Advisor Node"
+  Verifier: "Verifier Node (RLVR)"
 
   API -> Init
   Init -> Load
@@ -25,6 +26,8 @@ Flow: {
   DB -> Profile
   Profile -> Load
   Load -> Sup
-  Sup -> LLM
-  LLM -> Sup: "Tool Call / Routing"
+  Sup -> Worker: "Delegate Task"
+  Worker -> Verifier: "Draft Output & Tool Calls"
+  Verifier -> Sup: "Reward Signal & Audit"
+  Sup -> API: "Return Final Response"
 }

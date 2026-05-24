@@ -1,12 +1,12 @@
 direction: right
 
 # Actors
-Guest: Guest / OceanCompass App {
+Guest: Flutter App / Zoe Voice UI {
   shape: person
 }
 
-# Backend System
-OceanVortex: OceanVortex Agent Service {
+# Shipboard Edge Environment (Offline-First)
+Edge: Shipboard Edge (ECS & Couchbase) {
   API: FastAPI Backend {
     /ocean/chat: "POST /chat"
     /ocean/guest/profile: "GET /profile"
@@ -20,33 +20,45 @@ OceanVortex: OceanVortex Agent Service {
     Workers: {
       GuestService: Guest Service Worker
       Advisor: Anticipatory Advisor
+      Verifier: Verifier Node (RLVR) {
+        shape: diamond
+      }
     }
   }
 }
 
-# Providers
-Snowflake: Snowflake Cortex AI {
-  shape: cylinder
-  Genomics: "Guest Genomics DB"
-  Telemetry: "RLVR Metrics"
-}
+# Cloud Providers (Sync)
+Cloud: Cloud Environment (Snowflake & AWS) {
+  Snowflake: Snowflake Cortex AI {
+    shape: cylinder
+    Genomics: "Guest Genomics DB"
+    Telemetry: "RLVR Metrics"
+  }
 
-AWSBedrock: AWS Bedrock {
-  shape: cloud
-  ClaudeSonnet: "Claude 3.5 Sonnet"
-  ClaudeHaiku: "Claude 3.5 Haiku"
+  AWSBedrock: AWS Bedrock {
+    shape: cloud
+    ClaudeSonnet: "Claude 3.5 Sonnet"
+    ClaudeHaiku: "Claude 3.5 Haiku"
+  }
 }
 
 # Connections
-Guest -> OceanVortex.API: "REST / WebSocket"
-OceanVortex.API -> OceanVortex.Orchestrator.Supervisor: "Invoke Graph"
+Guest -> Edge.API: "REST / WebSocket"
+Edge.API -> Edge.Orchestrator.Supervisor: "Invoke Graph"
 
-OceanVortex.Orchestrator.Supervisor -> OceanVortex.Orchestrator.Workers.GuestService: "Delegate"
-OceanVortex.Orchestrator.Supervisor -> OceanVortex.Orchestrator.Workers.Advisor: "Delegate"
+Edge.Orchestrator.Supervisor -> Edge.Orchestrator.Workers.GuestService: "Delegate"
+Edge.Orchestrator.Supervisor -> Edge.Orchestrator.Workers.Advisor: "Delegate"
 
-OceanVortex.Orchestrator.Workers.GuestService -> Snowflake: "Query/Mutate"
-OceanVortex.Orchestrator.Workers.Advisor -> Snowflake: "Vector Search / RAG"
+Edge.Orchestrator.Workers.GuestService -> Edge.Orchestrator.Workers.Verifier: "Draft Action"
+Edge.Orchestrator.Workers.Advisor -> Edge.Orchestrator.Workers.Verifier: "Draft Action"
+Edge.Orchestrator.Workers.Verifier -> Edge.Orchestrator.Supervisor: "Reward / Audit Passed"
 
-OceanVortex.Orchestrator.Supervisor -> AWSBedrock: "Reasoning"
-OceanVortex.Orchestrator.Workers.GuestService -> AWSBedrock: "Execution"
-OceanVortex.Orchestrator.Workers.Advisor -> AWSBedrock: "Generation"
+# Edge to Cloud Sync
+Edge -> Cloud: "Couchbase Sync Gateway (Delta-Sync)"
+
+Edge.Orchestrator.Workers.GuestService -> Cloud.Snowflake: "Query/Mutate (Sync)"
+Edge.Orchestrator.Workers.Advisor -> Cloud.Snowflake: "Vector Search / RAG"
+
+Edge.Orchestrator.Supervisor -> Cloud.AWSBedrock: "Reasoning"
+Edge.Orchestrator.Workers.GuestService -> Cloud.AWSBedrock: "Execution"
+Edge.Orchestrator.Workers.Advisor -> Cloud.AWSBedrock: "Generation"

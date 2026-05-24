@@ -1,23 +1,27 @@
 direction: right
 
-Guest: Guest {
+Guest: Guest / Crew Member {
   shape: person
 }
 
-System: OceanVortex {
+System: OceanVortex & Neptune {
   UC1: "Sync Identity & Profile"
   UC2: "Order OceanNow Delivery"
   UC3: "Get Proactive Recommendations"
   UC4: "Book Specialty Dining"
   UC5: "Request Shore Excursion"
+  UC6: "Neptune Environmental Compliance"
+  UC7: "Less Left Over Food Analytics"
 }
 
-Snowflake: Snowflake {
-  shape: cylinder
-}
+Cloud: Cloud Backend {
+  Snowflake: Snowflake Cortex AI {
+    shape: cylinder
+  }
 
-Bedrock: AWS Bedrock {
-  shape: cloud
+  Bedrock: AWS Bedrock {
+    shape: cloud
+  }
 }
 
 Guest -> System.UC1
@@ -26,9 +30,16 @@ Guest -> System.UC3
 Guest -> System.UC4
 Guest -> System.UC5
 
-System.UC1 -> Snowflake: "Fetch Genomics"
-System.UC2 -> Snowflake: "Update Order State"
-System.UC3 -> Snowflake: "RAG Context"
-System.UC3 -> Bedrock: "LLM Inference"
+System.UC1 -> Cloud.Snowflake: "Fetch Genomics"
+System.UC2 -> Cloud.Snowflake: "Update Order State"
+System.UC3 -> Cloud.Snowflake: "RAG Context"
+System.UC3 -> Cloud.Bedrock: "LLM Inference"
 
-System.UC2 -> Bedrock: "Intent Analysis"
+System.UC2 -> Cloud.Bedrock: "Intent Analysis"
+
+# New Operational Use Cases
+System.UC6 -> Cloud.Snowflake: "Log Navigational Telemetry"
+System.UC6 -> Cloud.Bedrock: "Safety Anomaly Detection"
+
+System.UC7 -> Cloud.Snowflake: "Analyze Food Waste Data"
+System.UC7 -> Cloud.Bedrock: "Predictive Inventory ML"
