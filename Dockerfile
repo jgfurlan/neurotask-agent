@@ -10,6 +10,21 @@ COPY pyproject.toml .
 COPY ocean_vortex/ ./ocean_vortex/
 RUN pip install --no-cache-dir --user .
 
+FROM python:3.12-slim AS test
+
+WORKDIR /app
+
+COPY --from=builder /root/.local /root/.local
+ENV PATH=/root/.local/bin:$PATH
+
+COPY pyproject.toml .
+COPY ocean_vortex/ ./ocean_vortex/
+COPY tests/ ./tests/
+
+RUN pip install --no-cache-dir --user .[dev]
+
+CMD ["pytest"]
+
 FROM python:3.12-slim AS runner
 
 WORKDIR /app

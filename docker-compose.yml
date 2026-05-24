@@ -12,9 +12,33 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: runner
     ports:
       - "8000:8000"
     environment:
       DATABASE_URL: ${DATABASE_URL:-postgresql://jgfurlan:password@db:5432/ocean_vortex}
+      USE_MOCK_SNOWFLAKE: ${USE_MOCK_SNOWFLAKE:-true}
+      USE_MOCK_BEDROCK: ${USE_MOCK_BEDROCK:-true}
+    volumes:
+      - ./ocean_vortex:/app/ocean_vortex
+    command: uvicorn ocean_vortex.main:app --host 0.0.0.0 --port 8000 --reload
+    depends_on:
+      - db
+
+  test:
+    profiles:
+      - test
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-postgresql://jgfurlan:password@db:5432/ocean_vortex}
+      USE_MOCK_SNOWFLAKE: "true"
+      USE_MOCK_BEDROCK: "true"
+    volumes:
+      - ./ocean_vortex:/app/ocean_vortex
+      - ./tests:/app/tests
+    command: sh -c "ruff check . && mypy . && pytest"
     depends_on:
       - db
