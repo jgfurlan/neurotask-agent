@@ -1,0 +1,30 @@
+direction: down
+
+Request: {
+  label: "ChatRequest"
+  content: "guest_id: UUID\nmessage: String\nlocation: LocationContext"
+}
+
+State: {
+  label: "AgentState"
+  content: "guest_id: String\nmessages: List\ncontext: Map"
+}
+
+Flow: {
+  API: "FastAPI Endpoint"
+  Init: "Initialize State"
+  Load: "load_context_node"
+  DB: "Snowflake.get_guest_profile"
+  Profile: "GuestProfileResponse"
+  Sup: "Supervisor Node"
+  LLM: "LLM Classification"
+
+  API -> Init
+  Init -> Load
+  Load -> DB
+  DB -> Profile
+  Profile -> Load
+  Load -> Sup
+  Sup -> LLM
+  LLM -> Sup: "Tool Call / Routing"
+}

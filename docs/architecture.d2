@@ -1,0 +1,52 @@
+direction: right
+
+# Actors
+Guest: Guest / OceanCompass App {
+  shape: person
+}
+
+# Backend System
+OceanVortex: OceanVortex Agent Service {
+  API: FastAPI Backend {
+    /ocean/chat: "POST /chat"
+    /ocean/guest/profile: "GET /profile"
+  }
+
+  Orchestrator: LangGraph Multi-Agent {
+    Supervisor: Supervisor Node {
+      shape: circle
+    }
+    
+    Workers: {
+      GuestService: Guest Service Worker
+      Advisor: Anticipatory Advisor
+    }
+  }
+}
+
+# Providers
+Snowflake: Snowflake Cortex AI {
+  shape: cylinder
+  Genomics: "Guest Genomics DB"
+  Telemetry: "RLVR Metrics"
+}
+
+AWSBedrock: AWS Bedrock {
+  shape: cloud
+  ClaudeSonnet: "Claude 3.5 Sonnet"
+  ClaudeHaiku: "Claude 3.5 Haiku"
+}
+
+# Connections
+Guest -> OceanVortex.API: "REST / WebSocket"
+OceanVortex.API -> OceanVortex.Orchestrator.Supervisor: "Invoke Graph"
+
+OceanVortex.Orchestrator.Supervisor -> OceanVortex.Orchestrator.Workers.GuestService: "Delegate"
+OceanVortex.Orchestrator.Supervisor -> OceanVortex.Orchestrator.Workers.Advisor: "Delegate"
+
+OceanVortex.Orchestrator.Workers.GuestService -> Snowflake: "Query/Mutate"
+OceanVortex.Orchestrator.Workers.Advisor -> Snowflake: "Vector Search / RAG"
+
+OceanVortex.Orchestrator.Supervisor -> AWSBedrock: "Reasoning"
+OceanVortex.Orchestrator.Workers.GuestService -> AWSBedrock: "Execution"
+OceanVortex.Orchestrator.Workers.Advisor -> AWSBedrock: "Generation"

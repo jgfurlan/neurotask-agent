@@ -24,6 +24,19 @@
 
 ---
 
+## Architectural Diagrams
+
+### System Topology
+![System Architecture](architecture.svg)
+
+### Guest Experience & Use Cases
+![Use Cases](use_cases.svg)
+
+### Data Flow & State Management
+![Data Flow](data_flow.svg)
+
+---
+
 ## API Documentation
 
 ### Interactive Documentation

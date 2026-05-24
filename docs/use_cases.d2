@@ -1,0 +1,34 @@
+direction: right
+
+Guest: Guest {
+  shape: person
+}
+
+System: OceanVortex {
+  UC1: "Sync Identity & Profile"
+  UC2: "Order OceanNow Delivery"
+  UC3: "Get Proactive Recommendations"
+  UC4: "Book Specialty Dining"
+  UC5: "Request Shore Excursion"
+}
+
+Snowflake: Snowflake {
+  shape: cylinder
+}
+
+Bedrock: AWS Bedrock {
+  shape: cloud
+}
+
+Guest -> System.UC1
+Guest -> System.UC2
+Guest -> System.UC3
+Guest -> System.UC4
+Guest -> System.UC5
+
+System.UC1 -> Snowflake: "Fetch Genomics"
+System.UC2 -> Snowflake: "Update Order State"
+System.UC3 -> Snowflake: "RAG Context"
+System.UC3 -> Bedrock: "LLM Inference"
+
+System.UC2 -> Bedrock: "Intent Analysis"
