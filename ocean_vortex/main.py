@@ -1,19 +1,18 @@
 from uuid import UUID
 
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI
 from langchain_core.messages import HumanMessage
 
 from ocean_vortex.agent import AgentState, ocean_vortex_graph
-from ocean_vortex.db import MOCK_GUEST_DATABASE
 from ocean_vortex.dto import (
     ChatRequest,
     ChatResponse,
-    GuestPreferences,
     GuestProfileResponse,
     ServiceOrderRequest,
     ServiceOrderResponse,
     SuggestedAction,
 )
+from ocean_vortex.snowflake_client import get_snowflake_client
 
 app = FastAPI(
     title="OceanVortex Agent Service",
@@ -34,19 +33,8 @@ async def read_hello() -> dict[str, str]:
 @app.get("/ocean/guest/profile", response_model=GuestProfileResponse)
 async def get_guest_profile(guest_id: UUID) -> GuestProfileResponse:
     """Retrieves guest profile genome context matching a specific OceanMedallion ID."""
-    if guest_id not in MOCK_GUEST_DATABASE:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Guest profile with ID {guest_id} not found"
-        )
-    
-    data = MOCK_GUEST_DATABASE[guest_id]
-    return GuestProfileResponse(
-        guest_id=guest_id,
-        full_name=data["full_name"],
-        medallion_status=data["medallion_status"],
-        preferences=GuestPreferences(**data["preferences"])
-    )
+    client = get_snowflake_client()
+    return client.get_guest_profile(guest_id)
 
 @app.post("/ocean/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest) -> ChatResponse:

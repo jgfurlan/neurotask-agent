@@ -13,8 +13,7 @@ from langgraph.graph import END, StateGraph
 from langgraph.graph.message import add_messages
 from pydantic import PrivateAttr
 
-from ocean_vortex.db import MOCK_GUEST_DATABASE
-from ocean_vortex.dto import GuestPreferences, GuestProfileResponse
+from ocean_vortex.snowflake_client import get_snowflake_client
 
 
 class AgentState(TypedDict):
@@ -45,19 +44,8 @@ def load_context_node(state: AgentState) -> dict[str, Any]:
             detail="Invalid UUID format for Guest ID",
         ) from None
 
-    if guest_id not in MOCK_GUEST_DATABASE:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Guest profile with ID {guest_id} not found",
-        )
-
-    data = MOCK_GUEST_DATABASE[guest_id]
-    profile = GuestProfileResponse(
-        guest_id=guest_id,
-        full_name=data["full_name"],
-        medallion_status=data["medallion_status"],
-        preferences=GuestPreferences(**data["preferences"]),
-    )
+    client = get_snowflake_client()
+    profile = client.get_guest_profile(guest_id)
 
     return {
         "context": {
