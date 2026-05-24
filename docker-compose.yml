@@ -19,6 +19,8 @@ services:
       DATABASE_URL: ${DATABASE_URL:-postgresql://jgfurlan:password@db:5432/ocean_vortex}
       USE_MOCK_SNOWFLAKE: ${USE_MOCK_SNOWFLAKE:-true}
       USE_MOCK_BEDROCK: ${USE_MOCK_BEDROCK:-true}
+      LANGCHAIN_TRACING_V2: "true"
+      LANGCHAIN_API_KEY: ${LANGCHAIN_API_KEY:-mock_key}
     volumes:
       - ./src:/app/src
     command: uvicorn ocean_vortex.api.main:app --host 0.0.0.0 --port 8000 --reload
@@ -36,6 +38,8 @@ services:
       DATABASE_URL: ${DATABASE_URL:-postgresql://jgfurlan:password@db:5432/ocean_vortex}
       USE_MOCK_SNOWFLAKE: "true"
       USE_MOCK_BEDROCK: "true"
+      LANGCHAIN_TRACING_V2: "true"
+      LANGCHAIN_API_KEY: "mock_test_key"
     volumes:
       - ./src:/app/src
       - ./tests:/app/tests

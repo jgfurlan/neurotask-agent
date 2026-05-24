@@ -1,3 +1,139 @@
+# Core Migration Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** Migrate core domain logic and models to the new layout.
+
+**Architecture:** Move DTOs to `core/models.py` and agent logic to `core/agent.py`, updating internal imports to maintain functionality.
+
+**Tech Stack:** Python, LangGraph, Pydantic
+
+---
+
+### Task 1: Migrate DTOs to Models
+
+**Files:**
+- Create: `src/ocean_vortex/core/models.py`
+- Delete: `ocean_vortex/dto.py`
+
+- [ ] **Step 1: Create models.py with content from dto.py**
+
+```python
+from typing import Any
+from uuid import UUID
+
+from pydantic import BaseModel, Field
+
+
+class LocationContext(BaseModel):
+    deck: int = Field(..., description="Deck level of the guest location context")
+    zone: str = Field(..., description="Zone name of the guest location context")
+    timestamp: str = Field(..., description="ISO 8601 timestamp of the reading")
+
+
+class ChatRequest(BaseModel):
+    guest_id: UUID = Field(
+        ..., description="Unique ID corresponding to the guest's OceanMedallion"
+    )
+    message: str = Field(
+        ..., description="Speech-to-text input or typed message from the passenger"
+    )
+    location_context: LocationContext | None = Field(
+        None, description="Optional real-time IoT spatial context"
+    )
+
+
+class SuggestedAction(BaseModel):
+    label: str = Field(..., description="Display label for the interactive button in UI")
+    action_type: str = Field(
+        ..., description="Action ID to map to a client-side route/action"
+    )
+    params: dict[str, Any] = Field(
+        default_factory=dict,
+        description="Metadata parameters for the action execution",
+    )
+
+
+class ChatResponse(BaseModel):
+    response: str = Field(..., description="AI agent response text")
+    suggested_actions: list[SuggestedAction] = Field(
+        default_factory=list, description="Proactive interface actions"
+    )
+
+
+class GuestPreferences(BaseModel):
+    dietary_restrictions: list[str] = Field(
+        default_factory=list, description="E.g., gluten-free, vegan"
+    )
+    beverage_preferences: list[str] = Field(
+        default_factory=list, description="List of favorite beverages"
+    )
+    activity_interests: list[str] = Field(
+        default_factory=list, description="Excursion or event types of interest"
+    )
+
+
+class GuestProfileResponse(BaseModel):
+    guest_id: UUID = Field(
+        ..., description="Unique identifier matching the OceanMedallion digital twin"
+    )
+    full_name: str = Field(..., description="Full name of the passenger")
+    medallion_status: str = Field(..., description="Tier status, e.g., Gold, Ruby, Platinum")
+    preferences: GuestPreferences = Field(
+        ..., description="Dynamic guest genomics preference mappings"
+    )
+
+
+class DeliverToCoordinates(BaseModel):
+    deck: int = Field(..., description="Ship deck level")
+    zone: str = Field(..., description="Specific zone name")
+    latitude: float = Field(..., description="Simulated coordinates or indoor grid latitude")
+    longitude: float = Field(..., description="Simulated coordinates or indoor grid longitude")
+
+
+class ServiceOrderRequest(BaseModel):
+    guest_id: UUID = Field(..., description="Ordering guest's ID")
+    item_id: str = Field(..., description="POS identifier of the ordered item")
+    item_name: str = Field(..., description="Item name")
+    quantity: int = Field(..., description="Quantity to purchase")
+    deliver_to_coordinates: DeliverToCoordinates = Field(
+        ..., description="Delivery coordinate target"
+    )
+
+
+class ServiceOrderResponse(BaseModel):
+    order_id: str = Field(
+        ..., description="Unique identifier of the POS order transaction"
+    )
+    status: str = Field(
+        ..., description="Order lifecycle status, e.g., dispatched, pending"
+    )
+    estimated_delivery_minutes: int = Field(
+        ..., description="Estimated delivery timeframe in minutes"
+    )
+    message: str = Field(..., description="Response message for screen layout feedback")
+```
+
+- [ ] **Step 2: Delete old dto.py**
+
+Run: `rm ocean_vortex/dto.py`
+
+- [ ] **Step 3: Commit migration of models**
+
+```bash
+git add src/ocean_vortex/core/models.py ocean_vortex/dto.py
+git commit -m "refactor: migrate DTOs to src/ocean_vortex/core/models.py"
+```
+
+### Task 2: Migrate Agent Logic
+
+**Files:**
+- Create: `src/ocean_vortex/core/agent.py`
+- Delete: `ocean_vortex/agent.py`
+
+- [ ] **Step 1: Create agent.py with content from old agent.py and update imports**
+
+```python
 import os
 from collections.abc import Sequence
 from typing import Annotated, Any, TypedDict
@@ -13,7 +149,7 @@ from langgraph.graph import END, StateGraph
 from langgraph.graph.message import add_messages
 from pydantic import PrivateAttr
 
-from ..providers.snowflake import get_snowflake_client
+from ocean_vortex.snowflake_client import get_snowflake_client
 
 
 class AgentState(TypedDict):
@@ -227,16 +363,7 @@ def guest_service_node(state: AgentState) -> dict[str, Any]:
 
 
 def anticipatory_advisor_node(state: AgentState) -> dict[str, Any]:
-    """Worker node that handles excursion/activity recommendations using CrewAI."""
-    try:
-        from crewai import Agent, Crew, Process, Task
-    except ImportError:
-        pass
-        
-    from langchain_core.tools import tool
-
-    from ..providers.rag import rag_pipeline
-    
+    """Worker node that handles excursion/activity recommendations."""
     last_message = state["messages"][-1]
     excursion_name = "general activities"
 
@@ -247,73 +374,16 @@ def anticipatory_advisor_node(state: AgentState) -> dict[str, Any]:
             or args.get("activity_query")
             or "general activities"
         )
-        
-    profile = state["context"].get("guest_profile")
-    guest_context = f"Guest has interests in {', '.join(profile.preferences.activity_interests)}." if profile else ""
-
-    # Define tools for the Crew
-    @tool("Search Carnival Policies")
-    def search_carnival_policies(query: str) -> str:
-        """Searches the Carnival Cortex AI database for policies."""
-        docs = rag_pipeline.retrieve_context(query)
-        return "\n\n".join([f"Source: {doc.metadata.get('source')}\nContent: {doc.page_content}" for doc in docs])
-
-    llm = get_chat_model()
-    
-    # If we are using the Mock LLM, bypass CrewAI since the mock can't follow ReAct reasoning
-    if isinstance(llm, MockChatBedrockConverse):
-        final_answer = (
-            f"I have generated your excursion recommendation "
-            f"details for {excursion_name}."
-        )
-    else:
-        # 1. Data Analyst Agent
-        data_analyst = Agent(
-            role="Data Analyst",
-            goal="Analyze the guest's profile and retrieve relevant Carnival policies.",
-            backstory="You are an expert analyst for Carnival Corporation, querying Snowflake Cortex AI.",
-            verbose=True,
-            allow_delegation=False,
-            tools=[search_carnival_policies],
-            llm=llm
-        )
-
-        # 2. Hospitality Expert Agent
-        hospitality_expert = Agent(
-            role="Hospitality Expert",
-            goal="Draft a highly personalized recommendation adhering to White Star Service standards.",
-            backstory="You are a Carnival Corporation concierge expert, knowledgeable in Culture Essentials.",
-            verbose=True,
-            allow_delegation=False,
-            llm=llm
-        )
-
-        # Tasks
-        analysis_task = Task(
-            description=f"Analyze policy for {excursion_name}. {guest_context} Use the search tool to find safety and environmental rules.",
-            expected_output="A summary of relevant policies and guest compatibility.",
-            agent=data_analyst
-        )
-
-        drafting_task = Task(
-            description=f"Using the analysis, write a recommendation to the guest for {excursion_name}. Follow White Star Service standards.",
-            expected_output="A refined, charismatic response directly addressing the guest.",
-            agent=hospitality_expert
-        )
-
-        crew = Crew(
-            agents=[data_analyst, hospitality_expert],
-            tasks=[analysis_task, drafting_task],
-            process=Process.sequential
-        )
-        
-        result = crew.kickoff()
-        final_answer = str(result)
 
     return {
         "next_node": END,
         "messages": [
-            AIMessage(content=final_answer)
+            AIMessage(
+                content=(
+                    f"I have generated your excursion recommendation "
+                    f"details for {excursion_name}."
+                )
+            )
         ],
     }
 
@@ -346,3 +416,82 @@ workflow.add_edge("guest_service", END)
 workflow.add_edge("anticipatory_advisor", END)
 
 ocean_vortex_graph = workflow.compile()
+```
+
+- [ ] **Step 2: Delete old agent.py**
+
+Run: `rm ocean_vortex/agent.py`
+
+- [ ] **Step 3: Commit migration of agent logic**
+
+```bash
+git add src/ocean_vortex/core/agent.py ocean_vortex/agent.py
+git commit -m "refactor: migrate agent logic to src/ocean_vortex/core/agent.py"
+```
+
+### Task 3: Update snowflake_client.py Imports
+
+**Files:**
+- Modify: `ocean_vortex/snowflake_client.py`
+
+- [ ] **Step 1: Update imports from ocean_vortex.dto to ocean_vortex.core.models**
+
+```python
+<<<<
+from ocean_vortex.dto import GuestPreferences, GuestProfileResponse
+====
+from ocean_vortex.core.models import GuestPreferences, GuestProfileResponse
+>>>>
+```
+
+- [ ] **Step 2: Commit changes to snowflake_client.py**
+
+```bash
+git add ocean_vortex/snowflake_client.py
+git commit -m "refactor: update snowflake_client imports for core migration"
+```
+
+### Task 4: Update main.py Imports
+
+**Files:**
+- Modify: `ocean_vortex/main.py`
+
+- [ ] **Step 1: Update imports from ocean_vortex.agent and ocean_vortex.dto**
+
+```python
+<<<<
+from ocean_vortex.agent import AgentState, ocean_vortex_graph
+from ocean_vortex.dto import (
+    ChatRequest,
+    ChatResponse,
+    GuestProfileResponse,
+    ServiceOrderRequest,
+    ServiceOrderResponse,
+    SuggestedAction,
+)
+====
+from ocean_vortex.core.agent import AgentState, ocean_vortex_graph
+from ocean_vortex.core.models import (
+    ChatRequest,
+    ChatResponse,
+    GuestProfileResponse,
+    ServiceOrderRequest,
+    ServiceOrderResponse,
+    SuggestedAction,
+)
+>>>>
+```
+
+- [ ] **Step 2: Commit changes to main.py**
+
+```bash
+git add ocean_vortex/main.py
+git commit -m "refactor: update main.py imports for core migration"
+```
+
+### Task 5: Verify Changes
+
+- [ ] **Step 1: Run pytest to ensure everything still works**
+
+Run: `pytest tests/test_main.py`
+Expected: PASS
