@@ -44,7 +44,8 @@ async def chat(request: ChatRequest) -> ChatResponse:
         "guest_id": str(request.guest_id),
         "messages": [HumanMessage(content=request.message)],
         "next_node": "",
-        "context": {}
+        "context": {},
+        "reward": 0.0
     }
     
     result = ocean_vortex_graph.invoke(inputs)

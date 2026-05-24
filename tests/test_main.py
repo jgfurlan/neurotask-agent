@@ -132,7 +132,8 @@ def test_load_context_node_success() -> None:
         "guest_id": guest_id,
         "messages": [HumanMessage(content="Test message")],
         "next_node": "",
-        "context": {}
+        "context": {},
+        "reward": 0.0
     }
 
     result = load_context_node(state)
@@ -155,7 +156,8 @@ def test_load_context_node_not_found() -> None:
         "guest_id": guest_id,
         "messages": [HumanMessage(content="Test message")],
         "next_node": "",
-        "context": {}
+        "context": {},
+        "reward": 0.0
     }
 
     with pytest.raises(HTTPException) as exc_info:
@@ -174,7 +176,8 @@ def test_graph_routing_guest_service() -> None:
         "guest_id": guest_id,
         "messages": [HumanMessage(content="Order a Mojito drink for me")],
         "next_node": "",
-        "context": {}
+        "context": {},
+        "reward": 0.0
     }
 
     result = ocean_vortex_graph.invoke(inputs)
@@ -194,7 +197,8 @@ def test_graph_routing_anticipatory_advisor() -> None:
         "guest_id": guest_id,
         "messages": [HumanMessage(content="Are there snorkeling excursions?")],
         "next_node": "",
-        "context": {}
+        "context": {},
+        "reward": 0.0
     }
 
     result = ocean_vortex_graph.invoke(inputs)
@@ -214,7 +218,8 @@ def test_graph_routing_chit_chat() -> None:
         "guest_id": guest_id,
         "messages": [HumanMessage(content="Hi, how is the weather today?")],
         "next_node": "",
-        "context": {}
+        "context": {},
+        "reward": 0.0
     }
 
     result = ocean_vortex_graph.invoke(inputs)
