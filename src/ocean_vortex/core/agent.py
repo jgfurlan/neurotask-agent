@@ -14,6 +14,11 @@ from langgraph.graph.message import add_messages
 from pydantic import PrivateAttr
 
 from ..providers.snowflake import get_snowflake_client
+from .prompt_templates import (
+    DATA_ANALYST_BACKSTORY,
+    HOSPITALITY_EXPERT_BACKSTORY,
+    SUPERVISOR_SYSTEM_PROMPT,
+)
 
 
 class AgentState(TypedDict):
@@ -22,6 +27,38 @@ class AgentState(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
     next_node: str
     context: dict[str, Any]
+    reward: float  # RLVR reward signal: -1.0 to 1.0
+
+
+# ---------------------------------------------------------------------------
+# RLVR Verifier Node
+# ---------------------------------------------------------------------------
+
+def verifier_node(state: AgentState) -> dict[str, Any]:
+    """Audits the agent output and calculates a reward signal (RLVR)."""
+    last_message = state["messages"][-1].content
+    profile = state["context"].get("guest_profile")
+    
+    # Logic simulation: Check for dietary restrictions if ordering
+    reward = 1.0
+    verification_feedback = "Verified: Order matches guest profile."
+
+    messages = []
+    if profile and "mojito" in str(last_message).lower():
+        # Example check: if they have "alcohol-free" preference
+        if "alcohol-free" in profile.preferences.dietary_restrictions:
+            reward = -1.0
+            verification_feedback = "CRITICAL: Alcohol-free guest attempted to order a Mojito."
+            messages.append(AIMessage(content="I apologize, but your dietary restrictions indicate an alcohol-free preference, so I cannot process the Mojito order."))
+    
+    return {
+        "reward": reward,
+        "messages": messages,
+        "context": {
+            **state["context"],
+            "verification_feedback": verification_feedback
+        }
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -171,15 +208,7 @@ def supervisor_node(state: AgentState) -> dict[str, Any]:
             f"Dietary: {', '.join(profile.preferences.dietary_restrictions)}"
         )
 
-    system_prompt = (
-        "You are the central supervisor node for the OceanMedallion guest experience.\n"
-        "Your task is to route the user's message to the correct worker node.\n"
-        "Use the following guest profile context if relevant:\n"
-        f"{profile_str}\n\n"
-        "Select the appropriate tool based on the user's query.\n"
-        "If the request is simple chit-chat, greet the guest directly without "
-        "choosing any tools."
-    )
+    system_prompt = SUPERVISOR_SYSTEM_PROMPT.format(profile_str=profile_str)
 
     model = get_chat_model()
     tools = [route_to_guest_service, route_to_anticipatory_advisor]
@@ -271,7 +300,7 @@ def anticipatory_advisor_node(state: AgentState) -> dict[str, Any]:
         data_analyst = Agent(
             role="Data Analyst",
             goal="Analyze the guest's profile and retrieve relevant Carnival policies.",
-            backstory="You are an expert analyst for Carnival Corporation, querying Snowflake Cortex AI.",
+            backstory=DATA_ANALYST_BACKSTORY,
             verbose=True,
             allow_delegation=False,
             tools=[search_carnival_policies],
@@ -282,7 +311,7 @@ def anticipatory_advisor_node(state: AgentState) -> dict[str, Any]:
         hospitality_expert = Agent(
             role="Hospitality Expert",
             goal="Draft a highly personalized recommendation adhering to White Star Service standards.",
-            backstory="You are a Carnival Corporation concierge expert, knowledgeable in Culture Essentials.",
+            backstory=HOSPITALITY_EXPERT_BACKSTORY,
             verbose=True,
             allow_delegation=False,
             llm=llm
@@ -328,6 +357,7 @@ workflow.add_node("load_context", load_context_node)
 workflow.add_node("supervisor", supervisor_node)
 workflow.add_node("guest_service", guest_service_node)
 workflow.add_node("anticipatory_advisor", anticipatory_advisor_node)
+workflow.add_node("verifier", verifier_node)
 
 workflow.set_entry_point("load_context")
 workflow.add_edge("load_context", "supervisor")
@@ -342,7 +372,8 @@ workflow.add_conditional_edges(
     },
 )
 
-workflow.add_edge("guest_service", END)
-workflow.add_edge("anticipatory_advisor", END)
+workflow.add_edge("guest_service", "verifier")
+workflow.add_edge("anticipatory_advisor", "verifier")
+workflow.add_edge("verifier", END)
 
 ocean_vortex_graph = workflow.compile()

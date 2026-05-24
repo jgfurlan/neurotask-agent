@@ -222,3 +222,31 @@ def test_graph_routing_chit_chat() -> None:
     assert len(result["messages"]) == 2
     final_msg = result["messages"][-1].content
     assert "digital assistant" in final_msg.lower() or "help" in final_msg.lower()
+
+def test_verifier_rlvr_penalty() -> None:
+    from langchain_core.messages import HumanMessage
+
+    from ocean_vortex.core.agent import AgentState, ocean_vortex_graph
+
+    guest_id = "5b8225c1-792c-4c31-8541-974a26355ef2"  # Junior Mercer (alcohol-free)
+    inputs: AgentState = {
+        "guest_id": guest_id,
+        "messages": [HumanMessage(content="Order a Mojito for me")],
+        "next_node": "",
+        "context": {},
+        "reward": 0.0
+    }
+
+    result = ocean_vortex_graph.invoke(inputs)
+    
+    # Assert the reward penalty was applied
+    assert result["reward"] == -1.0
+    
+    # Assert the feedback context was set
+    assert "CRITICAL" in result["context"]["verification_feedback"]
+    
+    # Assert the final message was intercepted and overridden
+    final_msg = result["messages"][-1].content
+    assert "apologize" in final_msg.lower()
+    assert "alcohol-free" in final_msg.lower()
+

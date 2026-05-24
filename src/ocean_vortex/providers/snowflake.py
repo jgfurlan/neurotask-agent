@@ -30,8 +30,32 @@ class LiveSnowflakeClient(SnowflakeClientProtocol):
             raise ValueError("Missing required Snowflake environment variables.")
 
     def get_guest_profile(self, guest_id: UUID) -> GuestProfileResponse:
-        # Placeholder for actual Cortex AI queries mapping to GuestProfileResponse
+        """
+        Example Cortex SQL Pattern:
+        SELECT 
+            guest_id, 
+            full_name, 
+            medallion_status,
+            SNOWFLAKE.CORTEX.COMPLETE('claude-3-5-sonnet', 
+                'Summarize preferences for guest: ' || preferences_json) as preference_summary
+        FROM GUEST_GENOMICS_TABLE
+        WHERE guest_id = '{guest_id}'
+        """
         raise NotImplementedError("Live Snowflake connection is not yet implemented.")
+
+    def generate_recommendation(self, prompt: str) -> str:
+        """
+        Production Pattern for Cortex LLM Inference:
+        sql = f"SELECT SNOWFLAKE.CORTEX.COMPLETE('claude-3-5-sonnet', '{prompt}')"
+        """
+        return "Cortex AI recommendation placeholder"
+
+    def get_embeddings(self, text: str) -> list[float]:
+        """
+        Production Pattern for Cortex Embeddings:
+        sql = f"SELECT SNOWFLAKE.CORTEX.EMBED_TEXT_768('snowflake-arctic-embed-m', '{text}')"
+        """
+        return [0.0] * 768
 
 
 class MockSnowflakeClient(SnowflakeClientProtocol):
