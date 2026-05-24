@@ -27,13 +27,13 @@
 ## Architectural Diagrams
 
 ### System Topology
-![System Architecture](architecture.svg)
+![System Architecture](docs/architecture.svg)
 
 ### Guest Experience & Use Cases
-![Use Cases](use_cases.svg)
+![Use Cases](docs/use_cases.svg)
 
 ### Data Flow & State Management
-![Data Flow](data_flow.svg)
+![Data Flow](docs/data_flow.svg)
 
 ---
 
