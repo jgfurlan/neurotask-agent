@@ -3,8 +3,8 @@ from uuid import UUID
 from fastapi import FastAPI
 from langchain_core.messages import HumanMessage
 
-from ocean_vortex.agent import AgentState, ocean_vortex_graph
-from ocean_vortex.dto import (
+from ocean_vortex.core.agent import AgentState, ocean_vortex_graph
+from ocean_vortex.core.models import (
     ChatRequest,
     ChatResponse,
     GuestProfileResponse,
@@ -12,7 +12,7 @@ from ocean_vortex.dto import (
     ServiceOrderResponse,
     SuggestedAction,
 )
-from ocean_vortex.snowflake_client import get_snowflake_client
+from ocean_vortex.providers.snowflake import get_snowflake_client
 
 app = FastAPI(
     title="OceanVortex Agent Service",

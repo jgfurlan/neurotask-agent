@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml .
-COPY ocean_vortex/ ./ocean_vortex/
+COPY src/ ./src/
 RUN pip install --no-cache-dir --user .
 
 FROM python:3.12-slim AS test
@@ -18,7 +18,7 @@ COPY --from=builder /root/.local /root/.local
 ENV PATH=/root/.local/bin:$PATH
 
 COPY pyproject.toml .
-COPY ocean_vortex/ ./ocean_vortex/
+COPY src/ ./src/
 COPY tests/ ./tests/
 
 RUN pip install --no-cache-dir --user .[dev]
@@ -32,8 +32,8 @@ WORKDIR /app
 COPY --from=builder /root/.local /root/.local
 ENV PATH=/root/.local/bin:$PATH
 
-COPY ocean_vortex/ /app/ocean_vortex/
+COPY src/ /app/src/
 
 EXPOSE 8000
 
-CMD ["uvicorn", "ocean_vortex.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "ocean_vortex.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

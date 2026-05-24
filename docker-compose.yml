@@ -20,8 +20,8 @@ services:
       USE_MOCK_SNOWFLAKE: ${USE_MOCK_SNOWFLAKE:-true}
       USE_MOCK_BEDROCK: ${USE_MOCK_BEDROCK:-true}
     volumes:
-      - ./ocean_vortex:/app/ocean_vortex
-    command: uvicorn ocean_vortex.main:app --host 0.0.0.0 --port 8000 --reload
+      - ./src:/app/src
+    command: uvicorn ocean_vortex.api.main:app --host 0.0.0.0 --port 8000 --reload
     depends_on:
       - db
 
@@ -37,7 +37,7 @@ services:
       USE_MOCK_SNOWFLAKE: "true"
       USE_MOCK_BEDROCK: "true"
     volumes:
-      - ./ocean_vortex:/app/ocean_vortex
+      - ./src:/app/src
       - ./tests:/app/tests
     command: sh -c "ruff check . && mypy . && pytest"
     depends_on:

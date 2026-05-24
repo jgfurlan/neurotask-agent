@@ -13,7 +13,8 @@ from langgraph.graph import END, StateGraph
 from langgraph.graph.message import add_messages
 from pydantic import PrivateAttr
 
-from ocean_vortex.snowflake_client import get_snowflake_client
+from ocean_vortex.core.models import GuestPreferences, GuestProfileResponse
+from ocean_vortex.providers.snowflake import get_snowflake_client
 
 
 class AgentState(TypedDict):

@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from ocean_vortex.main import app
+from ocean_vortex.api.main import app
 
 client = TestClient(app)
 
@@ -88,7 +88,7 @@ def test_create_service_order() -> None:
 
 
 def test_mock_guest_database_import() -> None:
-    from ocean_vortex.db import MOCK_GUEST_DATABASE
+    from ocean_vortex.providers.db import MOCK_GUEST_DATABASE
     assert MOCK_GUEST_DATABASE is not None
     assert "4a7114b0-681b-4b20-9430-863a15234de1" in [str(k) for k in MOCK_GUEST_DATABASE.keys()]
 
@@ -96,7 +96,7 @@ def test_mock_guest_database_import() -> None:
 def test_mock_chat_bedrock_converse_routing() -> None:
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.agent import MockChatBedrockConverse, get_chat_model
+    from ocean_vortex.core.agent import MockChatBedrockConverse, get_chat_model
 
     model = get_chat_model()
     assert isinstance(model, MockChatBedrockConverse)
@@ -125,7 +125,7 @@ def test_mock_chat_bedrock_converse_routing() -> None:
 def test_load_context_node_success() -> None:
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.agent import AgentState, load_context_node
+    from ocean_vortex.core.agent import AgentState, load_context_node
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
     state: AgentState = {
@@ -148,7 +148,7 @@ def test_load_context_node_not_found() -> None:
     from fastapi import HTTPException
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.agent import AgentState, load_context_node
+    from ocean_vortex.core.agent import AgentState, load_context_node
 
     guest_id = "00000000-0000-0000-0000-000000000000"
     state: AgentState = {
@@ -167,7 +167,7 @@ def test_load_context_node_not_found() -> None:
 def test_graph_routing_guest_service() -> None:
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.agent import AgentState, ocean_vortex_graph
+    from ocean_vortex.core.agent import AgentState, ocean_vortex_graph
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
     inputs: AgentState = {
@@ -187,7 +187,7 @@ def test_graph_routing_guest_service() -> None:
 def test_graph_routing_anticipatory_advisor() -> None:
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.agent import AgentState, ocean_vortex_graph
+    from ocean_vortex.core.agent import AgentState, ocean_vortex_graph
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
     inputs: AgentState = {
@@ -207,7 +207,7 @@ def test_graph_routing_anticipatory_advisor() -> None:
 def test_graph_routing_chit_chat() -> None:
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.agent import AgentState, ocean_vortex_graph
+    from ocean_vortex.core.agent import AgentState, ocean_vortex_graph
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
     inputs: AgentState = {
