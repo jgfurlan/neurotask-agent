@@ -11,7 +11,12 @@ from ..core.models import (
     ServiceOrderRequest,
     ServiceOrderResponse,
     SuggestedAction,
+    NeptuneTelemetryRequest,
+    NeptuneAnomalyResponse,
+    FoodForecastRequest,
+    FoodForecastResponse,
 )
+from ..mlops.neptune.inference import SageMakerInferenceMock
 from ..providers.snowflake import get_snowflake_client
 
 app = FastAPI(
@@ -85,3 +90,13 @@ async def create_order(request: ServiceOrderRequest) -> ServiceOrderResponse:
             f"zone '{request.deliver_to_coordinates.zone}'!"
         )
     )
+
+@app.post("/ocean/neptune/telemetry", response_model=NeptuneAnomalyResponse)
+async def process_telemetry(request: NeptuneTelemetryRequest) -> NeptuneAnomalyResponse:
+    """Processes Neptune maritime telemetry via SageMaker inference."""
+    return SageMakerInferenceMock.predict_neptune_anomaly(request)
+
+@app.post("/ocean/operations/food-forecast", response_model=FoodForecastResponse)
+async def forecast_food(request: FoodForecastRequest) -> FoodForecastResponse:
+    """Predicts food consumption utilizing 'Less Left Over' ML models."""
+    return SageMakerInferenceMock.predict_food_forecast(request)

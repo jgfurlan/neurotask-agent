@@ -91,3 +91,28 @@ class ServiceOrderResponse(BaseModel):
         ..., description="Estimated delivery timeframe in minutes"
     )
     message: str = Field(..., description="Response message for screen layout feedback")
+
+
+class NeptuneTelemetryRequest(BaseModel):
+    vessel_id: str = Field(..., description="Unique vessel identifier")
+    timestamp: str = Field(..., description="ISO 8601 timestamp of telemetry reading")
+    parameters: dict[str, float] = Field(..., description="28 navigational and safety parameters")
+
+
+class NeptuneAnomalyResponse(BaseModel):
+    anomaly_score: float = Field(..., description="Probability of anomaly (0.0 to 1.0)")
+    is_anomaly: bool = Field(..., description="Boolean flag if threshold is breached")
+    affected_systems: list[str] = Field(default_factory=list, description="List of systems affected")
+    message: str = Field(..., description="Alert or status message")
+
+
+class FoodForecastRequest(BaseModel):
+    voyage_id: str = Field(..., description="Voyage identifier")
+    passenger_count: int = Field(..., description="Total passenger count onboard")
+    demographic_distribution: dict[str, float] = Field(..., description="Age/region demographic splits")
+
+
+class FoodForecastResponse(BaseModel):
+    predicted_consumption_kg: dict[str, float] = Field(..., description="Predicted kg per food category")
+    waste_reduction_estimate_kg: float = Field(..., description="Estimated kg of food waste avoided")
+    confidence_interval: float = Field(..., description="Prediction confidence percentage")
