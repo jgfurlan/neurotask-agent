@@ -3,7 +3,7 @@ import json
 import os
 
 
-def train() -> None:
+def ocean_vortex_neptune_anomaly_detector_train() -> None:
     """
     Simulated training script intended to run inside an AWS SageMaker Training Container.
     Expects SM_MODEL_DIR, SM_CHANNEL_TRAIN to be populated.
@@ -35,4 +35,9 @@ def train() -> None:
     print(f"Model saved to {args.model_dir}/model.json")
 
 if __name__ == "__main__":
-    train()
+    try:
+        ocean_vortex_neptune_anomaly_detector_train()
+    except Exception as e:
+        # Agent-Legibility: explicitly print failure path
+        print(f"CRITICAL: ocean_vortex_neptune_anomaly_detector_train failed: {e}")
+        raise

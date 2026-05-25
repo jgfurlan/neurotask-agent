@@ -19,6 +19,12 @@ from ..core.models import (
 from ..mlops.neptune.inference import SageMakerInferenceMock
 from ..providers.snowflake import get_snowflake_client
 
+"""
+OceanVortex FastAPI Router
+Centralized routing and inference for the OceanMedallion ecosystem.
+This module strictly enforces Agent-Legible naming conventions.
+"""
+
 app = FastAPI(
     title="OceanVortex Agent Service",
     description=(
@@ -31,18 +37,18 @@ app = FastAPI(
 
 
 @app.get("/hello")
-async def read_hello() -> dict[str, str]:
+async def ocean_vortex_api_read_health_hello() -> dict[str, str]:
     """Basic health check endpoint."""
     return {"message": "Hello from OceanVortex Python Agent"}
 
 @app.get("/ocean/guest/profile", response_model=GuestProfileResponse)
-async def get_guest_profile(guest_id: UUID) -> GuestProfileResponse:
+async def ocean_vortex_api_get_digital_genome_profile(guest_id: UUID) -> GuestProfileResponse:
     """Retrieves guest profile genome context matching a specific OceanMedallion ID."""
     client = get_snowflake_client()
     return client.get_guest_profile(guest_id)
 
 @app.post("/ocean/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest) -> ChatResponse:
+async def ocean_vortex_api_process_llm_chat(request: ChatRequest) -> ChatResponse:
     """Chats with the multi-agent orchestrator to guide reservations, schedules, or queries."""
     # Execute the stateful LangGraph workflow
     inputs: AgentState = {
@@ -78,7 +84,7 @@ async def chat(request: ChatRequest) -> ChatResponse:
     )
 
 @app.post("/ocean/services/order", response_model=ServiceOrderResponse)
-async def create_order(request: ServiceOrderRequest) -> ServiceOrderResponse:
+async def ocean_vortex_api_dispatch_pos_order(request: ServiceOrderRequest) -> ServiceOrderResponse:
     """Dispatches on-demand deliveries or bookings via the OceanNow network."""
     return ServiceOrderResponse(
         order_id="ORD-882194",
@@ -92,11 +98,11 @@ async def create_order(request: ServiceOrderRequest) -> ServiceOrderResponse:
     )
 
 @app.post("/ocean/neptune/telemetry", response_model=NeptuneAnomalyResponse)
-async def process_telemetry(request: NeptuneTelemetryRequest) -> NeptuneAnomalyResponse:
+async def ocean_vortex_api_process_neptune_telemetry(request: NeptuneTelemetryRequest) -> NeptuneAnomalyResponse:
     """Processes Neptune maritime telemetry via SageMaker inference."""
     return SageMakerInferenceMock.predict_neptune_anomaly(request)
 
 @app.post("/ocean/operations/food-forecast", response_model=FoodForecastResponse)
-async def forecast_food(request: FoodForecastRequest) -> FoodForecastResponse:
+async def ocean_vortex_api_forecast_food_waste(request: FoodForecastRequest) -> FoodForecastResponse:
     """Predicts food consumption utilizing 'Less Left Over' ML models."""
     return SageMakerInferenceMock.predict_food_forecast(request)

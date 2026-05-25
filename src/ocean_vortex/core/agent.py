@@ -34,8 +34,11 @@ class AgentState(TypedDict):
 # RLVR Verifier Node
 # ---------------------------------------------------------------------------
 
-def verifier_node(state: AgentState) -> dict[str, Any]:
-    """Audits the agent output and calculates a reward signal (RLVR)."""
+def ocean_vortex_agent_rlvr_verifier_node(state: AgentState) -> dict[str, Any]:
+    """
+    Audits the agent output and calculates a reward signal (RLVR).
+    This enforces the Agent-Legibility standard for single-query error handling.
+    """
     last_message = state["messages"][-1].content
     profile = state["context"].get("guest_profile")
     
@@ -65,7 +68,7 @@ def verifier_node(state: AgentState) -> dict[str, Any]:
 # Pre-emptive context loading
 # ---------------------------------------------------------------------------
 
-def load_context_node(state: AgentState) -> dict[str, Any]:
+def ocean_vortex_agent_load_context_node(state: AgentState) -> dict[str, Any]:
     """Pre-emptively loads the guest profile genomics context from the database."""
     guest_id_str = state.get("guest_id")
     if not guest_id_str:
@@ -170,7 +173,7 @@ class MockChatBedrockConverse(BaseChatModel):
         return "mock-chat-bedrock"
 
 
-def get_chat_model() -> BaseChatModel:
+def ocean_vortex_agent_get_chat_model() -> BaseChatModel:
     """Return the real Bedrock model when AWS keys exist, otherwise the mock."""
     has_aws_keys = (
         os.environ.get("AWS_ACCESS_KEY_ID") is not None
@@ -193,7 +196,7 @@ def get_chat_model() -> BaseChatModel:
 # Graph nodes
 # ---------------------------------------------------------------------------
 
-def supervisor_node(state: AgentState) -> dict[str, Any]:
+def ocean_vortex_agent_llm_supervisor_node(state: AgentState) -> dict[str, Any]:
     """Inspects guest profile context, binds tools to LLM, and invokes routing."""
     from langchain_core.messages import SystemMessage
 
@@ -210,7 +213,7 @@ def supervisor_node(state: AgentState) -> dict[str, Any]:
 
     system_prompt = SUPERVISOR_SYSTEM_PROMPT.format(profile_str=profile_str)
 
-    model = get_chat_model()
+    model = ocean_vortex_agent_get_chat_model()
     tools = [route_to_guest_service, route_to_anticipatory_advisor]
     model_with_tools = model.bind_tools(tools)
 
@@ -231,7 +234,7 @@ def supervisor_node(state: AgentState) -> dict[str, Any]:
     }
 
 
-def guest_service_node(state: AgentState) -> dict[str, Any]:
+def ocean_vortex_agent_worker_guest_service_node(state: AgentState) -> dict[str, Any]:
     """Worker node that handles ordering beverages, food, or amenities."""
     last_message = state["messages"][-1]
     item_name = "unknown item"
@@ -255,7 +258,7 @@ def guest_service_node(state: AgentState) -> dict[str, Any]:
     }
 
 
-def anticipatory_advisor_node(state: AgentState) -> dict[str, Any]:
+def ocean_vortex_agent_worker_anticipatory_advisor_node(state: AgentState) -> dict[str, Any]:
     """Worker node that handles excursion/activity recommendations using CrewAI."""
     try:
         from crewai import Agent, Crew, Process, Task
@@ -287,7 +290,7 @@ def anticipatory_advisor_node(state: AgentState) -> dict[str, Any]:
         docs = rag_pipeline.retrieve_context(query)
         return "\n\n".join([f"Source: {doc.metadata.get('source')}\nContent: {doc.page_content}" for doc in docs])
 
-    llm = get_chat_model()
+    llm = ocean_vortex_agent_get_chat_model()
     
     # If we are using the Mock LLM, bypass CrewAI since the mock can't follow ReAct reasoning
     if isinstance(llm, MockChatBedrockConverse):
@@ -353,11 +356,11 @@ def anticipatory_advisor_node(state: AgentState) -> dict[str, Any]:
 
 workflow = StateGraph(AgentState)
 
-workflow.add_node("load_context", load_context_node)
-workflow.add_node("supervisor", supervisor_node)
-workflow.add_node("guest_service", guest_service_node)
-workflow.add_node("anticipatory_advisor", anticipatory_advisor_node)
-workflow.add_node("verifier", verifier_node)
+workflow.add_node("load_context", ocean_vortex_agent_load_context_node)
+workflow.add_node("supervisor", ocean_vortex_agent_llm_supervisor_node)
+workflow.add_node("guest_service", ocean_vortex_agent_worker_guest_service_node)
+workflow.add_node("anticipatory_advisor", ocean_vortex_agent_worker_anticipatory_advisor_node)
+workflow.add_node("verifier", ocean_vortex_agent_rlvr_verifier_node)
 
 workflow.set_entry_point("load_context")
 workflow.add_edge("load_context", "supervisor")

@@ -96,9 +96,9 @@ def test_mock_guest_database_import() -> None:
 def test_mock_chat_bedrock_converse_routing() -> None:
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.core.agent import MockChatBedrockConverse, get_chat_model
+    from ocean_vortex.core.agent import MockChatBedrockConverse, ocean_vortex_agent_get_chat_model
 
-    model = get_chat_model()
+    model = ocean_vortex_agent_get_chat_model()
     assert isinstance(model, MockChatBedrockConverse)
 
     # Test drink routing simulation
@@ -122,10 +122,10 @@ def test_mock_chat_bedrock_converse_routing() -> None:
     assert "hello" in content or "help" in content
 
 
-def test_load_context_node_success() -> None:
+def test_ocean_vortex_agent_load_context_node_success() -> None:
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.core.agent import AgentState, load_context_node
+    from ocean_vortex.core.agent import AgentState, ocean_vortex_agent_load_context_node
 
     guest_id = "4a7114b0-681b-4b20-9430-863a15234de1"
     state: AgentState = {
@@ -136,7 +136,7 @@ def test_load_context_node_success() -> None:
         "reward": 0.0
     }
 
-    result = load_context_node(state)
+    result = ocean_vortex_agent_load_context_node(state)
     assert "guest_profile" in result["context"]
     profile = result["context"]["guest_profile"]
     assert profile.full_name == "Alexander Mercer"
@@ -144,12 +144,12 @@ def test_load_context_node_success() -> None:
     assert "Snorkeling" in profile.preferences.activity_interests
 
 
-def test_load_context_node_not_found() -> None:
+def test_ocean_vortex_agent_load_context_node_not_found() -> None:
     import pytest
     from fastapi import HTTPException
     from langchain_core.messages import HumanMessage
 
-    from ocean_vortex.core.agent import AgentState, load_context_node
+    from ocean_vortex.core.agent import AgentState, ocean_vortex_agent_load_context_node
 
     guest_id = "00000000-0000-0000-0000-000000000000"
     state: AgentState = {
@@ -161,7 +161,7 @@ def test_load_context_node_not_found() -> None:
     }
 
     with pytest.raises(HTTPException) as exc_info:
-        load_context_node(state)
+        ocean_vortex_agent_load_context_node(state)
     assert exc_info.value.status_code == 404
     assert "not found" in exc_info.value.detail
 
