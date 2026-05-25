@@ -4,6 +4,7 @@ In a real environment, this would use `sagemaker.workflow.pipeline.Pipeline`.
 """
 from typing import Any
 
+
 class MockSageMakerPipeline:
     """
     Simulates a SageMaker Pipeline that orchestrates Data Processing, Model Training,

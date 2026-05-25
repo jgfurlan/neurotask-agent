@@ -1,4 +1,3 @@
-import pytest
 from fastapi.testclient import TestClient
 
 from ocean_vortex.api.main import app

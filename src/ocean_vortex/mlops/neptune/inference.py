@@ -2,13 +2,13 @@
 This module simulates invoking a SageMaker Real-Time Inference Endpoint.
 In production, this would use `boto3.client('sagemaker-runtime').invoke_endpoint()`.
 """
-import random
 from ocean_vortex.core.models import (
-    NeptuneTelemetryRequest,
-    NeptuneAnomalyResponse,
     FoodForecastRequest,
     FoodForecastResponse,
+    NeptuneAnomalyResponse,
+    NeptuneTelemetryRequest,
 )
+
 
 class SageMakerInferenceMock:
     """Simulates real-time predictions from SageMaker endpoints."""

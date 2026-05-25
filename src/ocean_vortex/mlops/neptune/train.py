@@ -2,6 +2,7 @@ import argparse
 import json
 import os
 
+
 def train() -> None:
     """
     Simulated training script intended to run inside an AWS SageMaker Training Container.
