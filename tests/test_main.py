@@ -87,10 +87,14 @@ def test_create_service_order() -> None:
     assert data["estimated_delivery_minutes"] == 8
 
 
-def test_mock_guest_database_import() -> None:
-    from ocean_vortex.providers.db import MOCK_GUEST_DATABASE
-    assert MOCK_GUEST_DATABASE is not None
-    assert "4a7114b0-681b-4b20-9430-863a15234de1" in [str(k) for k in MOCK_GUEST_DATABASE.keys()]
+def test_ocean_vortex_couchbase_edge_client_import() -> None:
+    from ocean_vortex.providers.couchbase import ocean_vortex_get_couchbase_edge_client
+    edge = ocean_vortex_get_couchbase_edge_client()
+    assert edge is not None
+    profile = edge.ocean_vortex_couchbase_get_guest_profile(
+        __import__("uuid").UUID("4a7114b0-681b-4b20-9430-863a15234de1")
+    )
+    assert profile.full_name == "Alexander Mercer"
 
 
 def test_mock_chat_bedrock_converse_routing() -> None:
